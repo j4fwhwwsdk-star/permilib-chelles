@@ -3,7 +3,7 @@ import Link from "next/link";
 import GoogleBadge from "@/components/ui/GoogleBadge";
 import Reveal from "@/components/ui/Reveal";
 import { buildMetadata } from "@/lib/metadata";
-import { CITY, SCHOOL_NAME, PHONE, WHATSAPP } from "@/lib/site";
+import { CITY, SCHOOL_NAME, PHONE, WHATSAPP, ADDRESS, HORAIRES_CODE, HORAIRES_CONDUITE } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: `Auto-école à ${CITY}`,
@@ -106,7 +106,7 @@ export default function HomePage() {
         <div className="relative z-20 max-w-6xl mx-auto px-4 sm:px-6 w-full py-32">
           {/* Badge sobre */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-compat border border-white/20 text-white text-xs font-bold px-5 py-2.5 rounded-full mb-8 tracking-widest uppercase animate-fadeIn">
-            <span className="w-2 h-2 rounded-full bg-[#2563eb] inline-block animate-pulse-glow" />
+            <span className="w-2 h-2 rounded-full bg-[#f97316] inline-block animate-pulse-glow" />
             Auto-école certifiée Qualiopi · {CITY}
           </div>
 
@@ -125,7 +125,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row gap-4 mb-12 animate-fadeIn">
             <a
               href={`tel:${PHONE}`}
-              className="shine-btn bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl px-8 py-4 font-bold text-lg text-center shadow-lg shadow-blue-600/30 hover:shadow-blue-500/50 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
+              className="shine-btn bg-[#f97316] text-white rounded-xl px-8 py-4 font-bold text-lg text-center shadow-lg shadow-orange-600/30 hover:shadow-orange-500/50 hover:bg-orange-600 hover:shadow-xl transition-all duration-300 flex items-center justify-center gap-2"
             >
               <IcoPhone /> Appeler maintenant
             </a>
@@ -165,7 +165,7 @@ export default function HomePage() {
       </section>
 
       {/* ─── TRUST BAR ─── */}
-      <section className="bg-[#0f172a] py-4 px-4 border-b border-white/5">
+      <section className="bg-[#0c1f4a] py-4 px-4 border-b border-white/5">
         <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center md:justify-between gap-x-6 gap-y-2 text-sm font-medium">
           {[
             { icon: <IcoShield />, label: "Certification Qualiopi" },
@@ -175,7 +175,7 @@ export default function HomePage() {
             { icon: <IcoBolt />,   label: "Véhicule électrique" },
           ].map((item, i) => (
             <span key={i} className="flex items-center gap-2 text-white/60 hover:text-white/90 transition-colors">
-              <span className="text-[#2563eb]">{item.icon}</span>
+              <span className="text-[#f97316]">{item.icon}</span>
               {item.label}
               {i < 4 && <span className="hidden md:inline text-white/20 ml-6">|</span>}
             </span>
@@ -323,7 +323,7 @@ export default function HomePage() {
                 className="group relative bg-white rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden card-lift flex flex-col"
               >
                 {/* Barre colorée au hover */}
-                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-600 to-violet-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-t-2xl" />
+                <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-700 to-orange-500 transform origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-300 rounded-t-2xl" />
 
                 {/* Numéro en filigrane */}
                 <div className="font-bebas text-[80px] text-gray-100 group-hover:text-blue-50 transition-colors leading-none mb-2 select-none -ml-2">
@@ -397,7 +397,7 @@ export default function HomePage() {
                 key={r.title}
                 className="group relative bg-white/5 backdrop-blur-compat border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 hover:scale-105 transition-all duration-300 overflow-hidden"
               >
-                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-500 to-violet-500 rounded-t-2xl" />
+                <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-blue-700 to-orange-500 rounded-t-2xl" />
                 <div className="text-white/70 mb-4">{r.icon}</div>
                 <h3 className="font-bold text-white mb-2">{r.title}</h3>
                 <p className="text-white/60 text-sm leading-relaxed">{r.desc}</p>
@@ -462,7 +462,7 @@ export default function HomePage() {
                 </p>
                 <div className="flex items-center justify-between relative z-10">
                   <div className="flex items-center gap-3">
-                    <div className="w-12 h-12 bg-gradient-to-br from-blue-600 to-violet-500 text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0 shadow-md shadow-blue-200">
+                    <div className="w-12 h-12 bg-gradient-to-br from-blue-700 to-orange-500 text-white rounded-full flex items-center justify-center font-bold text-lg shrink-0 shadow-md shadow-blue-200">
                       {a.name[0]}
                     </div>
                     <div>
@@ -508,7 +508,7 @@ export default function HomePage() {
               {["CPF", "Aide IDF · 1 000€", "Permis 1€/jour"].map((b) => (
                 <span
                   key={b}
-                  className="flex items-center gap-2 bg-blue-100 text-blue-700 border border-blue-200 rounded-full px-4 py-2 text-sm font-bold"
+                  className="flex items-center gap-2 bg-orange-50 text-orange-700 border border-orange-200 rounded-full px-4 py-2 text-sm font-bold"
                 >
                   {b}
                 </span>
@@ -518,7 +518,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/financement"
-                className="shine-btn bg-gradient-to-r from-blue-600 to-blue-500 text-white rounded-xl px-8 py-3 font-bold text-center shadow-lg shadow-blue-200 hover:shadow-blue-300 transition-all duration-300"
+                className="shine-btn bg-[#f97316] text-white rounded-xl px-8 py-3 font-bold text-center shadow-lg shadow-orange-200 hover:bg-orange-600 hover:shadow-orange-300 transition-all duration-300"
               >
                 Voir les options →
               </Link>
@@ -553,9 +553,77 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── HORAIRES ─── */}
+      <section className="py-20 px-4 bg-[#f8fafc] border-t border-gray-100">
+        <div className="max-w-5xl mx-auto">
+          <Reveal variant="bottom" className="text-center mb-12">
+            <p className="text-[#f97316] text-xs font-bold tracking-widest uppercase mb-3">
+              Horaires d'ouverture
+            </p>
+            <h2 className="font-bebas text-[44px] md:text-[60px] text-gray-900 leading-none mb-3">
+              Quand nous trouver ?
+            </h2>
+            <p className="text-gray-500 text-sm">
+              Auto Moto Ecole d&apos;Estoril — {ADDRESS}
+            </p>
+          </Reveal>
+
+          <Reveal stagger className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-10">
+            {/* Code */}
+            <div className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 bg-[#2563eb] rounded-xl flex items-center justify-center text-white font-bold text-xs tracking-wide">
+                  CODE
+                </div>
+                <h3 className="font-bold text-gray-900 text-lg">Cours de Code</h3>
+              </div>
+              <div className="space-y-0">
+                {HORAIRES_CODE.map(({ jour, heures }) => (
+                  <div key={jour} className="flex justify-between items-start text-sm py-3 border-b border-gray-50 last:border-0">
+                    <span className="text-gray-500 font-medium">{jour}</span>
+                    <span className={heures === "Fermé" ? "text-red-400 font-semibold" : "text-gray-900 font-bold text-right whitespace-pre-line"}>
+                      {heures}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Conduite */}
+            <div className="bg-white rounded-2xl p-7 border border-gray-100 shadow-sm">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-10 h-10 bg-[#f97316] rounded-xl flex items-center justify-center text-white">
+                  <IcoCar />
+                </div>
+                <h3 className="font-bold text-gray-900 text-lg">Conduite</h3>
+              </div>
+              <div className="space-y-0">
+                {HORAIRES_CONDUITE.map(({ jour, heures }) => (
+                  <div key={jour} className="flex justify-between items-start text-sm py-3 border-b border-gray-50 last:border-0">
+                    <span className="text-gray-500 font-medium">{jour}</span>
+                    <span className={heures === "Fermé" ? "text-red-400 font-semibold" : "text-gray-900 font-bold text-right whitespace-pre-line"}>
+                      {heures}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal variant="bottom" className="text-center">
+            <a
+              href={`tel:${PHONE}`}
+              className="inline-flex items-center gap-3 bg-white border-2 border-[#2563eb] text-[#2563eb] rounded-2xl px-8 py-4 font-bold text-base hover:bg-[#2563eb] hover:text-white transition-all duration-300 shadow-sm hover:shadow-lg shadow-blue-100"
+            >
+              <IcoPhone /> {PHONE} — Prendre rendez-vous
+            </a>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ─── CTA FINAL ─── */}
       <section className="relative py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-[#1d4ed8] via-[#2563eb] to-[#7c3aed]" />
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0c1f4a] via-[#1d4ed8] to-[#2563eb]" />
         <div className="absolute inset-0 bg-dots opacity-20" />
         <div className="absolute -top-20 -right-20 w-96 h-96 bg-violet-500/20 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -left-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl" />

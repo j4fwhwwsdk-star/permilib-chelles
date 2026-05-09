@@ -17,20 +17,30 @@ export default function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 bg-white border-b border-gray-100">
+    <header className="sticky top-0 z-40 bg-white border-b border-gray-100 shadow-sm">
+      {/* Barre orange Qualiopi en haut */}
+      <div className="bg-[#0c1f4a] text-white text-[11px] font-medium py-1.5 px-4 text-center tracking-wide">
+        Auto-école certifiée <span className="text-[#f97316] font-bold">Qualiopi</span> · Permis B, AAC, Boîte Automatique · Financement CPF disponible
+      </div>
+
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
-        {/* Logo */}
-        <Link href="/" className="font-bebas text-xl text-gray-900 tracking-wide shrink-0">
-          {SCHOOL_NAME}
+        {/* Logo texte */}
+        <Link href="/" className="flex items-center gap-2 shrink-0">
+          <div className="w-8 h-8 bg-[#0c1f4a] rounded-lg flex items-center justify-center">
+            <span className="font-bebas text-white text-[13px] leading-none">EST</span>
+          </div>
+          <span className="font-bebas text-lg text-[#0c1f4a] tracking-wide leading-tight hidden sm:block">
+            {SCHOOL_NAME}
+          </span>
         </Link>
 
         {/* Nav desktop */}
-        <nav className="hidden md:flex items-center gap-1 flex-1 justify-center">
+        <nav className="hidden md:flex items-center gap-0.5 flex-1 justify-center">
           {navLinks.map((l) => (
             <Link
               key={l.href}
               href={l.href}
-              className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg transition-colors"
+              className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-[#0c1f4a] hover:bg-gray-50 rounded-lg transition-colors"
             >
               {l.label}
             </Link>
@@ -47,9 +57,9 @@ export default function Header() {
           </Link>
           <a
             href={`tel:${PHONE}`}
-            className="bg-[#2563eb] text-white rounded-xl px-4 py-2 font-bold text-sm hover:bg-blue-700 transition-colors"
+            className="bg-[#f97316] text-white rounded-xl px-4 py-2 font-bold text-sm hover:bg-orange-600 transition-colors shadow-sm shadow-orange-200"
           >
-            📞 {PHONE}
+            {PHONE}
           </a>
         </div>
 
@@ -84,9 +94,9 @@ export default function Header() {
           </nav>
           <a
             href={`tel:${PHONE}`}
-            className="block bg-[#2563eb] text-white rounded-xl px-4 py-3 font-bold text-center"
+            className="block bg-[#f97316] text-white rounded-xl px-4 py-3 font-bold text-center hover:bg-orange-600 transition-colors"
           >
-            📞 Appeler maintenant
+            Appeler maintenant — {PHONE}
           </a>
         </div>
       )}
