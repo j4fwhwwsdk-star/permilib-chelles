@@ -6,57 +6,61 @@ import { PHONE, CITY, SCHOOL_NAME } from "@/lib/site";
 
 export const metadata = buildMetadata({
   title: "Tarifs permis de conduire",
-  description: `Forfait 20h à 1 180€, 30h à 1 580€. Boîte auto dès 850€. CPF, aide IDF jusqu'à 1 000€. ${SCHOOL_NAME} à ${CITY}.`,
+  description: `Tarifs formation permis B, boîte auto, AAC. CPF, aide IDF jusqu'à 1 000€. Devis gratuit. ${SCHOOL_NAME} à ${CITY}.`,
   path: "/tarifs",
 });
 
 const forfaits = [
   {
-    title: "Forfait 20h",
+    title: "Permis B Manuel",
     type: "Boîte manuelle",
-    price: "1 180",
-    desc: "L'essentiel pour obtenir votre permis en boîte manuelle.",
-    features: ["20h de conduite", "Code de la route inclus", "Frais d'examen inclus", "Suivi pédagogique"],
+    price: "Sur devis",
+    desc: "Formation classique avec nos moniteurs certifiés. Code inclus.",
+    features: ["Formation personnalisée", "Code de la route inclus", "Frais d'examen inclus", "Suivi pédagogique"],
     popular: false,
+    devis: true,
   },
   {
-    title: "Forfait 30h",
-    type: "Boîte manuelle",
-    price: "1 580",
-    desc: "Formation complète pour aborder l'examen avec sérénité.",
-    features: ["30h de conduite", "Code de la route inclus", "Frais d'examen inclus", "Séance bilan incluse"],
+    title: "Permis B Automatique",
+    type: "Boîte automatique",
+    price: "Sur devis",
+    desc: "Formation en boîte automatique, idéale pour la ville.",
+    features: ["Formation en boîte auto", "Code de la route inclus", "Frais d'examen inclus", "Véhicule automatique"],
     popular: true,
-  },
-  {
-    title: "Forfait 13h",
-    type: "Boîte automatique",
-    price: "850",
-    desc: "Le minimum réglementaire en véhicule automatique.",
-    features: ["13h de conduite", "Code de la route inclus", "Frais d'examen inclus", "Véhicule automatique"],
-    popular: false,
-  },
-  {
-    title: "Forfait 20h",
-    type: "Boîte automatique",
-    price: "1 250",
-    desc: "Formation recommandée pour une conduite sereine.",
-    features: ["20h de conduite", "Code de la route inclus", "Frais d'examen inclus", "Recommandé"],
-    popular: false,
+    devis: true,
   },
   {
     title: "Conduite Accompagnée",
     type: "AAC — dès 15 ans",
     price: "Sur devis",
     desc: "Formation complète dès 15 ans avec un accompagnateur.",
-    features: ["20h de formation initiale", "Suivi AAC complet", "Rendez-vous pédagogiques inclus", "Examen inclus"],
+    features: ["Formation initiale incluse", "Suivi AAC complet", "Rendez-vous pédagogiques inclus", "Examen inclus"],
+    popular: false,
+    devis: true,
+  },
+  {
+    title: "Conduite Supervisée",
+    type: "Pour les + de 18 ans",
+    price: "Sur devis",
+    desc: "Accumulez de l'expérience sous supervision d'un proche.",
+    features: ["Pour titulaires du permis", "Suivi personnalisé", "Rendez-vous pédagogiques", "Sans examen"],
+    popular: false,
+    devis: true,
+  },
+  {
+    title: "Formation Post-Permis",
+    type: "Perfectionnement",
+    price: "Sur devis",
+    desc: "Améliorez votre conduite après l'obtention du permis.",
+    features: ["Éco-conduite", "Conduite défensive", "Prise en main autoroutière", "Certificat remis"],
     popular: false,
     devis: true,
   },
 ];
 
 const lecons = [
-  { label: "Leçon 1h — Boîte manuelle", price: "55 €" },
-  { label: "Leçon 1h — Boîte automatique", price: "60 €" },
+  { label: "Leçon 1h — Boîte manuelle", price: "Sur devis" },
+  { label: "Leçon 1h — Boîte automatique", price: "Sur devis" },
   { label: "Code de la route (seul)", price: "Sur demande" },
 ];
 
