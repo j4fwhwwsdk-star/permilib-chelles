@@ -70,7 +70,7 @@ export default function FinancementPage() {
   return (
     <div>
       {/* ── Hero ── */}
-      <section className="relative py-24 px-4 overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="relative py-24 px-4 overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 opacity-15">
           <Image
             src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80"
@@ -98,14 +98,14 @@ export default function FinancementPage() {
       </section>
 
       {/* ── Options ── */}
-      <section className="py-20 px-4" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4" style={{ background: "#0e2644" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal stagger className="grid md:grid-cols-2 gap-6">
             {options.map((opt) => (
               <div
                 key={opt.title}
                 className="group rounded-2xl hover:border-green-500/25 transition-all duration-400 overflow-hidden"
-                style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
               >
                 {/* En-tête */}
                 <div
@@ -165,7 +165,7 @@ export default function FinancementPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
         <div className="relative max-w-3xl mx-auto text-center">
           <h2 className="font-bebas text-[38px] md:text-[52px] text-white leading-none mb-3">

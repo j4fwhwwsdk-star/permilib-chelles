@@ -30,7 +30,7 @@ export default function ContactPage() {
   return (
     <div>
       {/* ── En-tête ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-4">
@@ -47,7 +47,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Boutons rapides ── */}
-      <section className="px-4 py-5 border-b" style={{ background: "#0e1e38", borderColor: "rgba(255,255,255,0.07)" }}>
+      <section className="px-4 py-5 border-b" style={{ background: "#122e4c", borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row gap-3">
           <a
             href={`tel:${PHONE}`}
@@ -60,7 +60,7 @@ export default function ContactPage() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex-1 text-white rounded-xl p-4 text-center font-bold transition-all duration-300 flex items-center justify-center gap-2"
-            style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.10)" }}
+            style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.10)" }}
           >
             <IcoChat /> WhatsApp
           </a>
@@ -68,7 +68,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Contenu principal ── */}
-      <section className="py-16 px-4" style={{ background: "#0a1628" }}>
+      <section className="py-24 px-4" style={{ background: "#0e2644" }}>
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-12">
 
@@ -76,7 +76,7 @@ export default function ContactPage() {
             <Reveal variant="left">
               <div
                 className="rounded-2xl p-8"
-                style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-px w-8 bg-green-500" />
@@ -93,7 +93,7 @@ export default function ContactPage() {
               {/* Coordonnées */}
               <div
                 className="rounded-2xl p-7"
-                style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="h-px w-8 bg-green-500" />
@@ -117,7 +117,7 @@ export default function ContactPage() {
               {/* Horaires bureau */}
               <div
                 className="rounded-2xl p-7"
-                style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="h-px w-8 bg-green-500" />
@@ -160,7 +160,7 @@ export default function ContactPage() {
               ) : (
                 <div
                   className="rounded-2xl h-48 flex flex-col items-center justify-center gap-2 text-white/30 text-sm"
-                  style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                  style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
                 >
                   <IcoPin />
                   <span>Carte Google Maps</span>

@@ -24,7 +24,7 @@ export default function AvisPage() {
   return (
     <div>
       {/* ── En-tête ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-4">
@@ -41,7 +41,7 @@ export default function AvisPage() {
       </section>
 
       {/* ── Stat bar ── */}
-      <section className="py-6 px-4 border-b" style={{ background: "#0e1e38", borderColor: "rgba(255,255,255,0.07)" }}>
+      <section className="py-6 px-4 border-b" style={{ background: "#122e4c", borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-center gap-6">
             <div>
@@ -61,14 +61,14 @@ export default function AvisPage() {
       </section>
 
       {/* ── Avis ── */}
-      <section className="py-20 px-4" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4" style={{ background: "#0e2644" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal stagger className="grid md:grid-cols-2 gap-5">
             {avis.map((a) => (
               <div
                 key={`${a.name}-${a.date}`}
                 className="group rounded-2xl hover:border-green-500/25 transition-all duration-400 p-7 relative overflow-hidden"
-                style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
               >
                 {/* Barre verte basse au hover */}
                 <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
@@ -122,7 +122,7 @@ export default function AvisPage() {
       </section>
 
       {/* ── CTA laisser un avis ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
         <div className="relative max-w-3xl mx-auto text-center">
           <h2 className="font-bebas text-[38px] md:text-[52px] text-white leading-none mb-3">

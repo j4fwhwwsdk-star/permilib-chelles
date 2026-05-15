@@ -65,7 +65,7 @@ export default function FormationsPage() {
   return (
     <div>
       {/* ── En-tête ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
         <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-green-600/5 blur-3xl pointer-events-none" />
         <div className="relative max-w-6xl mx-auto">
@@ -95,7 +95,7 @@ export default function FormationsPage() {
       </section>
 
       {/* ── Formations principales ── */}
-      <section className="py-20 px-4" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4" style={{ background: "#0e2644" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="mb-12">
             <div className="flex items-center gap-3 mb-4">
@@ -112,7 +112,7 @@ export default function FormationsPage() {
               <div
                 key={f.title}
                 className="group relative rounded-2xl overflow-hidden border hover:border-green-500/30 transition-all duration-500 flex flex-col"
-                style={{ background: "#132540", borderColor: "rgba(255,255,255,0.08)" }}
+                style={{ background: "#1a3a58", borderColor: "rgba(255,255,255,0.08)" }}
               >
                 {/* Bandeau populaire */}
                 {f.popular && (
@@ -124,7 +124,7 @@ export default function FormationsPage() {
                 {/* Top sombre */}
                 <div
                   className={`relative px-7 pt-8 pb-8 ${f.popular ? "pt-6" : ""}`}
-                  style={{ background: "#0e1e38" }}
+                  style={{ background: "#122e4c" }}
                 >
                   <div className="absolute top-0 left-0 right-0 h-0.5 bg-green-500" />
 
@@ -168,7 +168,7 @@ export default function FormationsPage() {
       </section>
 
       {/* ── Formations secondaires ── */}
-      <section className="py-16 px-4 border-t" style={{ background: "#0e1e38", borderColor: "rgba(255,255,255,0.07)" }}>
+      <section className="py-24 px-4 border-t" style={{ background: "#122e4c", borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="mb-8">
             <div className="flex items-center gap-3 mb-4">
@@ -180,13 +180,12 @@ export default function FormationsPage() {
             </h2>
           </Reveal>
 
-          <Reveal variant="bottom" className="rounded-2xl overflow-hidden shadow-sm divide-y" style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#132540", borderColor: "rgba(255,255,255,0.08)" }}>
+          <Reveal variant="bottom" className="rounded-2xl overflow-hidden shadow-sm divide-y" style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#1a3a58", borderColor: "rgba(255,255,255,0.08)" }}>
             {secondary.map((f) => (
               <div
                 key={f.title}
                 className="group flex flex-col sm:flex-row sm:items-center gap-4 px-6 py-5 transition-colors duration-200"
                 style={{ borderColor: "rgba(255,255,255,0.06)" }}
-                onMouseEnter={() => {}}
               >
                 <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center text-green-400 shrink-0 transition-colors duration-200 group-hover:bg-green-500/15"
@@ -220,7 +219,7 @@ export default function FormationsPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
         <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>

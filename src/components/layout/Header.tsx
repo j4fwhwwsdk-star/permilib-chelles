@@ -48,8 +48,8 @@ export default function Header() {
       className="sticky top-0 z-40 transition-all duration-300"
       style={{
         background: scrolled
-          ? "rgba(12,28,55,0.95)"
-          : "rgba(12,28,55,0.78)",
+          ? "rgba(14,38,68,0.97)"
+          : "rgba(14,38,68,0.90)",
         backdropFilter:       "blur(24px) saturate(160%)",
         WebkitBackdropFilter: "blur(24px) saturate(160%)",
         borderBottom: scrolled
@@ -162,7 +162,7 @@ export default function Header() {
         <div
           className="px-4 py-5"
           style={{
-            background: "rgba(12,28,55,0.99)",
+            background: "rgba(14,38,68,0.99)",
             borderTop:  "1px solid rgba(255,255,255,0.06)",
           }}
         >

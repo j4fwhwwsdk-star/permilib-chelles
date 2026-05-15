@@ -29,12 +29,12 @@
   --green-neon:   #22d35f;   /* +saturation pour les glows */
 
   /* ── DARK SURFACES — navy éclairci ── */
-  --surface-0:    #0a1628;   /* fond global navy */
-  --surface-1:    #0e1e38;   /* hero dark */
-  --surface-2:    #132540;   /* cards dark */
-  --surface-3:    #182c48;   /* sections alternées */
-  --surface-4:    #1e3452;   /* éléments surélevés */
-  --surface-5:    #243c5c;   /* hover states dark */
+  --surface-0:    #0e2644;   /* fond global navy */
+  --surface-1:    #122e4c;   /* hero dark */
+  --surface-2:    #1a3a58;   /* cards dark */
+  --surface-3:    #1f4062;   /* sections alternées */
+  --surface-4:    #25476c;   /* éléments surélevés */
+  --surface-5:    #2b4e76;   /* hover states dark */
 
   /* ── LIGHT SURFACES ── */
   --light-0:      #ffffff;

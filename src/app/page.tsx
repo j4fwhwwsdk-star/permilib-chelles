@@ -109,7 +109,7 @@ export default function HomePage() {
       <section
         className="marquee-container overflow-hidden py-3.5"
         style={{
-          background: "#132540",
+          background: "#1a3a58",
           borderTop:    "1px solid rgba(255,255,255,0.04)",
           borderBottom: "1px solid rgba(255,255,255,0.04)",
         }}
@@ -152,7 +152,7 @@ export default function HomePage() {
       {/* ╔══════════════════════════════════════════════════════╗
           ║  BENTO GRID — stats + avantages fusionnés            ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="py-20 px-4" style={{ background: "#0a1628" }}>
+      <section className="py-20 px-4" style={{ background: "#0e2644" }}>
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:[grid-auto-rows:170px]">
 
@@ -254,7 +254,7 @@ export default function HomePage() {
       {/* ╔══════════════════════════════════════════════════════╗
           ║  PÉDAGOGIE — split dark                              ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section style={{ background: "#132540", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+      <section style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div className="grid md:grid-cols-2">
 
           {/* Photo */}
@@ -347,7 +347,7 @@ export default function HomePage() {
           ╚══════════════════════════════════════════════════════╝ */}
       <section
         className="relative py-24 px-4 overflow-hidden"
-        style={{ background: "#0a1628", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
         <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
 
@@ -454,7 +454,7 @@ export default function HomePage() {
           ╚══════════════════════════════════════════════════════╝ */}
       <section
         className="py-24 px-4"
-        style={{ background: "#132540", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
@@ -555,7 +555,7 @@ export default function HomePage() {
           ╚══════════════════════════════════════════════════════╝ */}
       <section
         className="py-24 px-4"
-        style={{ background: "#0a1628", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
@@ -657,7 +657,7 @@ export default function HomePage() {
           ╚══════════════════════════════════════════════════════╝ */}
       <section
         className="py-20 px-4"
-        style={{ background: "#132540", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
         <div className="max-w-4xl mx-auto">
           <Reveal variant="bottom" className="text-center mb-12">

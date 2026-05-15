@@ -50,7 +50,7 @@ export default function FaqPage() {
   return (
     <div>
       {/* ── En-tête ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto">
           <div className="flex items-center gap-3 mb-4">
@@ -67,7 +67,7 @@ export default function FaqPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-20 px-4" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4" style={{ background: "#0e2644" }}>
         <div className="max-w-3xl mx-auto">
           <Reveal variant="bottom">
             <div className="space-y-2 mb-16">
@@ -81,7 +81,7 @@ export default function FaqPage() {
           <Reveal variant="scale">
             <div
               className="rounded-2xl p-10 text-center relative overflow-hidden"
-              style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+              style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
             >
               <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
               <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent" />

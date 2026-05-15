@@ -13,7 +13,7 @@ const navLinks = [
 
 export default function Footer() {
   return (
-    <footer className="text-white" style={{ background: "#0a1628" }}>
+    <footer className="text-white" style={{ background: "#0e2644" }}>
       {/* Ligne verte en haut */}
       <div className="h-px bg-gradient-to-r from-transparent via-green-500 to-transparent" />
 

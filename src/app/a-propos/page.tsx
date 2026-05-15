@@ -44,7 +44,7 @@ export default function AProposPage() {
   return (
     <div>
       {/* ── En-tête de page ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
         <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-green-600/6 blur-3xl pointer-events-none" />
         <div className="relative max-w-6xl mx-auto">
@@ -63,7 +63,7 @@ export default function AProposPage() {
       </section>
 
       {/* ── Approche + Stats ── */}
-      <section className="py-20 px-4" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4" style={{ background: "#0e2644" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="grid md:grid-cols-2 gap-16 mb-20">
             {/* Texte */}
@@ -97,7 +97,7 @@ export default function AProposPage() {
                 <div
                   key={s.label}
                   className="group rounded-2xl p-5 text-center hover:border-green-500/25 transition-all duration-400"
-                  style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                  style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
                 >
                   <div className="font-bebas text-[44px] gradient-text leading-none">{s.value}</div>
                   <div className="text-white/55 text-xs font-semibold mt-1">{s.label}</div>
@@ -110,7 +110,7 @@ export default function AProposPage() {
       </section>
 
       {/* ── Valeurs ── */}
-      <section className="py-20 px-4 border-t" style={{ background: "#0e1e38", borderColor: "rgba(255,255,255,0.07)" }}>
+      <section className="py-28 px-4 border-t" style={{ background: "#122e4c", borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="mb-12">
             <div className="flex items-center gap-3 mb-4">
@@ -126,7 +126,7 @@ export default function AProposPage() {
               <div
                 key={v.title}
                 className="group rounded-2xl p-6 hover:border-green-500/25 transition-all duration-400 relative overflow-hidden"
-                style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
               >
                 <div className="absolute top-0 left-0 right-0 h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
                 <div className="w-10 h-10 rounded-xl bg-green-600 flex items-center justify-center text-white mb-4 group-hover:scale-110 transition-transform duration-300">
@@ -141,7 +141,7 @@ export default function AProposPage() {
       </section>
 
       {/* ── Équipe ── */}
-      <section className="py-20 px-4 border-t" style={{ background: "#0a1628", borderColor: "rgba(255,255,255,0.07)" }}>
+      <section className="py-28 px-4 border-t" style={{ background: "#0e2644", borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="mb-12">
             <div className="flex items-center gap-3 mb-4">
@@ -159,7 +159,7 @@ export default function AProposPage() {
               <div
                 key={m.prenom}
                 className="rounded-2xl p-6 text-center hover:border-green-500/25 transition-all duration-300"
-                style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+                style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
               >
                 <div className="w-14 h-14 bg-green-600 text-white rounded-2xl flex items-center justify-center font-bold text-xl mx-auto mb-4 shadow-md shadow-green-900/30">
                   {m.prenom[0]}
@@ -179,7 +179,7 @@ export default function AProposPage() {
       </section>
 
       {/* ── Horaires ── */}
-      <section className="py-20 px-4 border-t" style={{ background: "#0e1e38", borderColor: "rgba(255,255,255,0.07)" }}>
+      <section className="py-28 px-4 border-t" style={{ background: "#122e4c", borderColor: "rgba(255,255,255,0.07)" }}>
         <div className="max-w-4xl mx-auto">
           <Reveal variant="bottom" className="mb-8">
             <div className="flex items-center gap-3 mb-4">
@@ -193,11 +193,11 @@ export default function AProposPage() {
           <Reveal variant="bottom">
             <div
               className="rounded-2xl overflow-hidden"
-              style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#132540" }}
+              style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#1a3a58" }}
             >
               <div
                 className="grid grid-cols-3 px-6 py-3.5 text-[10px] font-bold text-white/30 uppercase tracking-widest border-b"
-                style={{ background: "#0e1e38", borderColor: "rgba(255,255,255,0.07)" }}
+                style={{ background: "#122e4c", borderColor: "rgba(255,255,255,0.07)" }}
               >
                 <span>Jour</span>
                 <span>Bureau</span>
@@ -220,7 +220,7 @@ export default function AProposPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
         <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
           <div>
