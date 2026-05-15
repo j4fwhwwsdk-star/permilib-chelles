@@ -28,7 +28,12 @@
       "Bash(ls .vercel)",
       "Bash(cat .vercel/project.json)",
       "Bash(Start-Sleep -Seconds 8)",
-      "WebFetch(domain:automotoecoledestoril.fr)"
+      "WebFetch(domain:automotoecoledestoril.fr)",
+      "Bash(Select-String -Pattern \"script|vercel|deploy\")",
+      "Bash(Select-String \"framer\")",
+      "Bash(node -e \"require\\('lucide-react'\\)\")",
+      "Bash(python -c \"import sys,json; p=json.load\\(sys.stdin\\); deps={**p.get\\('dependencies',{}\\),**p.get\\('devDependencies',{}\\)}; [print\\(k,v\\) for k,v in deps.items\\(\\) if any\\(x in k for x in ['lucide','framer','motion','tailwind']\\)]\")",
+      "Bash(node -e \"const l=require\\('lucide-react'\\); console.log\\('OK, version:', require\\('./node_modules/lucide-react/package.json'\\).version\\)\")"
     ]
   }
 }

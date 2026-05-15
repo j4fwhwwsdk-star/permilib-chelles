@@ -87,6 +87,16 @@ const IcoClock = () => (
   </svg>
 );
 
+/* ══ MARQUEE ITEMS ════════════════════════════════════════════ */
+const TRUST_ITEMS = [
+  { icon: <IcoShield s={12} />, label: "Certification Qualiopi" },
+  { icon: <IcoStar s={12} />,   label: "5/5 · avis vérifiés" },
+  { icon: <IcoCard s={12} />,   label: "Financement CPF" },
+  { icon: <IcoBuilding s={12}/>, label: "Aide IDF jusqu'à 1 000€" },
+  { icon: <IcoBolt s={12} />,   label: "Véhicules récents 2024" },
+  { icon: <IcoCar s={12} />,    label: "Permis B · AAC · Boîte auto" },
+];
+
 /* ══ PAGE ════════════════════════════════════════════════════ */
 export default function HomePage() {
   return (
@@ -94,60 +104,157 @@ export default function HomePage() {
       <HeroSection />
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  TRUST BAR — fond très sombre                        ║
+          ║  MARQUEE — défilement infini                         ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="bg-[#0f172a] py-4 px-4">
-        <div className="max-w-6xl mx-auto flex flex-wrap items-center justify-center md:justify-between gap-x-5 gap-y-2">
-          {[
-            { icon: <IcoShield s={14} />, label: "Certification Qualiopi" },
-            { icon: <IcoStar s={14} />,   label: "5/5 · avis vérifiés" },
-            { icon: <IcoCard s={14} />,   label: "Financement CPF" },
-            { icon: <IcoBuilding s={14}/>, label: "Aide IDF jusqu'à 1 000€" },
-            { icon: <IcoBolt s={14} />,   label: "Véhicules récents" },
-          ].map((item, i) => (
-            <span key={i} className="flex items-center gap-2 text-white/45 text-xs font-medium hover:text-white/75 transition-colors duration-200">
-              <span className="text-green-500">{item.icon}</span>
+      <section
+        className="marquee-container overflow-hidden py-3.5"
+        style={{
+          background: "#132540",
+          borderTop:    "1px solid rgba(255,255,255,0.04)",
+          borderBottom: "1px solid rgba(255,255,255,0.04)",
+        }}
+      >
+        <div className="marquee-track">
+          {/* Premier set visible */}
+          {TRUST_ITEMS.map((item, i) => (
+            <span
+              key={i}
+              className="flex items-center gap-2 text-xs font-medium shrink-0 mx-7"
+              style={{ color: "rgba(255,255,255,0.32)" }}
+            >
+              <span style={{ color: "rgba(34,197,94,0.65)" }}>{item.icon}</span>
               {item.label}
-              {i < 4 && <span className="hidden md:inline w-px h-3 bg-white/10 ml-3" />}
+              <span
+                className="inline-block w-px h-3 ml-5"
+                style={{ background: "rgba(255,255,255,0.07)" }}
+              />
+            </span>
+          ))}
+          {/* Doublon pour le loop sans coupure */}
+          {TRUST_ITEMS.map((item, i) => (
+            <span
+              key={`b-${i}`}
+              aria-hidden="true"
+              className="flex items-center gap-2 text-xs font-medium shrink-0 mx-7"
+              style={{ color: "rgba(255,255,255,0.32)" }}
+            >
+              <span style={{ color: "rgba(34,197,94,0.65)" }}>{item.icon}</span>
+              {item.label}
+              <span
+                className="inline-block w-px h-3 ml-5"
+                style={{ background: "rgba(255,255,255,0.07)" }}
+              />
             </span>
           ))}
         </div>
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  STATS — fond blanc, chiffres en vert animés         ║
+          ║  BENTO GRID — stats + avantages fusionnés            ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-20 px-4 bg-white overflow-hidden">
-        <div className="absolute inset-0 bg-dots opacity-50 pointer-events-none" />
+      <section className="py-20 px-4" style={{ background: "#0a1628" }}>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:[grid-auto-rows:170px]">
 
-        <Reveal stagger className="relative max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-          {[
-            { value: "5",   suffix: "/5",  label: "Note Google vérifiée",  sub: "100% avis positifs" },
-            { value: "AAC", suffix: "",    label: "Conduite accompagnée",  sub: "Dès 15 ans" },
-            { value: "CPF", suffix: "",    label: "Financement disponible", sub: "Sans avance de frais" },
-            { value: "100", suffix: "%",   label: "Indice de confiance",   sub: "Qualiopi certifié" },
-          ].map((s) => (
+            {/* Grande cellule — 5★ Google (2 col × 2 row) */}
             <div
-              key={s.label}
-              className="group bg-white rounded-2xl border border-gray-100 shadow-sm hover:border-green-100 transition-all duration-500 text-center px-4 md:px-8 py-8 card-glow relative overflow-hidden"
+              className="col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl p-7 flex flex-col justify-between min-h-[200px]"
+              style={{
+                background: "linear-gradient(145deg, #132540 0%, #182c48 100%)",
+                border:     "1px solid rgba(22,163,74,0.16)",
+              }}
             >
-              {/* Ligne verte en haut au hover */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+              {/* Ligne glow top */}
+              <div
+                className="absolute top-0 left-0 right-0 h-px"
+                style={{ background: "linear-gradient(90deg, transparent, rgba(22,163,74,0.55) 50%, transparent)" }}
+              />
+              {/* Aurora */}
+              <div className="absolute inset-0 bg-aurora opacity-70 pointer-events-none" />
 
-              <div className="font-bebas text-[58px] md:text-[72px] leading-none text-green-600 mb-2">
-                <CountUp value={s.value} />{s.suffix}
+              <div className="relative z-10">
+                <div className="flex gap-0.5 text-yellow-400 mb-4">
+                  {[...Array(5)].map((_, i) => <IcoStar key={i} s={15} />)}
+                </div>
+                <div
+                  className="font-bebas leading-none mb-1"
+                  style={{ fontSize: "clamp(52px, 8vw, 76px)", color: "#fff", textShadow: "0 0 30px rgba(34,197,94,0.35), 0 0 60px rgba(34,197,94,0.15)" }}
+                >
+                  <CountUp value="5" />/5
+                </div>
+                <div className="font-semibold text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>Note Google vérifiée</div>
+                <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.35)" }}>100% avis positifs</div>
               </div>
-              <div className="font-semibold text-gray-800 text-sm">{s.label}</div>
-              <div className="text-gray-400 text-xs mt-1">{s.sub}</div>
+
+              <div className="relative z-10 mt-5">
+                <GoogleBadge />
+              </div>
             </div>
-          ))}
-        </Reveal>
+
+            {/* Qualiopi */}
+            <div className="bento-cell rounded-2xl p-5 flex flex-col justify-between">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
+                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
+              >
+                <IcoShield s={16} />
+              </div>
+              <div className="mt-4">
+                <div className="font-bold text-white text-sm">Qualiopi</div>
+                <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>Certification d'État</div>
+              </div>
+            </div>
+
+            {/* CPF */}
+            <div className="bento-cell rounded-2xl p-5 flex flex-col justify-between">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
+                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
+              >
+                <IcoCard s={16} />
+              </div>
+              <div className="mt-4">
+                <div className="font-bold text-white text-sm">CPF & Aide IDF</div>
+                <div className="text-xs mt-0.5 font-semibold" style={{ color: "#4ade80" }}>Jusqu'à 1 000€</div>
+              </div>
+            </div>
+
+            {/* AAC */}
+            <div className="bento-cell rounded-2xl p-5 flex flex-col justify-between">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
+                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
+              >
+                <IcoUsers s={16} />
+              </div>
+              <div className="mt-4">
+                <div className="font-bold text-white text-sm">Conduite acc.</div>
+                <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>Permis dès 17 ans</div>
+              </div>
+            </div>
+
+            {/* Simulateur */}
+            <div className="bento-cell rounded-2xl p-5 flex flex-col justify-between">
+              <div
+                className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
+                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
+              >
+                <IcoBolt s={16} />
+              </div>
+              <div className="mt-4">
+                <div className="font-bold text-white text-sm">Simulateur</div>
+                <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>Inclus dans la formation</div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  SPLIT — fond gris très clair, texte + photo         ║
+          ║  PÉDAGOGIE — split dark                              ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="bg-gray-50">
+      <section style={{ background: "#132540", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div className="grid md:grid-cols-2">
 
           {/* Photo */}
@@ -156,30 +263,42 @@ export default function HomePage() {
               src="https://images.unsplash.com/photo-1517524285303-d6fc683dddf8?w=900&q=80"
               alt={`Moniteur ${SCHOOL_NAME}`}
               fill
-              className="object-cover group-hover:scale-105 transition-transform duration-700"
+              className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
             />
-            {/* Badge sur photo */}
-            <div className="absolute bottom-6 left-6 hidden md:flex items-center gap-2 bg-white/95 backdrop-blur-compat rounded-xl px-4 py-2.5 shadow-lg border border-gray-100">
-              <span className="text-green-600"><IcoShield s={15} /></span>
-              <span className="text-gray-900 font-semibold text-sm">Certifié Qualiopi</span>
+            {/* Fondu droit vers la section texte */}
+            <div
+              className="absolute inset-0"
+              style={{ background: "linear-gradient(to right, transparent 60%, #080f1f)" }}
+            />
+            {/* Badge */}
+            <div
+              className="absolute bottom-6 left-6 hidden md:flex items-center gap-2 rounded-xl px-4 py-2.5"
+              style={{
+                background:           "rgba(8,15,31,0.88)",
+                backdropFilter:       "blur(12px)",
+                WebkitBackdropFilter: "blur(12px)",
+                border:               "1px solid rgba(255,255,255,0.08)",
+              }}
+            >
+              <span style={{ color: "#4ade80" }}><IcoShield s={15} /></span>
+              <span className="text-white font-semibold text-sm">Certifié Qualiopi</span>
             </div>
           </Reveal>
 
           {/* Texte */}
-          <Reveal variant="right" className="flex items-center px-8 md:px-16 py-16 bg-gray-50">
+          <Reveal variant="right" className="flex items-center px-8 md:px-16 py-16">
             <div className="max-w-lg">
-              {/* Label */}
               <div className="flex items-center gap-3 mb-5">
                 <div className="h-px w-8 bg-green-500" />
-                <span className="text-green-600 text-xs font-bold tracking-[0.15em] uppercase">Notre pédagogie</span>
+                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Notre pédagogie</span>
               </div>
 
-              <h2 className="font-bebas text-[42px] md:text-[54px] text-gray-900 leading-none mb-5">
+              <h2 className="font-bebas text-[42px] md:text-[54px] text-white leading-none mb-5">
                 Apprendre à conduire<br />
-                avec les <span className="gradient-text">meilleurs</span>
+                avec les <span className="gradient-text-bright">meilleurs</span>
               </h2>
-              <p className="text-gray-500 mb-8 leading-relaxed text-sm">
+              <p className="mb-8 leading-relaxed text-sm" style={{ color: "rgba(255,255,255,0.48)" }}>
                 Chez {SCHOOL_NAME}, chaque élève bénéficie d&apos;un accompagnement sur mesure.
                 Nos formateurs s&apos;adaptent à votre rythme dans un cadre bienveillant et professionnel.
               </p>
@@ -191,8 +310,11 @@ export default function HomePage() {
                   "Simulation de conduite incluse",
                   "Formation post-permis disponible",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-gray-700 text-sm">
-                    <span className="w-5 h-5 rounded-full bg-green-600 text-white flex items-center justify-center shrink-0 shadow-sm shadow-green-200">
+                  <li key={item} className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.62)" }}>
+                    <span
+                      className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white"
+                      style={{ background: "#16a34a", boxShadow: "0 0 14px rgba(22,163,74,0.45)" }}
+                    >
                       <IcoCheck />
                     </span>
                     {item}
@@ -200,18 +322,18 @@ export default function HomePage() {
                 ))}
               </ul>
 
-              {/* Note visuelle */}
               <div className="flex items-center gap-2 mb-8">
                 <div className="flex gap-0.5 text-yellow-400">
                   {[...Array(5)].map((_, i) => <IcoStar key={i} s={12} />)}
                 </div>
-                <span className="text-gray-600 text-sm font-semibold">5/5</span>
-                <span className="text-gray-400 text-sm">— Meilleure auto-école de {CITY}</span>
+                <span className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.65)" }}>5/5</span>
+                <span className="text-sm" style={{ color: "rgba(255,255,255,0.30)" }}>— Meilleure auto-école de {CITY}</span>
               </div>
 
               <Link
                 href="/a-propos"
-                className="fill-btn inline-flex items-center gap-2 bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold text-sm hover:bg-green-700 transition-all duration-300 shadow-md shadow-green-100"
+                className="shine-btn inline-flex items-center gap-2 bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold text-sm hover:bg-green-700 transition-all duration-300"
+                style={{ boxShadow: "0 8px 24px rgba(22,163,74,0.30)" }}
               >
                 Découvrir l&apos;équipe <IcoArrow />
               </Link>
@@ -221,31 +343,35 @@ export default function HomePage() {
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  FORMATIONS — fond blanc, cartes éditoriales         ║
+          ║  FORMATIONS — spotlight dark                         ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 px-4 bg-white overflow-hidden">
-        <div className="absolute inset-0 bg-grid pointer-events-none" />
+      <section
+        className="relative py-24 px-4 overflow-hidden"
+        style={{ background: "#0a1628", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+      >
+        <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-px w-8 bg-green-500" />
-                <span className="text-green-600 text-xs font-bold tracking-[0.15em] uppercase">Nos formations</span>
+                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Nos formations</span>
               </div>
-              <h2 className="font-bebas text-[42px] md:text-[60px] text-gray-900 leading-none">
-                Choisissez votre<br /><span className="gradient-text">formation</span>
+              <h2 className="font-bebas text-[42px] md:text-[60px] text-white leading-none">
+                Choisissez votre<br /><span className="gradient-text-bright">formation</span>
               </h2>
             </div>
             <Link
               href="/formations"
-              className="link-underline text-gray-600 font-semibold text-sm shrink-0 flex items-center gap-2 hover:text-green-600 transition-colors duration-200"
+              className="link-underline font-semibold text-sm shrink-0 flex items-center gap-2 transition-colors duration-200"
+              style={{ color: "rgba(255,255,255,0.40)" }}
             >
               Toutes les formations <IcoArrow />
             </Link>
           </Reveal>
 
-          <Reveal stagger className="grid md:grid-cols-3 gap-6">
+          <Reveal stagger className="grid md:grid-cols-3 gap-5">
             {[
               {
                 num: "01",
@@ -272,35 +398,50 @@ export default function HomePage() {
               <Link
                 key={f.title}
                 href="/formations"
-                className="group relative bg-white rounded-2xl p-8 border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-500 overflow-hidden card-lift flex flex-col"
+                className="group card-dark relative rounded-2xl p-8 flex flex-col overflow-hidden"
               >
-                {/* Barre verte qui se dessine en haut */}
-                <div className="absolute top-0 left-0 right-0 h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Ligne top glow au hover */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(22,163,74,0.45) 50%, transparent)" }}
+                />
 
-                {/* Numéro filigrane */}
-                <div className="font-bebas text-[88px] text-gray-100 group-hover:text-green-50 transition-colors duration-300 leading-none mb-3 select-none -ml-1">
+                {/* Numéro watermark */}
+                <div
+                  className="font-bebas text-[88px] leading-none mb-2 select-none -ml-1 -mt-4 transition-colors duration-300"
+                  style={{ color: "rgba(255,255,255,0.03)" }}
+                >
                   {f.num}
                 </div>
 
                 {/* Tag */}
-                <span className="inline-flex w-fit text-xs font-bold text-green-700 bg-green-50 border border-green-100 px-3 py-1 rounded-full mb-4">
+                <span
+                  className="inline-flex w-fit text-xs font-bold px-3 py-1 rounded-full mb-4"
+                  style={{
+                    color:      "#4ade80",
+                    background: "rgba(22,163,74,0.10)",
+                    border:     "1px solid rgba(22,163,74,0.20)",
+                  }}
+                >
                   {f.tag}
                 </span>
 
                 {/* Icône */}
-                <div className="text-green-600 mb-3 group-hover:scale-110 transition-transform duration-300 w-fit">
+                <div
+                  className="mb-4 group-hover:scale-110 transition-transform duration-300 w-fit"
+                  style={{ color: "#4ade80" }}
+                >
                   {f.icon}
                 </div>
 
-                <h3 className="font-bold text-gray-900 text-lg mb-2.5 group-hover:text-green-700 transition-colors duration-300">
-                  {f.title}
-                </h3>
-                <p className="text-gray-500 text-sm leading-relaxed flex-1">{f.desc}</p>
+                <h3 className="font-bold text-white text-lg mb-2.5">{f.title}</h3>
+                <p className="text-sm leading-relaxed flex-1" style={{ color: "rgba(255,255,255,0.42)" }}>{f.desc}</p>
 
-                <div className="mt-6 flex items-center gap-2 text-gray-300 group-hover:text-green-600 text-sm font-semibold transition-all duration-300">
-                  <span className="group-hover:translate-x-1 transition-transform duration-300 flex items-center gap-2">
-                    Voir la formation <IcoArrow />
-                  </span>
+                <div
+                  className="mt-6 flex items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:translate-x-1"
+                  style={{ color: "rgba(255,255,255,0.18)" }}
+                >
+                  Voir la formation <IcoArrow />
                 </div>
               </Link>
             ))}
@@ -309,73 +450,21 @@ export default function HomePage() {
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  POURQUOI NOUS — fond très sombre                    ║
+          ║  AVIS — dark cards                                   ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 px-4 bg-[#0f172a] overflow-hidden">
-        {/* Image fond très assombrie */}
-        <div className="absolute inset-0 z-0 opacity-15">
-          <Image
-            src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?w=1600&q=80"
-            alt="Route"
-            fill
-            className="object-cover"
-            sizes="100vw"
-          />
-        </div>
-        <div className="absolute inset-0 z-0 bg-grid opacity-30 pointer-events-none" />
-
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <Reveal variant="bottom">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-green-500" />
-              <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">Nos avantages</span>
-            </div>
-            <h2 className="font-bebas text-[42px] md:text-[60px] text-white leading-none mb-14">
-              Pourquoi choisir<br />
-              <span className="gradient-text-bright">{SCHOOL_NAME} ?</span>
-            </h2>
-          </Reveal>
-
-          <Reveal stagger className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
-            {[
-              { icon: <IcoShield s={20} />, title: "Qualiopi",     desc: "Certification officielle de qualité pédagogique, reconnue par l'État." },
-              { icon: <IcoCard s={20} />,   title: "CPF & Aide IDF", desc: "Jusqu'à 1 000€ d'aide région + CPF. Démarches entièrement accompagnées." },
-              { icon: <IcoStar s={20} />,   title: "5/5 Google",   desc: "100% d'indice de confiance. Avis authentiques et vérifiés." },
-              { icon: <IcoBolt s={20} />,   title: "Simulateur",   desc: "Accès à notre simulateur pour progresser avant les heures de route." },
-            ].map((r) => (
-              <div
-                key={r.title}
-                className="group relative border border-white/8 rounded-2xl p-6 hover:border-green-500/25 transition-all duration-400 hover:bg-white/3"
-              >
-                {/* Ligne verte en haut au hover */}
-                <div className="absolute top-0 left-6 right-6 h-px bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left" />
-
-                {/* Icône */}
-                <div className="w-10 h-10 rounded-xl bg-green-600/10 border border-green-500/20 flex items-center justify-center text-green-400 mb-5 group-hover:bg-green-600/20 transition-colors duration-300">
-                  {r.icon}
-                </div>
-
-                <h3 className="font-bold text-white text-base mb-2">{r.title}</h3>
-                <p className="text-white/45 text-sm leading-relaxed group-hover:text-white/60 transition-colors duration-300">{r.desc}</p>
-              </div>
-            ))}
-          </Reveal>
-        </div>
-      </section>
-
-      {/* ╔══════════════════════════════════════════════════════╗
-          ║  AVIS — fond gris très clair                         ║
-          ╚══════════════════════════════════════════════════════╝ */}
-      <section className="py-24 px-4 bg-gray-50">
+      <section
+        className="py-24 px-4"
+        style={{ background: "#132540", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+      >
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-px w-8 bg-green-500" />
-                <span className="text-green-600 text-xs font-bold tracking-[0.15em] uppercase">Témoignages</span>
+                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Témoignages</span>
               </div>
-              <h2 className="font-bebas text-[42px] md:text-[60px] text-gray-900 leading-none">
-                Ils ont eu leur <span className="gradient-text">permis</span>
+              <h2 className="font-bebas text-[42px] md:text-[60px] text-white leading-none">
+                Ils ont eu leur <span className="gradient-text-bright">permis</span>
               </h2>
             </div>
             <div className="shrink-0">
@@ -383,21 +472,27 @@ export default function HomePage() {
             </div>
           </Reveal>
 
-          <Reveal stagger className="grid md:grid-cols-3 gap-6 mb-12">
+          <Reveal stagger className="grid md:grid-cols-3 gap-5 mb-12">
             {[
-              { name: "Marie L.",  note: 5, formation: "Permis B",           text: "Moniteurs très patients et pédagogues. J'ai obtenu mon permis du premier coup grâce à leur accompagnement. Je recommande vivement !" },
-              { name: "Thomas R.", note: 5, formation: "Permis B",           text: "Très bonne expérience à Chelles. Les cours sont bien expliqués, l'ambiance est bienveillante. Bravo à toute l'équipe." },
+              { name: "Marie L.",  note: 5, formation: "Permis B",            text: "Moniteurs très patients et pédagogues. J'ai obtenu mon permis du premier coup grâce à leur accompagnement. Je recommande vivement !" },
+              { name: "Thomas R.", note: 5, formation: "Permis B",            text: "Très bonne expérience à Chelles. Les cours sont bien expliqués, l'ambiance est bienveillante. Bravo à toute l'équipe." },
               { name: "Sophie M.", note: 5, formation: "Conduite accompagnée", text: "Équipe professionnelle et disponible. Les horaires flexibles m'ont aidé à concilier travail et formation. Merci !" },
             ].map((a) => (
               <div
                 key={a.name}
-                className="group bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:shadow-lg transition-all duration-500 card-glow relative overflow-hidden flex flex-col"
+                className="card-dark relative rounded-2xl p-7 flex flex-col overflow-hidden group"
               >
-                {/* Ligne verte basse au hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-green-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                {/* Ligne top glow */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(22,163,74,0.38) 50%, transparent)" }}
+                />
 
-                {/* Guillemet décoratif */}
-                <div className="absolute top-5 right-6 font-bebas text-[72px] leading-none text-gray-100 select-none group-hover:text-green-50 transition-colors duration-300">
+                {/* Guillemet déco */}
+                <div
+                  className="absolute top-5 right-6 font-bebas text-[64px] leading-none select-none transition-colors duration-300"
+                  style={{ color: "rgba(34,197,94,0.06)" }}
+                >
                   &ldquo;
                 </div>
 
@@ -405,21 +500,34 @@ export default function HomePage() {
                   {[...Array(a.note)].map((_, i) => <IcoStar key={i} s={13} />)}
                 </div>
 
-                <p className="text-gray-500 text-sm leading-relaxed italic mb-6 flex-1">
+                <p className="text-sm leading-relaxed italic mb-6 flex-1 relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
                   &ldquo;{a.text}&rdquo;
                 </p>
 
-                <div className="flex items-center justify-between pt-4 border-t border-gray-50">
+                <div
+                  className="flex items-center justify-between pt-4"
+                  style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
+                >
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-green-600 text-white rounded-xl flex items-center justify-center font-bold text-base shrink-0">
+                    <div
+                      className="w-10 h-10 text-white rounded-xl flex items-center justify-center font-bold text-base shrink-0"
+                      style={{ background: "#16a34a", boxShadow: "0 0 16px rgba(22,163,74,0.32)" }}
+                    >
                       {a.name[0]}
                     </div>
                     <div>
-                      <span className="font-semibold text-gray-900 text-sm block">{a.name}</span>
-                      <span className="text-xs text-gray-400">Élève vérifié</span>
+                      <span className="font-semibold text-white text-sm block">{a.name}</span>
+                      <span className="text-xs" style={{ color: "rgba(255,255,255,0.32)" }}>Élève vérifié</span>
                     </div>
                   </div>
-                  <span className="text-[11px] text-green-700 bg-green-50 border border-green-100 px-2.5 py-1 rounded-full font-semibold">
+                  <span
+                    className="text-[11px] font-semibold px-2.5 py-1 rounded-full"
+                    style={{
+                      color:      "#4ade80",
+                      background: "rgba(22,163,74,0.10)",
+                      border:     "1px solid rgba(22,163,74,0.20)",
+                    }}
+                  >
                     {a.formation}
                   </span>
                 </div>
@@ -430,7 +538,11 @@ export default function HomePage() {
           <Reveal variant="bottom" className="text-center">
             <Link
               href="/avis"
-              className="fill-btn inline-flex items-center gap-2 border border-gray-200 text-gray-700 bg-white rounded-xl px-8 py-3.5 font-semibold text-sm hover:text-white hover:border-green-600 transition-all duration-300 shadow-sm"
+              className="shine-btn inline-flex items-center gap-2 rounded-xl px-8 py-3.5 font-semibold text-sm transition-all duration-300"
+              style={{
+                border: "1px solid rgba(255,255,255,0.08)",
+                color:  "rgba(255,255,255,0.55)",
+              }}
             >
               Voir tous les avis <IcoArrow />
             </Link>
@@ -439,35 +551,45 @@ export default function HomePage() {
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  FINANCEMENT — fond blanc                            ║
+          ║  FINANCEMENT — dark                                  ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="py-24 px-4 bg-white border-t border-gray-100">
+      <section
+        className="py-24 px-4"
+        style={{ background: "#0a1628", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+      >
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-16 items-center">
 
             <Reveal variant="left">
               <div className="flex items-center gap-3 mb-5">
                 <div className="h-px w-8 bg-green-500" />
-                <span className="text-green-600 text-xs font-bold tracking-[0.15em] uppercase">Financement</span>
+                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Financement</span>
               </div>
-              <h2 className="font-bebas text-[42px] md:text-[56px] text-gray-900 leading-none mb-5">
-                On vous aide à<br /><span className="gradient-text">financer votre permis</span>
+              <h2 className="font-bebas text-[42px] md:text-[56px] text-white leading-none mb-5">
+                On vous aide à<br /><span className="gradient-text-bright">financer votre permis</span>
               </h2>
-              <p className="text-gray-500 text-sm leading-relaxed mb-8">
+              <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.48)" }}>
                 Plusieurs dispositifs existent pour financer votre formation à {CITY} :
                 CPF, aide Région Île-de-France (jusqu'à 1 000€), permis à 1€/jour.
                 Nous vous accompagnons dans toutes les démarches.
               </p>
 
-              {/* Badges financement */}
               <div className="flex flex-wrap gap-3 mb-8">
                 {[
                   { label: "CPF",             icon: <IcoCard s={14} /> },
                   { label: "Aide IDF 1 000€", icon: <IcoBuilding s={14} /> },
                   { label: "Permis 1€/jour",  icon: <IcoShield s={14} /> },
                 ].map((b) => (
-                  <span key={b.label} className="flex items-center gap-2 text-sm font-semibold text-green-700 bg-green-50 border border-green-100 px-4 py-2 rounded-full hover:bg-green-100 transition-colors duration-200">
-                    <span className="text-green-500">{b.icon}</span>{b.label}
+                  <span
+                    key={b.label}
+                    className="flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full"
+                    style={{
+                      color:      "#4ade80",
+                      background: "rgba(22,163,74,0.10)",
+                      border:     "1px solid rgba(22,163,74,0.20)",
+                    }}
+                  >
+                    {b.icon}{b.label}
                   </span>
                 ))}
               </div>
@@ -475,123 +597,168 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
                   href="/financement"
-                  className="shine-btn bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold text-sm text-center hover:bg-green-700 transition-all duration-300 shadow-md shadow-green-100 hover:-translate-y-0.5"
+                  className="shine-btn bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold text-sm text-center hover:bg-green-700 transition-all duration-300"
+                  style={{ boxShadow: "0 8px 24px rgba(22,163,74,0.30)" }}
                 >
                   Voir toutes les options →
                 </Link>
                 <a
                   href={`tel:${PHONE}`}
-                  className="border border-gray-200 text-gray-700 rounded-xl px-7 py-3.5 font-semibold text-sm text-center hover:border-green-600 hover:text-green-700 transition-all duration-300 flex items-center justify-center gap-2"
+                  className="rounded-xl px-7 py-3.5 font-semibold text-sm text-center transition-all duration-300 flex items-center justify-center gap-2"
+                  style={{
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    color:  "rgba(255,255,255,0.55)",
+                  }}
                 >
                   <IcoPhone /> Nous appeler
                 </a>
               </div>
             </Reveal>
 
-            {/* Visuel droit — cartes flottantes */}
+            {/* Cartes flottantes */}
             <Reveal variant="right" className="flex justify-center">
               <div className="relative w-[280px] h-[280px]">
                 {/* Carte centrale */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 bg-white rounded-2xl shadow-xl border border-gray-100 w-36 h-36 flex flex-col items-center justify-center gap-2 animate-float">
-                  <span className="text-green-600"><IcoCard s={28} /></span>
-                  <span className="text-green-700 font-bold text-sm">CPF</span>
-                  <span className="text-gray-400 text-[10px] font-medium">Sans avance</span>
+                <div
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 card-dark rounded-2xl w-36 h-36 flex flex-col items-center justify-center gap-2 animate-float"
+                  style={{ border: "1px solid rgba(22,163,74,0.22)" }}
+                >
+                  <span style={{ color: "#4ade80" }}><IcoCard s={28} /></span>
+                  <span className="text-white font-bold text-sm">CPF</span>
+                  <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.35)" }}>Sans avance</span>
                 </div>
-                {/* Carte haut-gauche */}
-                <div className="absolute top-0 left-0 bg-gray-50 border border-gray-100 rounded-2xl w-28 h-28 flex flex-col items-center justify-center gap-1.5 shadow-md animate-float" style={{ animationDelay: "0.8s" }}>
-                  <span className="text-green-600"><IcoBuilding s={22} /></span>
-                  <span className="text-gray-700 font-bold text-xs">Aide IDF</span>
-                  <span className="text-green-600 text-[10px] font-semibold">1 000€</span>
+                {/* Haut gauche */}
+                <div
+                  className="absolute top-0 left-0 card-dark rounded-2xl w-28 h-28 flex flex-col items-center justify-center gap-1.5 animate-float"
+                  style={{ animationDelay: "0.8s" }}
+                >
+                  <span style={{ color: "#4ade80" }}><IcoBuilding s={22} /></span>
+                  <span className="text-white font-bold text-xs">Aide IDF</span>
+                  <span className="text-xs font-semibold" style={{ color: "#4ade80" }}>1 000€</span>
                 </div>
-                {/* Carte bas-droite */}
-                <div className="absolute bottom-0 right-0 bg-gray-50 border border-gray-100 rounded-2xl w-28 h-28 flex flex-col items-center justify-center gap-1.5 shadow-md animate-float" style={{ animationDelay: "1.4s" }}>
-                  <span className="text-green-600"><IcoShield s={22} /></span>
-                  <span className="text-gray-700 font-bold text-xs">Permis</span>
-                  <span className="text-green-600 text-[10px] font-semibold">1€/jour</span>
+                {/* Bas droite */}
+                <div
+                  className="absolute bottom-0 right-0 card-dark rounded-2xl w-28 h-28 flex flex-col items-center justify-center gap-1.5 animate-float"
+                  style={{ animationDelay: "1.4s" }}
+                >
+                  <span style={{ color: "#4ade80" }}><IcoShield s={22} /></span>
+                  <span className="text-white font-bold text-xs">Permis</span>
+                  <span className="text-xs font-semibold" style={{ color: "#4ade80" }}>1€/jour</span>
                 </div>
               </div>
             </Reveal>
+
           </div>
         </div>
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  HORAIRES — fond blanc propre                        ║
+          ║  HORAIRES — dark, table propre                       ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="py-20 px-4 bg-gray-50 border-t border-gray-100">
+      <section
+        className="py-20 px-4"
+        style={{ background: "#132540", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+      >
         <div className="max-w-4xl mx-auto">
           <Reveal variant="bottom" className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-px w-8 bg-green-500" />
-              <span className="text-green-600 text-xs font-bold tracking-[0.15em] uppercase">Horaires</span>
+              <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Horaires</span>
               <div className="h-px w-8 bg-green-500" />
             </div>
-            <h2 className="font-bebas text-[40px] md:text-[56px] text-gray-900 leading-none mb-3">
-              Quand nous <span className="gradient-text">trouver ?</span>
+            <h2 className="font-bebas text-[40px] md:text-[56px] text-white leading-none mb-3">
+              Quand nous <span className="gradient-text-bright">trouver ?</span>
             </h2>
-            <p className="text-gray-400 text-sm flex items-center justify-center gap-1.5">
+            <p className="text-sm flex items-center justify-center gap-1.5" style={{ color: "rgba(255,255,255,0.35)" }}>
               <IcoClock /> {SCHOOL_NAME} — {ADDRESS}
             </p>
           </Reveal>
 
-          <Reveal stagger className="grid md:grid-cols-2 gap-6 mb-10">
+          <Reveal stagger className="grid md:grid-cols-2 gap-5 mb-10">
+
             {/* Code */}
-            <div className="group bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:border-green-100 hover:shadow-md transition-all duration-400">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-50">
-                <div className="w-9 h-9 bg-green-600 rounded-xl flex items-center justify-center">
+            <div className="card-dark rounded-2xl p-7">
+              <div
+                className="flex items-center gap-3 mb-5 pb-4"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+              >
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center"
+                  style={{ background: "#16a34a", boxShadow: "0 0 16px rgba(22,163,74,0.38)" }}
+                >
                   <span className="text-white text-[10px] font-bold tracking-wide">CODE</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 text-sm">Cours de Code</h3>
-                  <p className="text-gray-400 text-xs">Apprentissage du code de la route</p>
+                  <h3 className="font-bold text-white text-sm">Cours de Code</h3>
+                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.32)" }}>Apprentissage du code de la route</p>
                 </div>
               </div>
-              <div className="space-y-0">
-                {HORAIRES_CODE.map(({ jour, heures }) => (
-                  <div key={jour} className="flex justify-between items-center text-sm py-2.5 border-b border-gray-50 last:border-0">
-                    <span className="text-gray-500 font-medium">{jour}</span>
-                    <span className={heures === "Fermé"
-                      ? "text-red-400 font-semibold text-xs"
-                      : "text-green-700 font-bold text-right whitespace-pre-line text-xs leading-relaxed"
-                    }>
-                      {heures}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              {HORAIRES_CODE.map(({ jour, heures }) => (
+                <div
+                  key={jour}
+                  className="flex justify-between items-center text-sm py-2.5 last:pb-0"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+                >
+                  <span className="font-medium" style={{ color: "rgba(255,255,255,0.48)" }}>{jour}</span>
+                  <span className={`font-bold text-right whitespace-pre-line text-xs leading-relaxed ${
+                    heures === "Fermé" ? "" : ""
+                  }`}
+                    style={{ color: heures === "Fermé" ? "rgba(248,113,113,0.65)" : "#4ade80" }}
+                  >
+                    {heures}
+                  </span>
+                </div>
+              ))}
             </div>
 
             {/* Conduite */}
-            <div className="group bg-white rounded-2xl p-7 border border-gray-100 shadow-sm hover:border-green-100 hover:shadow-md transition-all duration-400">
-              <div className="flex items-center gap-3 mb-5 pb-4 border-b border-gray-50">
-                <div className="w-9 h-9 bg-gray-900 rounded-xl flex items-center justify-center text-white">
+            <div className="card-dark rounded-2xl p-7">
+              <div
+                className="flex items-center gap-3 mb-5 pb-4"
+                style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+              >
+                <div
+                  className="w-9 h-9 rounded-xl flex items-center justify-center"
+                  style={{
+                    background: "rgba(255,255,255,0.05)",
+                    border:     "1px solid rgba(255,255,255,0.08)",
+                    color:      "rgba(255,255,255,0.65)",
+                  }}
+                >
                   <IcoCar s={18} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-gray-900 text-sm">Conduite</h3>
-                  <p className="text-gray-400 text-xs">Leçons de conduite sur route</p>
+                  <h3 className="font-bold text-white text-sm">Conduite</h3>
+                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.32)" }}>Leçons de conduite sur route</p>
                 </div>
               </div>
-              <div className="space-y-0">
-                {HORAIRES_CONDUITE.map(({ jour, heures }) => (
-                  <div key={jour} className="flex justify-between items-center text-sm py-2.5 border-b border-gray-50 last:border-0">
-                    <span className="text-gray-500 font-medium">{jour}</span>
-                    <span className={heures === "Fermé"
-                      ? "text-red-400 font-semibold text-xs"
-                      : "text-green-700 font-bold text-right whitespace-pre-line text-xs leading-relaxed"
-                    }>
-                      {heures}
-                    </span>
-                  </div>
-                ))}
-              </div>
+              {HORAIRES_CONDUITE.map(({ jour, heures }) => (
+                <div
+                  key={jour}
+                  className="flex justify-between items-center text-sm py-2.5 last:pb-0"
+                  style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+                >
+                  <span className="font-medium" style={{ color: "rgba(255,255,255,0.48)" }}>{jour}</span>
+                  <span
+                    className="font-bold text-right whitespace-pre-line text-xs leading-relaxed"
+                    style={{ color: heures === "Fermé" ? "rgba(248,113,113,0.65)" : "#4ade80" }}
+                  >
+                    {heures}
+                  </span>
+                </div>
+              ))}
             </div>
+
           </Reveal>
 
           <Reveal variant="bottom" className="text-center">
             <a
               href={`tel:${PHONE}`}
-              className="shine-btn inline-flex items-center gap-2.5 bg-gray-900 text-white rounded-xl px-8 py-4 font-bold text-sm hover:bg-green-700 transition-all duration-300 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+              className="shine-btn inline-flex items-center gap-2.5 rounded-xl px-8 py-4 font-bold text-sm text-white transition-all duration-300 hover:bg-green-600 hover:border-green-600"
+              style={{
+                background: "rgba(255,255,255,0.05)",
+                border:     "1px solid rgba(255,255,255,0.08)",
+              }}
             >
               <IcoPhone s={16} /> {PHONE} — Prendre rendez-vous
             </a>
@@ -600,38 +767,50 @@ export default function HomePage() {
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  CTA FINAL — fond très sombre                        ║
+          ║  CTA FINAL — mesh gradient dramatique                ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-24 px-4 bg-[#0f172a] overflow-hidden">
-        <div className="absolute inset-0 bg-dots opacity-30 pointer-events-none" />
-        {/* Accent vert en coin */}
-        <div className="absolute -top-40 -right-40 w-[500px] h-[500px] rounded-full bg-green-600/6 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 -left-40 w-[400px] h-[400px] rounded-full bg-green-600/5 blur-3xl pointer-events-none" />
+      <section className="relative py-28 px-4 overflow-hidden bg-mesh-cta">
+        <div className="absolute inset-0 bg-grid opacity-[0.14] pointer-events-none" />
 
-        <Reveal variant="scale" className="relative z-10 max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-10">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-green-500" />
-              <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">Commencez maintenant</span>
-            </div>
-            <h2 className="font-bebas text-[50px] md:text-[72px] text-white leading-none mb-3">
-              Prêt à commencer ?
-            </h2>
-            <p className="text-white/45 text-base">
-              Devis gratuit · CPF · Aide IDF · Permis 1€/jour
-            </p>
+        <Reveal variant="scale" className="relative z-10 max-w-4xl mx-auto text-center">
+
+          {/* Badge live */}
+          <div
+            className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full"
+            style={{
+              border:     "1px solid rgba(22,163,74,0.22)",
+              background: "rgba(22,163,74,0.10)",
+            }}
+          >
+            <span className="dot-live" />
+            <span className="text-xs font-bold tracking-[0.12em] uppercase" style={{ color: "#4ade80" }}>
+              Disponible maintenant
+            </span>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 shrink-0">
+          <h2 className="font-bebas text-[52px] md:text-[80px] text-white leading-none mb-4">
+            Prêt à passer<br />
+            <span className="gradient-text-bright">votre permis ?</span>
+          </h2>
+          <p className="text-base mb-10" style={{ color: "rgba(255,255,255,0.42)" }}>
+            Devis gratuit · CPF · Aide IDF · Permis 1€/jour
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:${PHONE}`}
-              className="shine-btn bg-green-600 text-white rounded-xl px-8 py-4 font-bold text-base text-center hover:bg-green-700 transition-all duration-300 shadow-lg shadow-green-900/30 flex items-center justify-center gap-2 hover:-translate-y-0.5"
+              className="shine-btn bg-green-600 text-white rounded-xl px-8 py-4 font-bold text-base text-center hover:bg-green-700 transition-all duration-300 flex items-center justify-center gap-2"
+              style={{ boxShadow: "0 8px 32px rgba(22,163,74,0.42)" }}
             >
               <IcoPhone /> {PHONE}
             </a>
             <Link
               href="/contact"
-              className="border border-white/15 text-white/80 rounded-xl px-8 py-4 font-semibold text-base text-center hover:bg-white/8 hover:text-white hover:border-white/30 transition-all duration-300 hover:-translate-y-0.5"
+              className="rounded-xl px-8 py-4 font-semibold text-base text-center transition-all duration-300"
+              style={{
+                border: "1px solid rgba(255,255,255,0.12)",
+                color:  "rgba(255,255,255,0.65)",
+              }}
             >
               Nous contacter →
             </Link>
