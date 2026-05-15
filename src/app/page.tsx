@@ -4,6 +4,9 @@ import Reveal from "@/components/ui/Reveal";
 import CountUp from "@/components/ui/CountUp";
 import GoogleBadge from "@/components/ui/GoogleBadge";
 import HeroSection from "@/components/sections/HeroSection";
+import { ScrollOrb } from "@/components/ui/ScrollOrb";
+import { FloatingParticles } from "@/components/ui/FloatingParticles";
+import { SectionLine } from "@/components/ui/SectionLine";
 import { buildMetadata } from "@/lib/metadata";
 import {
   CITY, SCHOOL_NAME, PHONE,
@@ -149,11 +152,33 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Ligne séparatrice animée entre marquee et bento */}
+      <SectionLine className="px-8 md:px-20 py-0" opacity={0.50} />
+
       {/* ╔══════════════════════════════════════════════════════╗
           ║  BENTO GRID — stats + avantages fusionnés            ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="py-20 px-4" style={{ background: "#0e2644" }}>
-        <div className="max-w-6xl mx-auto">
+      <section className="relative py-28 px-4 overflow-hidden"
+        style={{ background: "linear-gradient(145deg, #0c2040 0%, #0f2847 55%, #0d2244 100%)" }}>
+
+        {/* Orbes vert clair + vert émeraude */}
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(74,222,128,0.75) 0%, rgba(34,197,94,0.35) 45%, transparent 70%)"
+          size={420} top="-80px" right="-60px" blurPx={70}
+          floatDuration={8} floatDelay={0} enterDelay={0}
+        />
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(22,163,74,0.80) 0%, rgba(22,163,74,0.35) 45%, transparent 70%)"
+          size={300} bottom="-60px" left="-40px" blurPx={65}
+          floatDuration={9} floatDelay={1.2} enterDelay={0.3}
+        />
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(240,253,244,0.50) 0%, rgba(240,253,244,0.20) 50%, transparent 70%)"
+          size={200} top="40%" left="40%" blurPx={55}
+          floatDuration={11} floatDelay={0.6} enterDelay={0.5}
+        />
+
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:[grid-auto-rows:170px]">
 
             {/* Grande cellule — 5★ Google (2 col × 2 row) */}
@@ -192,7 +217,7 @@ export default function HomePage() {
             </div>
 
             {/* Qualiopi */}
-            <div className="bento-cell rounded-2xl p-5 flex flex-col justify-between">
+            <div className="bento-cell card-border-glow rounded-2xl p-5 flex flex-col justify-between">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
                 style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
@@ -206,7 +231,7 @@ export default function HomePage() {
             </div>
 
             {/* CPF */}
-            <div className="bento-cell rounded-2xl p-5 flex flex-col justify-between">
+            <div className="bento-cell card-border-glow rounded-2xl p-5 flex flex-col justify-between">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
                 style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
@@ -220,7 +245,7 @@ export default function HomePage() {
             </div>
 
             {/* AAC */}
-            <div className="bento-cell rounded-2xl p-5 flex flex-col justify-between">
+            <div className="bento-cell card-border-glow rounded-2xl p-5 flex flex-col justify-between">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
                 style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
@@ -234,7 +259,7 @@ export default function HomePage() {
             </div>
 
             {/* Simulateur */}
-            <div className="bento-cell rounded-2xl p-5 flex flex-col justify-between">
+            <div className="bento-cell card-border-glow rounded-2xl p-5 flex flex-col justify-between">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
                 style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
@@ -254,8 +279,22 @@ export default function HomePage() {
       {/* ╔══════════════════════════════════════════════════════╗
           ║  PÉDAGOGIE — split dark                              ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-        <div className="grid md:grid-cols-2">
+      <section className="relative overflow-hidden"
+        style={{ background: "linear-gradient(145deg, #172d48 0%, #1b3c5a 55%, #162e4c 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+
+        {/* Orbe vert menthe */}
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(52,211,153,0.78) 0%, rgba(52,211,153,0.35) 45%, transparent 70%)"
+          size={380} top="-60px" right="10%" blurPx={72}
+          floatDuration={10} floatDelay={0.4} enterDelay={0.1}
+        />
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(240,253,244,0.55) 0%, rgba(240,253,244,0.22) 50%, transparent 70%)"
+          size={220} bottom="10%" right="30%" blurPx={60}
+          floatDuration={8} floatDelay={1.8} enterDelay={0.5}
+        />
+
+        <div className="grid md:grid-cols-2 relative z-10">
 
           {/* Photo */}
           <Reveal variant="left" className="relative h-72 md:h-auto min-h-[500px] overflow-hidden">
@@ -294,11 +333,12 @@ export default function HomePage() {
                 <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Notre pédagogie</span>
               </div>
 
-              <h2 className="font-bebas text-[42px] md:text-[54px] text-white leading-none mb-5">
+              <h2 className="font-bebas text-white leading-none mb-5"
+                style={{ fontSize: "clamp(42px, 5vw, 68px)" }}>
                 Apprendre à conduire<br />
                 avec les <span className="gradient-text-bright">meilleurs</span>
               </h2>
-              <p className="mb-8 leading-relaxed text-sm" style={{ color: "rgba(255,255,255,0.48)" }}>
+              <p className="mb-8 leading-[1.75]" style={{ fontSize: "17px", color: "rgba(255,255,255,0.55)" }}>
                 Chez {SCHOOL_NAME}, chaque élève bénéficie d&apos;un accompagnement sur mesure.
                 Nos formateurs s&apos;adaptent à votre rythme dans un cadre bienveillant et professionnel.
               </p>
@@ -342,23 +382,40 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Ligne séparatrice animée entre pédagogie et formations */}
+      <SectionLine className="px-8 md:px-20 py-0" opacity={0.45} />
+
       {/* ╔══════════════════════════════════════════════════════╗
           ║  FORMATIONS — spotlight dark                         ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
-        className="relative py-24 px-4 overflow-hidden"
-        style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        className="relative py-32 px-4 overflow-hidden"
+        style={{ background: "linear-gradient(145deg, #0c2040 0%, #0f2847 55%, #0d2244 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
         <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
+
+        <FloatingParticles />
+
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(22,163,74,0.78) 0%, rgba(22,163,74,0.35) 45%, transparent 70%)"
+          size={500} top="20%" left="-100px" blurPx={75}
+          floatDuration={9} floatDelay={0.3} enterDelay={0}
+        />
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(240,253,244,0.52) 0%, rgba(240,253,244,0.22) 50%, transparent 70%)"
+          size={250} bottom="-40px" right="25%" blurPx={60}
+          floatDuration={11} floatDelay={1.6} enterDelay={0.4}
+        />
 
         <div className="relative max-w-6xl mx-auto">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="h-px w-8 bg-green-500" />
+                <div className="h-px w-8 bg-green-500 line-reveal" />
                 <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Nos formations</span>
               </div>
-              <h2 className="font-bebas text-[42px] md:text-[60px] text-white leading-none">
+              <h2 className="font-bebas text-white leading-none"
+                style={{ fontSize: "clamp(42px, 6vw, 72px)" }}>
                 Choisissez votre<br /><span className="gradient-text-bright">formation</span>
               </h2>
             </div>
@@ -398,7 +455,7 @@ export default function HomePage() {
               <Link
                 key={f.title}
                 href="/formations"
-                className="group card-dark relative rounded-2xl p-8 flex flex-col overflow-hidden"
+                className="group card-dark card-border-glow relative rounded-2xl p-8 flex flex-col overflow-hidden"
               >
                 {/* Ligne top glow au hover */}
                 <div
@@ -449,21 +506,38 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Ligne séparatrice animée entre formations et avis */}
+      <SectionLine className="px-8 md:px-20 py-0" opacity={0.45} />
+
       {/* ╔══════════════════════════════════════════════════════╗
           ║  AVIS — dark cards                                   ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
-        className="py-24 px-4"
-        style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        className="relative py-32 px-4 overflow-hidden"
+        style={{ background: "linear-gradient(145deg, #172d48 0%, #1b3c5a 55%, #162e4c 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
-        <div className="max-w-6xl mx-auto">
+        <FloatingParticles />
+
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(52,211,153,0.75) 0%, rgba(52,211,153,0.35) 45%, transparent 70%)"
+          size={460} top="-60px" right="-80px" blurPx={72}
+          floatDuration={10} floatDelay={0} enterDelay={0}
+        />
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(74,222,128,0.70) 0%, rgba(74,222,128,0.30) 45%, transparent 70%)"
+          size={280} bottom="0px" left="5%" blurPx={65}
+          floatDuration={8} floatDelay={2} enterDelay={0.3}
+        />
+
+        <div className="max-w-6xl mx-auto relative z-10">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-px w-8 bg-green-500" />
                 <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Témoignages</span>
               </div>
-              <h2 className="font-bebas text-[42px] md:text-[60px] text-white leading-none">
+              <h2 className="font-bebas text-white leading-none"
+                style={{ fontSize: "clamp(42px, 6vw, 72px)" }}>
                 Ils ont eu leur <span className="gradient-text-bright">permis</span>
               </h2>
             </div>
@@ -480,7 +554,7 @@ export default function HomePage() {
             ].map((a) => (
               <div
                 key={a.name}
-                className="card-dark relative rounded-2xl p-7 flex flex-col overflow-hidden group"
+                className="card-dark card-border-glow relative rounded-2xl p-7 flex flex-col overflow-hidden group"
               >
                 {/* Ligne top glow */}
                 <div
@@ -550,14 +624,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Ligne séparatrice animée entre avis et financement */}
+      <SectionLine className="px-8 md:px-20 py-0" opacity={0.45} />
+
       {/* ╔══════════════════════════════════════════════════════╗
           ║  FINANCEMENT — dark                                  ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
-        className="py-24 px-4"
-        style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        className="relative py-32 px-4 overflow-hidden"
+        style={{ background: "linear-gradient(145deg, #0c2040 0%, #0f2847 55%, #0d2244 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
-        <div className="max-w-6xl mx-auto">
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(74,222,128,0.75) 0%, rgba(74,222,128,0.35) 45%, transparent 70%)"
+          size={400} top="-40px" left="-60px" blurPx={72}
+          floatDuration={9} floatDelay={0.5} enterDelay={0}
+        />
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(22,163,74,0.78) 0%, rgba(22,163,74,0.35) 45%, transparent 70%)"
+          size={300} bottom="-60px" right="-40px" blurPx={65}
+          floatDuration={11} floatDelay={1.4} enterDelay={0.35}
+        />
+
+        <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
 
             <Reveal variant="left">
@@ -652,14 +740,28 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* Ligne séparatrice animée entre financement et horaires */}
+      <SectionLine className="px-8 md:px-20 py-0" opacity={0.45} />
+
       {/* ╔══════════════════════════════════════════════════════╗
           ║  HORAIRES — dark, table propre                       ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
-        className="py-20 px-4"
-        style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        className="relative py-28 px-4 overflow-hidden"
+        style={{ background: "linear-gradient(145deg, #172d48 0%, #1b3c5a 55%, #162e4c 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}
       >
-        <div className="max-w-4xl mx-auto">
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(52,211,153,0.75) 0%, rgba(52,211,153,0.35) 45%, transparent 70%)"
+          size={380} top="-50px" right="10%" blurPx={72}
+          floatDuration={10} floatDelay={0.2} enterDelay={0}
+        />
+        <ScrollOrb
+          color="radial-gradient(circle, rgba(240,253,244,0.52) 0%, rgba(240,253,244,0.22) 50%, transparent 70%)"
+          size={200} bottom="5%" left="15%" blurPx={55}
+          floatDuration={8} floatDelay={1.5} enterDelay={0.4}
+        />
+
+        <div className="max-w-4xl mx-auto relative z-10">
           <Reveal variant="bottom" className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-px w-8 bg-green-500" />
@@ -677,7 +779,7 @@ export default function HomePage() {
           <Reveal stagger className="grid md:grid-cols-2 gap-5 mb-10">
 
             {/* Code */}
-            <div className="card-dark rounded-2xl p-7">
+            <div className="card-dark card-border-glow rounded-2xl p-7">
               <div
                 className="flex items-center gap-3 mb-5 pb-4"
                 style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
@@ -712,7 +814,7 @@ export default function HomePage() {
             </div>
 
             {/* Conduite */}
-            <div className="card-dark rounded-2xl p-7">
+            <div className="card-dark card-border-glow rounded-2xl p-7">
               <div
                 className="flex items-center gap-3 mb-5 pb-4"
                 style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
@@ -769,7 +871,7 @@ export default function HomePage() {
       {/* ╔══════════════════════════════════════════════════════╗
           ║  CTA FINAL — mesh gradient dramatique                ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-28 px-4 overflow-hidden bg-mesh-cta">
+      <section className="relative py-36 px-4 overflow-hidden bg-mesh-cta">
         <div className="absolute inset-0 bg-grid opacity-[0.14] pointer-events-none" />
 
         <Reveal variant="scale" className="relative z-10 max-w-4xl mx-auto text-center">
@@ -788,11 +890,12 @@ export default function HomePage() {
             </span>
           </div>
 
-          <h2 className="font-bebas text-[52px] md:text-[80px] text-white leading-none mb-4">
+          <h2 className="font-bebas text-white leading-none mb-4"
+            style={{ fontSize: "clamp(52px, 9vw, 100px)" }}>
             Prêt à passer<br />
             <span className="gradient-text-bright">votre permis ?</span>
           </h2>
-          <p className="text-base mb-10" style={{ color: "rgba(255,255,255,0.42)" }}>
+          <p className="text-lg mb-10 leading-[1.7]" style={{ color: "rgba(255,255,255,0.45)" }}>
             Devis gratuit · CPF · Aide IDF · Permis 1€/jour
           </p>
 

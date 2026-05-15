@@ -68,43 +68,68 @@ const options = [
 
 export default function FinancementPage() {
   return (
-    <div style={{ background: "linear-gradient(180deg, #081428 0%, #0b1d38 100%)", minHeight: "100vh" }}>
+    <div style={{ background: "var(--surface-0)", minHeight: "100vh" }}>
 
-      {/* ── Hero ── */}
-      <section className="relative pt-24 pb-20 px-4 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          <Image src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=1600&q=80" alt="" fill className="object-cover" />
-        </div>
-        <div className="absolute inset-0" style={{ background: "linear-gradient(135deg, rgba(8,20,40,0.92) 0%, rgba(11,29,56,0.88) 100%)" }} />
-        <div className="absolute -top-10 right-0 w-96 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(22,163,74,0.12) 0%, transparent 70%)" }} />
-        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+      {/* ── Hero full viewport ── */}
+      <section className="relative min-h-screen flex items-center px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-hero pointer-events-none" />
+        <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
 
-        <div className="relative z-10 max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-green-500" />
+        {/* Orbs */}
+        <div aria-hidden className="hero-glow-orb absolute -top-48 -right-48 pointer-events-none"
+          style={{ width: "720px", height: "720px",
+            background: "radial-gradient(circle, rgba(22,163,74,0.20) 0%, rgba(22,163,74,0.08) 40%, transparent 70%)" }} />
+        <div aria-hidden className="hero-glow-orb-sm absolute -bottom-24 -left-24 pointer-events-none"
+          style={{ width: "380px", height: "380px",
+            background: "radial-gradient(circle, rgba(34,197,94,0.09) 0%, transparent 70%)" }} />
+
+        {/* Géométrie */}
+        <div aria-hidden className="geo-circle absolute top-[22%] right-[13%] animate-spin-slow hidden md:block"
+          style={{ width: "195px", height: "195px" }} />
+        <div aria-hidden className="geo-square absolute top-[44%] right-[6%] animate-float-slow hidden md:block"
+          style={{ width: "38px", height: "38px", transform: "rotate(45deg)" }} />
+        <div aria-hidden className="geo-line-h absolute top-[70%] right-[9%] hidden md:block"
+          style={{ width: "110px" }} />
+        <div aria-hidden className="geo-dot absolute top-[33%] right-[34%] hidden md:block" />
+        <div aria-hidden className="geo-dot absolute top-[35%] right-[36%] hidden md:block"
+          style={{ animationDelay: "1s" }} />
+
+        <div className="relative z-10 max-w-6xl mx-auto w-full py-32">
+          <div className="flex items-center gap-3 mb-7">
+            <div className="h-px w-8 bg-green-500 line-reveal" />
             <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Financement</span>
           </div>
-          <h1 className="font-bebas text-[58px] md:text-[80px] text-white leading-none mb-5">
+          <h1 className="font-bebas text-white leading-none mb-6"
+            style={{ fontSize: "clamp(60px, 10vw, 130px)" }}>
             Votre permis,<br />
-            <span className="gradient-text-bright">on vous aide à le financer</span>
+            <span className="gradient-text-bright">on vous aide</span>
           </h1>
-          <p className="text-white/65 text-lg max-w-xl leading-relaxed">
+          <p className="max-w-xl mb-10 leading-[1.75]"
+            style={{ fontSize: "17px", color: "rgba(255,255,255,0.62)" }}>
             Plusieurs dispositifs permettent de réduire significativement le coût de votre permis.{" "}
             {SCHOOL_NAME} vous guide dans chaque démarche.
           </p>
+          <div className="animate-bob-delayed inline-block">
+            <a href={`tel:${PHONE}`}
+              className="shine-btn inline-flex items-center gap-2 bg-green-600 text-white rounded-xl px-8 py-4 font-bold hover:bg-green-700 transition-colors"
+              style={{ boxShadow: "0 8px 32px rgba(22,163,74,0.38)" }}>
+              <IcoPhone size={16} /> Vérifier mon éligibilité
+            </a>
+          </div>
         </div>
       </section>
 
       {/* ── Options ── */}
-      <section className="py-20 px-4" style={{ borderTop: "1px solid rgba(255,255,255,0.07)" }}>
+      <section className="py-32 px-4" style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="mb-14">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-green-500" />
+              <div className="h-px w-8 bg-green-500 line-reveal" />
               <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Les solutions</span>
             </div>
-            <h2 className="font-bebas text-[44px] md:text-[58px] text-white leading-none">
-              Choisissez votre <span className="gradient-text">dispositif</span>
+            <h2 className="font-bebas text-white leading-none"
+              style={{ fontSize: "clamp(44px, 6vw, 72px)" }}>
+              Choisissez votre <span className="gradient-text-bright">dispositif</span>
             </h2>
           </Reveal>
 
@@ -112,7 +137,7 @@ export default function FinancementPage() {
             {options.map((opt) => (
               <div
                 key={opt.title}
-                className="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-green-500/20"
+                className="group card-border-glow rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1"
                 style={{
                   background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
                   border: "1px solid rgba(255,255,255,0.09)",
@@ -181,7 +206,7 @@ export default function FinancementPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 px-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+      <section className="py-32 px-4" style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <div
           className="max-w-3xl mx-auto rounded-2xl p-12 relative overflow-hidden text-center"
           style={{

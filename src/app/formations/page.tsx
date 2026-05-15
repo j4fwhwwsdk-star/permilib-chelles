@@ -48,29 +48,51 @@ const secondary = [
 
 export default function FormationsPage() {
   return (
-    <div style={{ background: "linear-gradient(180deg, #081428 0%, #0b1d38 100%)", minHeight: "100vh" }}>
+    <div style={{ background: "var(--surface-0)", minHeight: "100vh" }}>
 
-      {/* ── Hero ── */}
-      <section className="relative pt-24 pb-20 px-4 overflow-hidden">
-        {/* Ambient orbs */}
-        <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(22,163,74,0.12) 0%, transparent 70%)" }} />
-        <div className="absolute bottom-0 -left-20 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)" }} />
-        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+      {/* ── Hero full viewport ── */}
+      <section className="relative min-h-screen flex items-center px-4 overflow-hidden">
+        {/* Mesh gradient */}
+        <div className="absolute inset-0 bg-mesh-hero pointer-events-none" />
+        <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
 
-        <div className="relative max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-green-500" />
+        {/* Orbs */}
+        <div aria-hidden className="hero-glow-orb absolute -top-48 -right-48 pointer-events-none"
+          style={{ width: "750px", height: "750px",
+            background: "radial-gradient(circle, rgba(22,163,74,0.20) 0%, rgba(22,163,74,0.08) 40%, transparent 70%)" }} />
+        <div aria-hidden className="hero-glow-orb-sm absolute -bottom-32 -left-32 pointer-events-none"
+          style={{ width: "400px", height: "400px",
+            background: "radial-gradient(circle, rgba(34,197,94,0.10) 0%, transparent 70%)" }} />
+
+        {/* Géométrie décorative */}
+        <div aria-hidden className="geo-circle absolute top-[22%] right-[14%] animate-spin-slow hidden md:block"
+          style={{ width: "200px", height: "200px" }} />
+        <div aria-hidden className="geo-circle absolute bottom-[18%] right-[28%] hidden md:block"
+          style={{ width: "72px", height: "72px", animation: "spinSlow 20s linear infinite reverse" }} />
+        <div aria-hidden className="geo-square absolute top-[40%] right-[8%] animate-float-slow hidden md:block"
+          style={{ width: "44px", height: "44px", transform: "rotate(45deg)" }} />
+        <div aria-hidden className="geo-line-h absolute top-[70%] right-[10%] hidden md:block"
+          style={{ width: "100px" }} />
+        <div aria-hidden className="geo-dot absolute top-[32%] right-[35%] hidden md:block" />
+        <div aria-hidden className="geo-dot absolute top-[34%] right-[37%] hidden md:block"
+          style={{ animationDelay: "1.2s" }} />
+
+        <div className="relative z-10 max-w-6xl mx-auto w-full py-32">
+          <div className="flex items-center gap-3 mb-7">
+            <div className="h-px w-8 bg-green-500 line-reveal" />
             <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Nos formations</span>
           </div>
-          <h1 className="font-bebas text-[58px] md:text-[84px] text-white leading-none mb-5">
+          <h1 className="font-bebas text-white leading-none mb-6"
+            style={{ fontSize: "clamp(60px, 11vw, 140px)" }}>
             Choisissez<br />
-            <span className="gradient-text">votre permis</span>
+            <span className="gradient-text-bright">votre permis</span>
           </h1>
-          <p className="text-white/65 text-lg max-w-xl leading-relaxed mb-8">
+          <p className="max-w-xl mb-10 leading-[1.75]"
+            style={{ fontSize: "17px", color: "rgba(255,255,255,0.62)" }}>
             {SCHOOL_NAME} propose plusieurs formations à {CITY}. Certification Qualiopi,
             financement CPF et aide Région IDF disponibles.
           </p>
-          <div className="flex flex-wrap gap-3">
+          <div className="flex flex-wrap gap-3 mb-10">
             {[
               { Icon: IcoShield,   label: "Certifié Qualiopi" },
               { Icon: IcoCard,     label: "Financement CPF" },
@@ -85,19 +107,30 @@ export default function FormationsPage() {
               </span>
             ))}
           </div>
+          {/* CTA flottant */}
+          <div className="animate-bob-delayed inline-block">
+            <Link
+              href="/contact"
+              className="shine-btn inline-flex items-center gap-2 bg-green-600 text-white rounded-xl px-8 py-4 font-bold hover:bg-green-700 transition-colors"
+              style={{ boxShadow: "0 8px 32px rgba(22,163,74,0.38)" }}
+            >
+              Demander un devis gratuit →
+            </Link>
+          </div>
         </div>
       </section>
 
       {/* ── Formations principales ── */}
-      <section className="py-20 px-4">
+      <section className="py-32 px-4" style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="mb-14">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-green-500" />
+              <div className="h-px w-8 bg-green-500 line-reveal" />
               <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Offres principales</span>
             </div>
-            <h2 className="font-bebas text-[44px] md:text-[58px] text-white leading-none">
-              Les formations les plus <span className="gradient-text">demandées</span>
+            <h2 className="font-bebas text-white leading-none"
+              style={{ fontSize: "clamp(44px, 6vw, 72px)" }}>
+              Les formations les plus <span className="gradient-text-bright">demandées</span>
             </h2>
           </Reveal>
 
@@ -105,7 +138,7 @@ export default function FormationsPage() {
             {main.map((f) => (
               <div
                 key={f.title}
-                className="group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1 hover:border-green-500/25"
+                className="group card-border-glow relative rounded-2xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1 hover:border-green-500/25"
                 style={{
                   background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
                   border: "1px solid rgba(255,255,255,0.09)",
@@ -177,17 +210,18 @@ export default function FormationsPage() {
 
       {/* ── Formations secondaires ── */}
       <section
-        className="py-20 px-4"
-        style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 100%)", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+        className="py-32 px-4"
+        style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.05)" }}
       >
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="mb-10">
             <div className="flex items-center gap-3 mb-4">
-              <div className="h-px w-8 bg-green-500" />
+              <div className="h-px w-8 bg-green-500 line-reveal" />
               <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Autres formations</span>
             </div>
-            <h2 className="font-bebas text-[40px] md:text-[52px] text-white leading-none">
-              Besoins <span className="gradient-text">spécifiques</span>
+            <h2 className="font-bebas text-white leading-none"
+              style={{ fontSize: "clamp(40px, 5.5vw, 64px)" }}>
+              Besoins <span className="gradient-text-bright">spécifiques</span>
             </h2>
           </Reveal>
 
@@ -233,7 +267,7 @@ export default function FormationsPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-20 px-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+      <section className="py-32 px-4" style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
         <div
           className="max-w-4xl mx-auto rounded-2xl p-12 relative overflow-hidden text-center"
           style={{

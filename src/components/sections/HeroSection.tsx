@@ -138,17 +138,22 @@ export default function HeroSection() {
   return (
     <section className="relative flex items-center min-h-viewport overflow-hidden">
 
-      {/* ── Photo de fond ── */}
-      <div className="absolute inset-0 z-0">
+      {/* ── Photo de fond — zoom d'entrée ── */}
+      <motion.div
+        className="absolute inset-0 z-0"
+        initial={{ scale: 1.10 }}
+        animate={{ scale: 1.04 }}
+        transition={{ duration: 2.8, ease: [0.16, 1, 0.3, 1] }}
+      >
         <Image
           src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?w=1920&q=85"
           alt={`Auto-école ${SCHOOL_NAME} ${CITY}`}
           fill
-          className="object-cover scale-[1.04]"
+          className="object-cover"
           priority
           sizes="100vw"
         />
-      </div>
+      </motion.div>
 
       {/* ── Overlays gradient ── */}
       <div className="absolute inset-0 z-[1] bg-gradient-to-r from-[#020609]/95 via-[#050d18]/80 to-[#050d18]/35" />
@@ -157,6 +162,54 @@ export default function HeroSection() {
       {/* ── Grille premium ── */}
       <div className="absolute inset-0 z-[2] bg-grid pointer-events-none" />
 
+      {/* ── Rayons de lumière verts — desktop uniquement ── */}
+      {!disableAurora && (
+        <div className="absolute inset-0 z-[3] pointer-events-none overflow-hidden">
+          {/* Rayon 1 — émeraude, large */}
+          <motion.div
+            aria-hidden
+            className="absolute -top-[15%] w-[3px] h-[130%]"
+            style={{
+              left: "32%",
+              background: "linear-gradient(180deg, transparent 0%, rgba(74,222,128,0.55) 30%, rgba(74,222,128,0.30) 65%, transparent 100%)",
+              filter: "blur(4px)",
+              transformOrigin: "top center",
+              rotate: "-18deg",
+            }}
+            animate={{ opacity: [0.4, 1, 0.4], scaleX: [1, 3, 1] }}
+            transition={{ duration: 7, ease: "easeInOut", repeat: Infinity, delay: 1.5 }}
+          />
+          {/* Rayon 2 — vert clair, fin */}
+          <motion.div
+            aria-hidden
+            className="absolute -top-[15%] w-[2px] h-[130%]"
+            style={{
+              left: "48%",
+              background: "linear-gradient(180deg, transparent 0%, rgba(52,211,153,0.45) 35%, rgba(52,211,153,0.20) 65%, transparent 100%)",
+              filter: "blur(3px)",
+              transformOrigin: "top center",
+              rotate: "-12deg",
+            }}
+            animate={{ opacity: [0.3, 0.9, 0.3], scaleX: [1, 2.5, 1] }}
+            transition={{ duration: 9, ease: "easeInOut", repeat: Infinity, delay: 3.5 }}
+          />
+          {/* Rayon 3 — blanc-vert, ultra fin */}
+          <motion.div
+            aria-hidden
+            className="absolute -top-[15%] w-[1.5px] h-[130%]"
+            style={{
+              left: "60%",
+              background: "linear-gradient(180deg, transparent 0%, rgba(240,253,244,0.35) 40%, rgba(240,253,244,0.15) 65%, transparent 100%)",
+              filter: "blur(2px)",
+              transformOrigin: "top center",
+              rotate: "-8deg",
+            }}
+            animate={{ opacity: [0.2, 0.7, 0.2], scaleX: [1, 2, 1] }}
+            transition={{ duration: 11, ease: "easeInOut", repeat: Infinity, delay: 6 }}
+          />
+        </div>
+      )}
+
       {/* ── Aurora — desktop uniquement ── */}
       {!disableAurora && (
         <motion.div
@@ -164,13 +217,91 @@ export default function HeroSection() {
           className="absolute inset-0 z-[3] pointer-events-none"
           animate={{
             background: [
-              "radial-gradient(ellipse 70% 55% at 10% 60%, rgba(22,163,74,0.07) 0%, transparent 60%), radial-gradient(ellipse 50% 70% at 85% 25%, rgba(34,197,94,0.04) 0%, transparent 55%)",
-              "radial-gradient(ellipse 80% 65% at 20% 45%, rgba(22,163,74,0.09) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 75% 35%, rgba(34,197,94,0.05) 0%, transparent 55%)",
-              "radial-gradient(ellipse 70% 55% at 10% 60%, rgba(22,163,74,0.07) 0%, transparent 60%), radial-gradient(ellipse 50% 70% at 85% 25%, rgba(34,197,94,0.04) 0%, transparent 55%)",
+              "radial-gradient(ellipse 70% 55% at 10% 60%, rgba(22,163,74,0.18) 0%, transparent 60%), radial-gradient(ellipse 50% 70% at 85% 25%, rgba(34,197,94,0.10) 0%, transparent 55%)",
+              "radial-gradient(ellipse 80% 65% at 20% 45%, rgba(22,163,74,0.22) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 75% 35%, rgba(34,197,94,0.13) 0%, transparent 55%)",
+              "radial-gradient(ellipse 70% 55% at 10% 60%, rgba(22,163,74,0.18) 0%, transparent 60%), radial-gradient(ellipse 50% 70% at 85% 25%, rgba(34,197,94,0.10) 0%, transparent 55%)",
             ],
           }}
-          transition={{ duration: 18, ease: "easeInOut", repeat: Infinity }}
+          transition={{ duration: 14, ease: "easeInOut", repeat: Infinity }}
         />
+      )}
+
+      {/* ── Grand orb vert lumineux ── */}
+      <motion.div
+        aria-hidden
+        className="hero-glow-orb absolute z-[4]"
+        style={{
+          width: "780px",
+          height: "780px",
+          top: "-220px",
+          right: "-200px",
+          background: "radial-gradient(circle, rgba(22,163,74,0.55) 0%, rgba(22,163,74,0.25) 35%, transparent 70%)",
+        }}
+        initial={{ opacity: 0, scale: 0.7 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+      />
+      <motion.div
+        aria-hidden
+        className="hero-glow-orb-sm absolute z-[4]"
+        style={{
+          width: "380px",
+          height: "380px",
+          bottom: "-80px",
+          left: "-80px",
+          background: "radial-gradient(circle, rgba(34,197,94,0.45) 0%, rgba(34,197,94,0.18) 50%, transparent 70%)",
+        }}
+        initial={{ opacity: 0, scale: 0.6 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 2, ease: [0.16, 1, 0.3, 1], delay: 0.6 }}
+      />
+
+      {/* ── Formes géométriques décoratives — desktop uniquement ── */}
+      {!isMobile && (
+        <>
+          <div
+            aria-hidden
+            className="geo-circle absolute z-[4] animate-spin-slow"
+            style={{ width: "200px", height: "200px", top: "22%", right: "14%" }}
+          />
+          <div
+            aria-hidden
+            className="geo-circle absolute z-[4]"
+            style={{ width: "80px", height: "80px", top: "48%", right: "8%",
+              animation: "spinSlow 22s linear infinite reverse" }}
+          />
+          <div
+            aria-hidden
+            className="geo-square absolute z-[4] animate-float-slow"
+            style={{ width: "44px", height: "44px", top: "38%", right: "22%",
+              transform: "rotate(45deg)" }}
+          />
+          <div
+            aria-hidden
+            className="geo-dot absolute z-[4]"
+            style={{ top: "28%", right: "31%" }}
+          />
+          <div
+            aria-hidden
+            className="geo-dot absolute z-[4]"
+            style={{ top: "30%", right: "33%", animationDelay: "1s" }}
+          />
+          <div
+            aria-hidden
+            className="geo-dot absolute z-[4]"
+            style={{ top: "32%", right: "29.5%", animationDelay: "2s" }}
+          />
+          <div
+            aria-hidden
+            className="geo-line-h absolute z-[4]"
+            style={{ width: "120px", top: "62%", right: "10%" }}
+          />
+          <div
+            aria-hidden
+            className="geo-line-v absolute z-[4]"
+            style={{ height: "80px", top: "58%", right: "10.5%" }}
+          />
+        </>
       )}
 
       {/* ── Contenu — padding réduit sur mobile ── */}
@@ -249,13 +380,16 @@ export default function HeroSection() {
           initial="hidden"
           animate="visible"
         >
-          {/* Primaire */}
+          {/* Primaire — avec bob après entrée */}
           <motion.a
             href={`tel:${PHONE}`}
             className="relative overflow-hidden bg-green-600 text-white rounded-xl px-8 py-4 font-bold text-base text-center flex items-center justify-center gap-2.5 shadow-[0_8px_24px_rgba(22,163,74,0.35)] group w-full sm:w-auto"
-            whileHover={isMobile || reduceMotion ? {} : { y: -3, scale: 1.03, boxShadow: "0 14px 36px rgba(22,163,74,0.45)" }}
+            animate={isMobile || reduceMotion ? {} : { y: [0, -7, 0] }}
+            transition={{
+              y: { duration: 4, ease: "easeInOut", repeat: Infinity, delay: 1.8, repeatDelay: 0 },
+            }}
+            whileHover={isMobile || reduceMotion ? {} : { scale: 1.03, boxShadow: "0 14px 36px rgba(22,163,74,0.45)", transition: { duration: 0.2, ease: "easeOut" } }}
             whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <span
               aria-hidden
@@ -270,9 +404,8 @@ export default function HeroSection() {
             target="_blank"
             rel="noopener noreferrer"
             className="relative overflow-hidden border border-white/22 text-white rounded-xl px-8 py-4 font-bold text-base text-center flex items-center justify-center gap-2.5 group w-full sm:w-auto"
-            whileHover={isMobile || reduceMotion ? {} : { y: -3, scale: 1.03, borderColor: "rgba(255,255,255,0.45)", backgroundColor: "rgba(255,255,255,0.07)" }}
+            whileHover={isMobile || reduceMotion ? {} : { y: -3, scale: 1.03, borderColor: "rgba(255,255,255,0.45)", backgroundColor: "rgba(255,255,255,0.07)", transition: { duration: 0.2, ease: "easeOut" } }}
             whileTap={{ scale: 0.97 }}
-            transition={{ duration: 0.2, ease: "easeOut" }}
           >
             <span
               aria-hidden

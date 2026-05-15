@@ -785,3 +785,262 @@
   50%  { opacity: 1;   transform: scale(1.06) translateX(-3%); }
   100% { opacity: 0.7; transform: scale(0.97) translateX(2%); }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   REFONTE VISUELLE V2 — Nouvelles animations & utilitaires
+   ═══════════════════════════════════════════════════════════════ */
+
+/* CSS Custom Property pour la bordure tournante (Houdini) */
+@property --border-angle {
+  inherits: false;
+  initial-value: 0deg;
+  syntax: '<angle>';
+}
+
+@layer utilities {
+
+  /* ── Mesh gradient héro — dramatique ── */
+  .bg-mesh-hero {
+    background:
+      radial-gradient(ellipse 90% 65% at 10% -8%,  rgba(22,163,74,0.18) 0%, transparent 55%),
+      radial-gradient(ellipse 70% 80% at 90% 108%, rgba(34,197,94,0.10) 0%, transparent 50%),
+      radial-gradient(ellipse 55% 55% at 55% 65%,  rgba(5,150,105,0.07) 0%, transparent 45%),
+      var(--surface-0);
+  }
+
+  /* ── Orb lumineux — grand blob flottant ── */
+  .hero-glow-orb {
+    border-radius: 50%;
+    filter: blur(80px);
+    pointer-events: none;
+    animation: floatSoft 9s ease-in-out infinite;
+    will-change: transform;
+  }
+  .hero-glow-orb-sm {
+    border-radius: 50%;
+    filter: blur(48px);
+    pointer-events: none;
+    animation: floatSoft 7s ease-in-out infinite reverse;
+    will-change: transform;
+  }
+
+  /* ── Formes géométriques décoratives ── */
+  .geo-circle {
+    border-radius: 50%;
+    border: 1px solid rgba(22,163,74,0.08);
+    pointer-events: none;
+  }
+  .geo-square {
+    border: 1px solid rgba(22,163,74,0.07);
+    pointer-events: none;
+  }
+  .geo-tri {
+    width: 0; height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-bottom: 34px solid rgba(22,163,74,0.06);
+    pointer-events: none;
+  }
+  .geo-line-h {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(22,163,74,0.18), transparent);
+    pointer-events: none;
+  }
+  .geo-line-v {
+    width: 1px;
+    background: linear-gradient(180deg, transparent, rgba(22,163,74,0.18), transparent);
+    pointer-events: none;
+  }
+  .geo-dot {
+    width: 4px; height: 4px;
+    border-radius: 50%;
+    background: rgba(22,163,74,0.25);
+    pointer-events: none;
+    animation: pulseGlow 3s ease-in-out infinite;
+  }
+
+  /* ── Bob CTA — flotte doucement 4s ── */
+  .animate-bob {
+    animation: bobCTA 4s ease-in-out infinite;
+    will-change: transform;
+  }
+  .animate-bob-slow {
+    animation: bobCTA 6s ease-in-out infinite;
+    will-change: transform;
+  }
+  .animate-bob-delayed {
+    animation: bobCTA 4s ease-in-out 2s infinite;
+    will-change: transform;
+  }
+
+  /* ── Ligne titre animée au scroll (via .in-view parent) ── */
+  .line-reveal {
+    transform-origin: left center;
+    transform: scaleX(0);
+    transition: transform 0.85s var(--ease-out-expo) 0.15s;
+  }
+  .in-view .line-reveal {
+    transform: scaleX(1);
+  }
+
+  /* ── Bordure carte animée au hover ── */
+  .card-border-glow {
+    position: relative;
+    isolation: isolate;
+  }
+  .card-border-glow::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--border-angle),
+      rgba(22,163,74,0)    0deg,
+      rgba(74,222,128,0.55) 60deg,
+      rgba(22,163,74,0)   130deg
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: destination-out;
+    mask-composite: exclude;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: -1;
+  }
+  .card-border-glow:hover::before {
+    opacity: 1;
+    animation: borderSpin 3s linear infinite;
+  }
+
+  /* ── Padding section premium ≥ 120px desktop ── */
+  .section-premium {
+    padding-top:    120px;
+    padding-bottom: 120px;
+  }
+  @media (max-width: 767px) {
+    .section-premium {
+      padding-top:    72px;
+      padding-bottom: 72px;
+    }
+  }
+
+  /* ── Titre section avec ligne verte ── */
+  .section-eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-eyebrow-line {
+    height: 1px;
+    width: 32px;
+    background: linear-gradient(90deg, #16a34a, #4ade80);
+    transform-origin: left center;
+    flex-shrink: 0;
+  }
+  .section-eyebrow-text {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #4ade80;
+  }
+}
+
+/* ── Nouveaux keyframes ── */
+
+@keyframes bobCTA {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes borderSpin {
+  to { --border-angle: 360deg; }
+}
+
+@keyframes meshDrift {
+  0%, 100% { opacity: 0.75; transform: scale(1)    translate(0px,   0px); }
+  33%       { opacity: 1;    transform: scale(1.06) translate(-18px,-12px); }
+  66%       { opacity: 0.8;  transform: scale(0.97) translate(10px,  8px); }
+}
+
+
+/* ═══════════════════════════════════════════════════════════════
+   SCROLL ANIMATIONS — Orbes, Particules, Lignes
+   ═══════════════════════════════════════════════════════════════ */
+
+/* ── Scroll Orb — entrée progressive au scroll ── */
+.scroll-orb {
+  opacity: 0;
+  transform: scale(0.72);
+  transition:
+    opacity  1.5s ease,
+    transform 1.5s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+  z-index: 0;
+}
+.scroll-orb.orb-in {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Particules flottantes ── */
+.ptcl-dot {
+  will-change: transform, opacity;
+  animation: particleFloat var(--pdr, 8s) ease-in var(--pd, 0s) infinite;
+  animation-play-state: paused;
+}
+.ptcl-wrap.ptcl-on .ptcl-dot {
+  animation-play-state: running;
+}
+/* Halo lumineux autour de chaque particule */
+.ptcl-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  background: inherit;
+  filter: blur(4px);
+  opacity: 0.6;
+}
+
+/* ── Section Line — trait bidirectionnel ── */
+.sline-arm {
+  height: 1px;
+  transform: scaleX(0);
+  transition: transform 1.4s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform;
+}
+.sline-arm.sline-l { transform-origin: right center; }
+.sline-arm.sline-r { transform-origin: left center;  }
+
+.sline-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity   0.4s ease 0.7s,
+    transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.7s;
+  will-change: opacity, transform;
+  box-shadow: 0 0 8px currentColor, 0 0 16px currentColor;
+}
+.sline.sline-in .sline-arm { transform: scaleX(1); }
+.sline.sline-in .sline-dot  { opacity: 1; transform: scale(1); }
+
+/* ── Désactivation totale sur mobile (perf + batterie) ── */
+@media (max-width: 767px) {
+  .scroll-orb { display: none !important; }
+  .ptcl-wrap  { display: none !important; }
+  .sline      { display: none !important; }
+}
+
+/* ── Keyframes particules ── */
+@keyframes particleFloat {
+  0%   { opacity: 0;    transform: translateY(0)     scale(1); }
+  12%  { opacity: 1; }
+  85%  { opacity: 0.35; }
+  100% { opacity: 0;    transform: translateY(-110px) scale(0.4); }
+}

@@ -24,29 +24,49 @@ const faqs = [
 
 export default function FaqPage() {
   return (
-    <div style={{ background: "linear-gradient(180deg, #081428 0%, #0b1d38 100%)", minHeight: "100vh" }}>
+    <div style={{ background: "var(--surface-0)", minHeight: "100vh" }}>
 
-      {/* ── Hero ── */}
-      <section className="relative pt-24 pb-20 px-4 overflow-hidden">
-        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(22,163,74,0.10) 0%, transparent 70%)" }} />
-        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-        <div className="relative max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="h-px w-8 bg-green-500" />
+      {/* ── Hero full viewport ── */}
+      <section className="relative min-h-screen flex items-center px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-mesh-hero pointer-events-none" />
+        <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
+
+        {/* Orbs */}
+        <div aria-hidden className="hero-glow-orb absolute -top-48 -right-48 pointer-events-none"
+          style={{ width: "680px", height: "680px",
+            background: "radial-gradient(circle, rgba(22,163,74,0.17) 0%, rgba(22,163,74,0.07) 40%, transparent 70%)" }} />
+        <div aria-hidden className="hero-glow-orb-sm absolute -bottom-20 -left-20 pointer-events-none"
+          style={{ width: "340px", height: "340px",
+            background: "radial-gradient(circle, rgba(34,197,94,0.09) 0%, transparent 70%)" }} />
+
+        {/* Géométrie */}
+        <div aria-hidden className="geo-circle absolute top-[24%] right-[13%] animate-spin-slow hidden md:block"
+          style={{ width: "185px", height: "185px" }} />
+        <div aria-hidden className="geo-square absolute top-[44%] right-[7%] animate-float-slow hidden md:block"
+          style={{ width: "36px", height: "36px", transform: "rotate(45deg)" }} />
+        <div aria-hidden className="geo-dot absolute top-[31%] right-[33%] hidden md:block" />
+        <div aria-hidden className="geo-line-h absolute top-[68%] right-[9%] hidden md:block"
+          style={{ width: "100px" }} />
+
+        <div className="relative z-10 max-w-6xl mx-auto w-full py-32">
+          <div className="flex items-center gap-3 mb-7">
+            <div className="h-px w-8 bg-green-500 line-reveal" />
             <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">FAQ</span>
           </div>
-          <h1 className="font-bebas text-[58px] md:text-[84px] text-white leading-none mb-5">
+          <h1 className="font-bebas text-white leading-none mb-6"
+            style={{ fontSize: "clamp(60px, 11vw, 140px)" }}>
             Questions<br />
-            <span className="gradient-text">fréquentes</span>
+            <span className="gradient-text-bright">fréquentes</span>
           </h1>
-          <p className="text-white/65 text-lg max-w-xl leading-relaxed">
+          <p className="max-w-xl mb-10 leading-[1.75]"
+            style={{ fontSize: "17px", color: "rgba(255,255,255,0.62)" }}>
             Trouvez rapidement les réponses à vos questions sur nos formations, tarifs et financement.
           </p>
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-20 px-4">
+      <section className="py-32 px-4" style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
         <div className="max-w-3xl mx-auto">
           <Reveal variant="bottom">
             <div className="space-y-3 mb-16">

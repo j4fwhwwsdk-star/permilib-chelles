@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 interface Props {
   children: React.ReactNode;
   className?: string;
+  style?: React.CSSProperties;
   variant?: "bottom" | "left" | "right" | "scale";
   stagger?: boolean;
 }
@@ -11,6 +12,7 @@ interface Props {
 export default function Reveal({
   children,
   className = "",
+  style,
   variant = "bottom",
   stagger = false,
 }: Props) {
@@ -38,6 +40,7 @@ export default function Reveal({
     <div
       ref={ref}
       className={`${stagger ? "reveal-stagger" : `reveal-${variant}`} ${className}`}
+      style={style}
     >
       {children}
     </div>
