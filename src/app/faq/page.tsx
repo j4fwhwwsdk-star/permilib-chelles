@@ -24,14 +24,13 @@ const faqs = [
 
 export default function FaqPage() {
   return (
-    <div style={{ background: "var(--surface-0)", minHeight: "100vh" }}>
+    <div style={{ background: "#ffffff", minHeight: "100vh" }}>
 
-      {/* ── Hero full viewport ── */}
-      <section className="relative min-h-screen flex items-center px-4 overflow-hidden">
+      {/* ── Hero full viewport — sombre ── */}
+      <section className="relative min-h-screen flex items-center px-4 overflow-hidden" style={{ background: "#0f172a" }}>
         <div className="absolute inset-0 bg-mesh-hero pointer-events-none" />
         <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
 
-        {/* Orbs */}
         <div aria-hidden className="hero-glow-orb absolute -top-48 -right-48 pointer-events-none"
           style={{ width: "680px", height: "680px",
             background: "radial-gradient(circle, rgba(22,163,74,0.17) 0%, rgba(22,163,74,0.07) 40%, transparent 70%)" }} />
@@ -39,7 +38,6 @@ export default function FaqPage() {
           style={{ width: "340px", height: "340px",
             background: "radial-gradient(circle, rgba(34,197,94,0.09) 0%, transparent 70%)" }} />
 
-        {/* Géométrie */}
         <div aria-hidden className="geo-circle absolute top-[24%] right-[13%] animate-spin-slow hidden md:block"
           style={{ width: "185px", height: "185px" }} />
         <div aria-hidden className="geo-square absolute top-[44%] right-[7%] animate-float-slow hidden md:block"
@@ -56,7 +54,7 @@ export default function FaqPage() {
           <h1 className="font-bebas text-white leading-none mb-6"
             style={{ fontSize: "clamp(60px, 11vw, 140px)" }}>
             Questions<br />
-            <span className="gradient-text-bright">fréquentes</span>
+            <span className="gradient-text-premium">fréquentes</span>
           </h1>
           <p className="max-w-xl mb-10 leading-[1.75]"
             style={{ fontSize: "17px", color: "rgba(255,255,255,0.62)" }}>
@@ -66,8 +64,22 @@ export default function FaqPage() {
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-32 px-4" style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-        <div className="max-w-3xl mx-auto">
+      <section className="py-32 px-4 relative overflow-hidden" style={{ background: "#ffffff", borderTop: "1px solid #e5e7eb" }}>
+        <div className="absolute inset-0 bg-grid-light opacity-50 pointer-events-none" />
+        <div className="relative max-w-3xl mx-auto">
+          <Reveal variant="bottom" className="mb-10">
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-8 bg-green-500 line-reveal" />
+              <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "#16a34a" }}>Réponses</span>
+            </div>
+            <h2 className="font-bebas leading-none mb-2" style={{ fontSize: "clamp(36px, 5vw, 56px)", color: "#0f172a" }}>
+              Tout ce que vous voulez <span className="gradient-text">savoir</span>
+            </h2>
+            <p className="text-sm" style={{ color: "#64748b" }}>
+              {faqs.length} questions répondues — votre question n&apos;est pas là ? Contactez-nous directement.
+            </p>
+          </Reveal>
+
           <Reveal variant="bottom">
             <div className="space-y-3 mb-16">
               {faqs.map((faq) => (
@@ -96,7 +108,8 @@ export default function FaqPage() {
                 <h2 className="font-bebas text-[36px] md:text-[46px] text-white leading-none mb-3">
                   Vous n&apos;avez pas trouvé votre réponse ?
                 </h2>
-                <p className="text-white/55 text-base mb-8 max-w-md mx-auto leading-relaxed">
+                <p className="text-base mb-8 max-w-md mx-auto leading-relaxed"
+                  style={{ color: "rgba(255,255,255,0.55)" }}>
                   Notre équipe répond à toutes vos questions sur les formations, tarifs et financement.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -109,8 +122,8 @@ export default function FaqPage() {
                   </a>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center text-white/80 rounded-xl px-8 py-4 font-semibold hover:text-white transition-colors"
-                    style={{ border: "1px solid rgba(255,255,255,0.18)" }}
+                    className="inline-flex items-center justify-center rounded-xl px-8 py-4 font-semibold hover:text-white transition-colors"
+                    style={{ border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.80)" }}
                   >
                     Envoyer un message →
                   </Link>

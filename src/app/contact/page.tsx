@@ -28,14 +28,13 @@ const IcoPin = () => (
 
 export default function ContactPage() {
   return (
-    <div style={{ background: "var(--surface-0)", minHeight: "100vh" }}>
+    <div style={{ background: "#ffffff", minHeight: "100vh" }}>
 
-      {/* ── Hero full viewport ── */}
-      <section className="relative min-h-screen flex items-center px-4 overflow-hidden">
+      {/* ── Hero full viewport — sombre ── */}
+      <section className="relative min-h-screen flex items-center px-4 overflow-hidden" style={{ background: "#0f172a" }}>
         <div className="absolute inset-0 bg-mesh-hero pointer-events-none" />
         <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
 
-        {/* Orbs */}
         <div aria-hidden className="hero-glow-orb absolute -top-48 -right-48 pointer-events-none"
           style={{ width: "680px", height: "680px",
             background: "radial-gradient(circle, rgba(22,163,74,0.18) 0%, rgba(22,163,74,0.07) 40%, transparent 70%)" }} />
@@ -43,7 +42,6 @@ export default function ContactPage() {
           style={{ width: "340px", height: "340px",
             background: "radial-gradient(circle, rgba(34,197,94,0.09) 0%, transparent 70%)" }} />
 
-        {/* Géométrie */}
         <div aria-hidden className="geo-circle absolute top-[24%] right-[14%] animate-spin-slow hidden md:block"
           style={{ width: "180px", height: "180px" }} />
         <div aria-hidden className="geo-square absolute top-[43%] right-[7%] animate-float-slow hidden md:block"
@@ -57,14 +55,13 @@ export default function ContactPage() {
           </div>
           <h1 className="font-bebas text-white leading-none mb-6"
             style={{ fontSize: "clamp(60px, 11vw, 140px)" }}>
-            Nous <span className="gradient-text-bright">contacter</span>
+            Nous <span className="gradient-text-premium">contacter</span>
           </h1>
           <p className="max-w-xl mb-10 leading-[1.75]"
             style={{ fontSize: "17px", color: "rgba(255,255,255,0.62)" }}>
             Prenez contact avec {SCHOOL_NAME} pour toute demande d&apos;information ou de devis gratuit.
           </p>
 
-          {/* Boutons CTA avec bob animation */}
           <div className="flex flex-col sm:flex-row gap-3 max-w-lg animate-bob-delayed">
             <a
               href={`tel:${PHONE}`}
@@ -87,7 +84,7 @@ export default function ContactPage() {
       </section>
 
       {/* ── Contenu ── */}
-      <section className="py-24 px-4" style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+      <section className="py-24 px-4" style={{ background: "#ffffff", borderTop: "1px solid #e5e7eb" }}>
         <div className="max-w-6xl mx-auto">
           <div className="grid md:grid-cols-2 gap-8">
 
@@ -96,16 +93,16 @@ export default function ContactPage() {
               <div
                 className="rounded-2xl p-8 h-full"
                 style={{
-                  background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
+                  background: "#ffffff",
+                  border: "1px solid #e5e7eb",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                 }}
               >
                 <div className="flex items-center gap-3 mb-6">
                   <div className="h-px w-8 bg-green-500" />
-                  <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Message</span>
+                  <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "#16a34a" }}>Message</span>
                 </div>
-                <h2 className="font-bebas text-[34px] text-white mb-6">Envoyer un message</h2>
+                <h2 className="font-bebas text-[34px] mb-6" style={{ color: "#0f172a" }}>Envoyer un message</h2>
                 <ContactForm />
               </div>
             </Reveal>
@@ -117,24 +114,25 @@ export default function ContactPage() {
               <div
                 className="rounded-2xl p-7"
                 style={{
-                  background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.20)",
+                  background: "#ffffff",
+                  border: "1px solid #e5e7eb",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                 }}
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="h-px w-8 bg-green-500" />
-                  <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Informations</span>
+                  <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "#16a34a" }}>Informations</span>
                 </div>
-                <h2 className="font-bebas text-[28px] text-white mb-4">Informations pratiques</h2>
+                <h2 className="font-bebas text-[28px] mb-4" style={{ color: "#0f172a" }}>Informations pratiques</h2>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
-                    <span className="text-green-400 mt-0.5 shrink-0"><IcoPin /></span>
-                    <span className="text-white/65 text-sm">{ADDRESS}</span>
+                    <span className="mt-0.5 shrink-0" style={{ color: "#16a34a" }}><IcoPin /></span>
+                    <span className="text-sm" style={{ color: "#64748b" }}>{ADDRESS}</span>
                   </div>
                   <div className="flex items-center gap-3">
-                    <span className="text-green-400 shrink-0"><IcoPhone /></span>
-                    <a href={`tel:${PHONE}`} className="text-white/65 text-sm font-semibold hover:text-green-400 transition-colors">
+                    <span className="shrink-0" style={{ color: "#16a34a" }}><IcoPhone /></span>
+                    <a href={`tel:${PHONE}`} className="text-sm font-semibold hover:text-green-600 transition-colors"
+                      style={{ color: "#374151" }}>
                       {PHONE}
                     </a>
                   </div>
@@ -145,25 +143,26 @@ export default function ContactPage() {
               <div
                 className="rounded-2xl p-7"
                 style={{
-                  background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  boxShadow: "0 4px 24px rgba(0,0,0,0.20)",
+                  background: "#ffffff",
+                  border: "1px solid #e5e7eb",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                 }}
               >
                 <div className="flex items-center gap-3 mb-5">
                   <div className="h-px w-8 bg-green-500" />
-                  <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Horaires</span>
+                  <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "#16a34a" }}>Horaires</span>
                 </div>
-                <h2 className="font-bebas text-[28px] text-white mb-4">Horaires du bureau</h2>
+                <h2 className="font-bebas text-[28px] mb-4" style={{ color: "#0f172a" }}>Horaires du bureau</h2>
                 <div className="space-y-0">
                   {HORAIRES_CODE.map((h) => (
                     <div
                       key={h.jour}
                       className="flex justify-between text-sm py-3 border-b last:border-0"
-                      style={{ borderColor: "rgba(255,255,255,0.07)" }}
+                      style={{ borderColor: "#f1f5f9" }}
                     >
-                      <span className="text-white/60 font-medium">{h.jour}</span>
-                      <span className={h.heures === "Fermé" ? "text-white/25" : "text-green-400 font-semibold"}>
+                      <span className="font-medium" style={{ color: "#374151" }}>{h.jour}</span>
+                      <span className="font-semibold"
+                        style={{ color: h.heures === "Fermé" ? "#ef4444" : "#16a34a" }}>
                         {h.heures}
                       </span>
                     </div>
@@ -173,7 +172,7 @@ export default function ContactPage() {
 
               {/* Carte */}
               {process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL ? (
-                <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.09)" }}>
+                <div className="rounded-2xl overflow-hidden" style={{ border: "1px solid #e5e7eb" }}>
                   <iframe
                     src={process.env.NEXT_PUBLIC_GOOGLE_MAPS_EMBED_URL}
                     title={`Localisation ${SCHOOL_NAME}`}
@@ -187,12 +186,12 @@ export default function ContactPage() {
                 </div>
               ) : (
                 <div
-                  className="rounded-2xl h-44 flex flex-col items-center justify-center gap-2 text-white/30 text-sm"
-                  style={{ background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)", border: "1px solid rgba(255,255,255,0.09)" }}
+                  className="rounded-2xl h-44 flex flex-col items-center justify-center gap-2 text-sm"
+                  style={{ background: "#f8fafc", border: "1px solid #e5e7eb", color: "#94a3b8" }}
                 >
                   <IcoPin />
                   <span>Carte Google Maps</span>
-                  <span className="text-xs text-white/20">{CITY}</span>
+                  <span className="text-xs" style={{ color: "#cbd5e1" }}>{CITY}</span>
                 </div>
               )}
             </Reveal>

@@ -26,14 +26,13 @@ const horaires = [
 
 export default function AProposPage() {
   return (
-    <div style={{ background: "var(--surface-0)", minHeight: "100vh" }}>
+    <div style={{ background: "#ffffff", minHeight: "100vh" }}>
 
-      {/* ── Hero full viewport ── */}
-      <section className="relative min-h-screen flex items-center px-4 overflow-hidden">
+      {/* ── Hero full viewport — sombre ── */}
+      <section className="relative min-h-screen flex items-center px-4 overflow-hidden" style={{ background: "#0f172a" }}>
         <div className="absolute inset-0 bg-mesh-hero pointer-events-none" />
         <div className="absolute inset-0 bg-grid opacity-[0.07] pointer-events-none" />
 
-        {/* Orbs */}
         <div aria-hidden className="hero-glow-orb absolute -top-48 -right-48 pointer-events-none"
           style={{ width: "720px", height: "720px",
             background: "radial-gradient(circle, rgba(22,163,74,0.18) 0%, rgba(22,163,74,0.07) 40%, transparent 70%)" }} />
@@ -41,7 +40,6 @@ export default function AProposPage() {
           style={{ width: "360px", height: "360px",
             background: "radial-gradient(circle, rgba(34,197,94,0.09) 0%, transparent 70%)" }} />
 
-        {/* Géométrie */}
         <div aria-hidden className="geo-circle absolute top-[25%] right-[14%] animate-spin-slow hidden md:block"
           style={{ width: "200px", height: "200px" }} />
         <div aria-hidden className="geo-circle absolute bottom-[22%] right-[30%] hidden md:block"
@@ -75,25 +73,27 @@ export default function AProposPage() {
       </section>
 
       {/* ── Approche + Stats ── */}
-      <section className="py-32 px-4" style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-        <div className="max-w-6xl mx-auto">
+      <section className="py-32 px-4 relative overflow-hidden"
+        style={{ background: "#ffffff", borderTop: "1px solid #e5e7eb" }}>
+        <div className="absolute inset-0 bg-grid-light opacity-50 pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto">
           <Reveal variant="bottom" className="grid md:grid-cols-2 gap-16">
             {/* Texte */}
             <div>
               <div className="flex items-center gap-3 mb-5">
                 <div className="h-px w-8 bg-green-500 line-reveal" />
-                <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Notre approche</span>
+                <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "#16a34a" }}>Notre approche</span>
               </div>
-              <h2 className="font-bebas text-white leading-tight mb-5"
-                style={{ fontSize: "clamp(42px, 5.5vw, 64px)" }}>
-                Apprendre à conduire<br />en <span className="gradient-text-bright">confiance</span>
+              <h2 className="font-bebas leading-tight mb-5"
+                style={{ fontSize: "clamp(42px, 5.5vw, 64px)", color: "#0f172a" }}>
+                Apprendre à conduire<br />en <span className="gradient-text">confiance</span>
               </h2>
-              <p className="leading-[1.75] mb-4" style={{ fontSize: "17px", color: "rgba(255,255,255,0.65)" }}>
+              <p className="leading-[1.75] mb-4" style={{ fontSize: "17px", color: "#64748b" }}>
                 {SCHOOL_NAME} met l&apos;accent sur un accompagnement pédagogique adapté aux besoins de
                 chaque candidat. Nos formateurs certifiés utilisent des véhicules modernes et des
                 programmes de formation rigoureux.
               </p>
-              <p className="text-white/65 text-base leading-relaxed">
+              <p className="text-base leading-relaxed" style={{ color: "#64748b" }}>
                 Avec une note parfaite de 5/5 sur Google et un indice de confiance de 100%,
                 nous sommes fiers de la confiance que nos élèves nous accordent à {CITY}.
               </p>
@@ -102,23 +102,23 @@ export default function AProposPage() {
             {/* Stats */}
             <div className="grid grid-cols-2 gap-4 content-start">
               {[
-                { value: "5/5",  label: "Note Google",  sub: "vérifiée",   color: "#fcd34d" },
-                { value: "AAC",  label: "Conduite",     sub: "accompagnée", color: "#4ade80" },
-                { value: "CPF",  label: "Financement",  sub: "disponible",  color: "#93c5fd" },
-                { value: "100%", label: "Indice de",    sub: "confiance",   color: "#4ade80" },
+                { value: "5/5",  label: "Note Google",  sub: "vérifiée",    color: "#d97706" },
+                { value: "AAC",  label: "Conduite",     sub: "accompagnée", color: "#16a34a" },
+                { value: "CPF",  label: "Financement",  sub: "disponible",  color: "#3b82f6" },
+                { value: "100%", label: "Indice de",    sub: "confiance",   color: "#16a34a" },
               ].map((s) => (
                 <div
                   key={s.label}
-                  className="group rounded-2xl p-6 text-center transition-all duration-400 hover:-translate-y-1 hover:border-green-500/20"
+                  className="group rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1"
                   style={{
-                    background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
-                    border: "1px solid rgba(255,255,255,0.09)",
-                    boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+                    background: "#ffffff",
+                    border: "1px solid #e5e7eb",
+                    boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                   }}
                 >
                   <div className="font-bebas text-[48px] leading-none mb-1" style={{ color: s.color }}>{s.value}</div>
-                  <div className="text-white/70 text-xs font-semibold">{s.label}</div>
-                  <div className="text-white/35 text-xs">{s.sub}</div>
+                  <div className="text-xs font-semibold" style={{ color: "#374151" }}>{s.label}</div>
+                  <div className="text-xs" style={{ color: "#94a3b8" }}>{s.sub}</div>
                 </div>
               ))}
             </div>
@@ -127,27 +127,26 @@ export default function AProposPage() {
       </section>
 
       {/* ── Valeurs ── */}
-      <section className="py-32 px-4" style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+      <section className="py-32 px-4" style={{ background: "#f8fafc", borderTop: "1px solid #e5e7eb" }}>
         <div className="max-w-6xl mx-auto">
           <Reveal variant="bottom" className="mb-14">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-green-500 line-reveal" />
-              <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Nos valeurs</span>
+              <span className="text-xs font-bold tracking-[0.18em] uppercase" style={{ color: "#16a34a" }}>Nos valeurs</span>
             </div>
-            <h2 className="font-bebas text-white leading-none"
-              style={{ fontSize: "clamp(42px, 5.5vw, 66px)" }}>
-              Ce qui nous <span className="gradient-text-bright">différencie</span>
+            <h2 className="font-bebas leading-none" style={{ fontSize: "clamp(42px, 5.5vw, 66px)", color: "#0f172a" }}>
+              Ce qui nous <span className="gradient-text">différencie</span>
             </h2>
           </Reveal>
           <Reveal stagger className="grid sm:grid-cols-2 md:grid-cols-4 gap-5">
             {valeurs.map((v) => (
               <div
                 key={v.title}
-                className="group card-dark card-border-glow relative rounded-2xl p-6 overflow-hidden transition-all duration-400 hover:-translate-y-1"
+                className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:-translate-y-1"
                 style={{
-                  background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
-                  border: "1px solid rgba(255,255,255,0.09)",
-                  boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
+                  background: "#ffffff",
+                  border: "1px solid #e5e7eb",
+                  boxShadow: "0 2px 12px rgba(0,0,0,0.06)",
                 }}
               >
                 <div
@@ -155,13 +154,13 @@ export default function AProposPage() {
                   style={{ background: "linear-gradient(90deg, #16a34a, #22c55e)" }}
                 />
                 <div
-                  className="w-11 h-11 rounded-xl flex items-center justify-center text-green-400 mb-5 transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.25)", boxShadow: "0 0 16px rgba(34,197,94,0.10)" }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(22,163,74,0.08)", border: "1px solid rgba(22,163,74,0.18)", color: "#16a34a" }}
                 >
                   <v.Icon size={20} />
                 </div>
-                <h3 className="font-bold text-white mb-2 text-sm">{v.title}</h3>
-                <p className="text-white/55 text-xs leading-relaxed">{v.desc}</p>
+                <h3 className="font-bold mb-2 text-sm" style={{ color: "#0f172a" }}>{v.title}</h3>
+                <p className="text-xs leading-relaxed" style={{ color: "#64748b" }}>{v.desc}</p>
               </div>
             ))}
           </Reveal>
@@ -169,14 +168,14 @@ export default function AProposPage() {
       </section>
 
       {/* ── Horaires ── */}
-      <section className="py-32 px-4" style={{ background: "#0e2644", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
+      <section className="py-32 px-4" style={{ background: "#f0fdf4", borderTop: "1px solid #e5e7eb" }}>
         <div className="max-w-4xl mx-auto">
           <Reveal variant="bottom" className="mb-10">
             <div className="flex items-center gap-3 mb-4">
-              <span className="text-green-400"><IcoClock size={20} /></span>
-              <h2 className="font-bebas text-[44px] text-white">Horaires d&apos;ouverture</h2>
+              <span style={{ color: "#16a34a" }}><IcoClock size={20} /></span>
+              <h2 className="font-bebas text-[44px]" style={{ color: "#0f172a" }}>Horaires d&apos;ouverture</h2>
             </div>
-            <p className="text-white/50 text-sm flex items-center gap-2">
+            <p className="text-sm flex items-center gap-2" style={{ color: "#64748b" }}>
               <IcoMapPin size={14} /> {ADDRESS}
             </p>
           </Reveal>
@@ -184,14 +183,14 @@ export default function AProposPage() {
             <div
               className="rounded-2xl overflow-hidden"
               style={{
-                background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
-                border: "1px solid rgba(255,255,255,0.09)",
-                boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
+                background: "#ffffff",
+                border: "1px solid #e5e7eb",
+                boxShadow: "0 4px 20px rgba(0,0,0,0.06)",
               }}
             >
               <div
-                className="grid grid-cols-3 px-6 py-4 text-[10px] font-bold text-white/35 uppercase tracking-widest border-b"
-                style={{ background: "rgba(0,0,0,0.20)", borderColor: "rgba(255,255,255,0.08)" }}
+                className="grid grid-cols-3 px-6 py-4 text-[10px] font-bold uppercase tracking-widest border-b"
+                style={{ background: "#f8fafc", borderColor: "#e5e7eb", color: "#94a3b8" }}
               >
                 <span>Jour</span>
                 <span>Bureau</span>
@@ -200,12 +199,14 @@ export default function AProposPage() {
               {horaires.map((h, i) => (
                 <div
                   key={h.jour}
-                  className={`grid grid-cols-3 px-6 py-4 text-sm transition-colors duration-200 ${h.bureau === "Fermé" ? "opacity-40" : "hover:bg-white/[0.03]"} ${i > 0 ? "border-t" : ""}`}
-                  style={{ borderColor: "rgba(255,255,255,0.06)" }}
+                  className={`grid grid-cols-3 px-6 py-4 text-sm transition-colors duration-200 ${h.bureau === "Fermé" ? "opacity-50" : "hover:bg-green-50"} ${i > 0 ? "border-t" : ""}`}
+                  style={{ borderColor: "#f1f5f9" }}
                 >
-                  <span className="font-semibold text-white">{h.jour}</span>
-                  <span className={h.bureau === "Fermé" ? "text-white/30" : "text-green-400 font-semibold"}>{h.bureau}</span>
-                  <span className={h.conduite === "Fermé" ? "text-white/30" : "text-green-400 font-semibold"}>{h.conduite}</span>
+                  <span className="font-semibold" style={{ color: "#374151" }}>{h.jour}</span>
+                  <span className="font-semibold"
+                    style={{ color: h.bureau === "Fermé" ? "#94a3b8" : "#16a34a" }}>{h.bureau}</span>
+                  <span className="font-semibold"
+                    style={{ color: h.conduite === "Fermé" ? "#94a3b8" : "#16a34a" }}>{h.conduite}</span>
                 </div>
               ))}
             </div>
@@ -214,7 +215,7 @@ export default function AProposPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-32 px-4" style={{ background: "#1a3a58", borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+      <section className="py-32 px-4" style={{ background: "#ffffff", borderTop: "1px solid #e5e7eb" }}>
         <div
           className="max-w-4xl mx-auto rounded-2xl p-12 relative overflow-hidden"
           style={{
@@ -230,7 +231,7 @@ export default function AProposPage() {
               <h2 className="font-bebas text-[42px] md:text-[52px] text-white leading-none mb-2">
                 Venez nous rencontrer
               </h2>
-              <div className="flex items-start gap-2 text-white/50 text-sm">
+              <div className="flex items-start gap-2 text-sm" style={{ color: "rgba(255,255,255,0.50)" }}>
                 <span className="shrink-0 mt-0.5"><IcoMapPin size={15} /></span>
                 {ADDRESS}
               </div>
@@ -245,8 +246,8 @@ export default function AProposPage() {
               </a>
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center text-white/80 rounded-xl px-7 py-3.5 font-semibold hover:text-white transition-colors"
-                style={{ border: "1px solid rgba(255,255,255,0.18)" }}
+                className="inline-flex items-center justify-center rounded-xl px-7 py-3.5 font-semibold hover:text-white transition-colors"
+                style={{ border: "1px solid rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.80)" }}
               >
                 Nous écrire →
               </Link>
