@@ -49,23 +49,25 @@ const faqs = [
 export default function FaqPage() {
   return (
     <div>
-      {/* ─── Header ─── */}
-      <section className="bg-[#0f172a] py-16 px-4">
-        <div className="max-w-6xl mx-auto">
-          <p className="text-blue-400 text-xs font-bold tracking-widest uppercase mb-3">
-            FAQ
-          </p>
+      {/* ── En-tête ── */}
+      <section className="py-20 px-4 relative overflow-hidden" style={{ background: "#0a1628" }}>
+        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+        <div className="relative max-w-6xl mx-auto">
+          <div className="flex items-center gap-3 mb-4">
+            <div className="h-px w-8 bg-green-500" />
+            <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">FAQ</span>
+          </div>
           <h1 className="font-bebas text-[52px] md:text-[72px] text-white leading-none mb-4">
             Questions fréquentes
           </h1>
-          <p className="text-white/60 text-base max-w-xl leading-relaxed">
+          <p className="text-white/50 text-base max-w-xl leading-relaxed">
             Trouvez rapidement les réponses à vos questions sur nos formations, tarifs et financement.
           </p>
         </div>
       </section>
 
-      {/* ─── FAQ ─── */}
-      <section className="py-16 px-4 bg-white">
+      {/* ── FAQ ── */}
+      <section className="py-20 px-4" style={{ background: "#0a1628" }}>
         <div className="max-w-3xl mx-auto">
           <Reveal variant="bottom">
             <div className="space-y-2 mb-16">
@@ -77,26 +79,38 @@ export default function FaqPage() {
 
           {/* CTA */}
           <Reveal variant="scale">
-            <div className="bg-[#f8fafc] rounded-xl border border-gray-100 p-8 text-center">
-              <h2 className="font-bebas text-[32px] text-gray-900 leading-none mb-2">
-                Vous n'avez pas trouvé votre réponse ?
-              </h2>
-              <p className="text-gray-500 text-sm mb-6">
-                Notre équipe est disponible pour répondre à toutes vos questions.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <a
-                  href={`tel:${PHONE}`}
-                  className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white rounded-lg px-7 py-3 font-bold hover:bg-blue-700 transition-colors"
-                >
-                  <IcoPhone /> Appeler
-                </a>
-                <Link
-                  href="/contact"
-                  className="inline-flex items-center justify-center border border-gray-300 text-gray-800 rounded-lg px-7 py-3 font-bold hover:bg-gray-50 transition-colors"
-                >
-                  Envoyer un message →
-                </Link>
+            <div
+              className="rounded-2xl p-10 text-center relative overflow-hidden"
+              style={{ background: "#132540", border: "1px solid rgba(255,255,255,0.08)" }}
+            >
+              <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
+              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent" />
+              <div className="relative">
+                <div className="flex items-center justify-center gap-3 mb-4">
+                  <div className="h-px w-8 bg-green-500" />
+                  <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">On est là</span>
+                  <div className="h-px w-8 bg-green-500" />
+                </div>
+                <h2 className="font-bebas text-[34px] md:text-[42px] text-white leading-none mb-3">
+                  Vous n&apos;avez pas trouvé votre réponse ?
+                </h2>
+                <p className="text-white/45 text-sm mb-8 max-w-md mx-auto leading-relaxed">
+                  Notre équipe est disponible pour répondre à toutes vos questions sur les formations, tarifs et financement.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <a
+                    href={`tel:${PHONE}`}
+                    className="shine-btn inline-flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold hover:bg-green-700 transition-colors shadow-md shadow-green-900/30"
+                  >
+                    <IcoPhone /> Appeler
+                  </a>
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center border border-white/15 text-white/80 rounded-xl px-7 py-3.5 font-semibold hover:bg-white/8 hover:text-white transition-colors"
+                  >
+                    Envoyer un message →
+                  </Link>
+                </div>
               </div>
             </div>
           </Reveal>
