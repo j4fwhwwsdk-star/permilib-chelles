@@ -76,14 +76,12 @@ export default function AvisPage() {
             {avis.map((a) => (
               <div
                 key={`${a.name}-${a.date}`}
-                className="group relative rounded-2xl p-7 overflow-hidden transition-all duration-400 hover:-translate-y-1"
+                className="group relative rounded-2xl p-7 overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-green-500/20"
                 style={{
                   background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
                   border: "1px solid rgba(255,255,255,0.09)",
                   boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(0,0,0,0.40), 0 0 0 1px rgba(34,197,94,0.15)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.25)"; }}
               >
                 <div className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" style={{ background: "linear-gradient(90deg, #16a34a, #22c55e)" }} />
 

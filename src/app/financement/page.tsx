@@ -112,14 +112,12 @@ export default function FinancementPage() {
             {options.map((opt) => (
               <div
                 key={opt.title}
-                className="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1"
+                className="group rounded-2xl overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-green-500/20"
                 style={{
                   background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
                   border: "1px solid rgba(255,255,255,0.09)",
                   boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(0,0,0,0.40), 0 0 0 1px rgba(34,197,94,0.15)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.25)"; }}
               >
                 {/* En-tête */}
                 <div className="flex items-center justify-between px-7 py-5 border-b" style={{ borderColor: "rgba(255,255,255,0.07)", background: "rgba(0,0,0,0.15)" }}>

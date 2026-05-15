@@ -81,14 +81,12 @@ export default function AProposPage() {
               ].map((s) => (
                 <div
                   key={s.label}
-                  className="group rounded-2xl p-6 text-center transition-all duration-400 hover:-translate-y-1"
+                  className="group rounded-2xl p-6 text-center transition-all duration-400 hover:-translate-y-1 hover:border-green-500/20"
                   style={{
                     background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
                     border: "1px solid rgba(255,255,255,0.09)",
                     boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
                   }}
-                  onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 8px 32px rgba(0,0,0,0.40), 0 0 0 1px rgba(34,197,94,0.15)"; }}
-                  onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(0,0,0,0.25)"; }}
                 >
                   <div className="font-bebas text-[48px] leading-none mb-1" style={{ color: s.color }}>{s.value}</div>
                   <div className="text-white/70 text-xs font-semibold">{s.label}</div>
@@ -116,14 +114,12 @@ export default function AProposPage() {
             {valeurs.map((v) => (
               <div
                 key={v.title}
-                className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-400 hover:-translate-y-1"
+                className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-400 hover:-translate-y-1 hover:border-green-500/25"
                 style={{
                   background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
                   border: "1px solid rgba(255,255,255,0.09)",
                   boxShadow: "0 4px 20px rgba(0,0,0,0.25)",
                 }}
-                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 36px rgba(0,0,0,0.40), 0 0 0 1px rgba(34,197,94,0.20)"; }}
-                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 20px rgba(0,0,0,0.25)"; }}
               >
                 <div
                   className="absolute top-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-400 origin-left"
