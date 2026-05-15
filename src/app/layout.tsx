@@ -68,7 +68,8 @@ export default function RootLayout({
         <CustomCursor />
         <Header />
         {/* pb-24 mobile : dégage le BottomNav fixe (64px + safe area) */}
-        <main className="flex-1 pb-24 md:pb-0">{children}</main>
+        {/* pt-16 = hauteur header fixe (64px) — pb-24 = espace BottomNav mobile */}
+        <main className="flex-1 pt-16 pb-24 md:pb-0">{children}</main>
         <Footer />
         <BottomNav />
         <Suspense><GoogleAnalytics /></Suspense>
