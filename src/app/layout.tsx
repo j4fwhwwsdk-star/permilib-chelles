@@ -8,7 +8,6 @@ import GoogleAnalytics from "@/components/GoogleAnalytics";
 import ScrollToTop from "@/components/layout/ScrollToTop";
 import PageTransitionOverlay from "@/components/layout/PageTransitionOverlay";
 import CustomCursor from "@/components/layout/CustomCursor";
-import BottomNav from "@/components/layout/BottomNav";
 import DecorLayer from "@/components/layout/DecorLayer";
 import { CITY, SCHOOL_NAME, PHONE } from "@/lib/site";
 
@@ -67,11 +66,8 @@ export default function RootLayout({
         <Suspense><PageTransitionOverlay /></Suspense>
         <CustomCursor />
         <Header />
-        {/* pb-24 mobile : dégage le BottomNav fixe (64px + safe area) */}
-        {/* pt-16 = hauteur header fixe (64px) — pb-24 = espace BottomNav mobile */}
-        <main className="flex-1 pt-16 pb-24 md:pb-0">{children}</main>
+        <main className="flex-1 pt-16">{children}</main>
         <Footer />
-        <BottomNav />
         <Suspense><GoogleAnalytics /></Suspense>
         <script
           type="application/ld+json"

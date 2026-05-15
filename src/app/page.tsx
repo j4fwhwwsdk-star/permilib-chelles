@@ -4,8 +4,6 @@ import Reveal from "@/components/ui/Reveal";
 import CountUp from "@/components/ui/CountUp";
 import GoogleBadge from "@/components/ui/GoogleBadge";
 import HeroSection from "@/components/sections/HeroSection";
-import { ScrollOrb } from "@/components/ui/ScrollOrb";
-import { FloatingParticles } from "@/components/ui/FloatingParticles";
 import { SectionLine } from "@/components/ui/SectionLine";
 import { buildMetadata } from "@/lib/metadata";
 import {
@@ -110,42 +108,40 @@ export default function HomePage() {
           ║  MARQUEE — défilement infini                         ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
-        className="marquee-container overflow-hidden py-3.5"
+        className="marquee-container overflow-hidden py-4"
         style={{
-          background: "#1a3a58",
-          borderTop:    "1px solid rgba(255,255,255,0.04)",
-          borderBottom: "1px solid rgba(255,255,255,0.04)",
+          background:   "#f8fafc",
+          borderTop:    "1px solid #e5e7eb",
+          borderBottom: "1px solid #e5e7eb",
         }}
       >
         <div className="marquee-track">
-          {/* Premier set visible */}
           {TRUST_ITEMS.map((item, i) => (
             <span
               key={i}
-              className="flex items-center gap-2 text-xs font-medium shrink-0 mx-7"
-              style={{ color: "rgba(255,255,255,0.32)" }}
+              className="flex items-center gap-2 text-xs font-semibold shrink-0 mx-7"
+              style={{ color: "#64748b" }}
             >
-              <span style={{ color: "rgba(34,197,94,0.65)" }}>{item.icon}</span>
+              <span style={{ color: "#16a34a" }}>{item.icon}</span>
               {item.label}
               <span
                 className="inline-block w-px h-3 ml-5"
-                style={{ background: "rgba(255,255,255,0.07)" }}
+                style={{ background: "rgba(0,0,0,0.10)" }}
               />
             </span>
           ))}
-          {/* Doublon pour le loop sans coupure */}
           {TRUST_ITEMS.map((item, i) => (
             <span
               key={`b-${i}`}
               aria-hidden="true"
-              className="flex items-center gap-2 text-xs font-medium shrink-0 mx-7"
-              style={{ color: "rgba(255,255,255,0.32)" }}
+              className="flex items-center gap-2 text-xs font-semibold shrink-0 mx-7"
+              style={{ color: "#64748b" }}
             >
-              <span style={{ color: "rgba(34,197,94,0.65)" }}>{item.icon}</span>
+              <span style={{ color: "#16a34a" }}>{item.icon}</span>
               {item.label}
               <span
                 className="inline-block w-px h-3 ml-5"
-                style={{ background: "rgba(255,255,255,0.07)" }}
+                style={{ background: "rgba(0,0,0,0.10)" }}
               />
             </span>
           ))}
@@ -159,24 +155,7 @@ export default function HomePage() {
           ║  BENTO GRID — stats + avantages fusionnés            ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section className="relative py-28 px-4 overflow-hidden"
-        style={{ background: "linear-gradient(145deg, #0c2040 0%, #0f2847 55%, #0d2244 100%)" }}>
-
-        {/* Orbes vert clair + vert émeraude */}
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(74,222,128,0.75) 0%, rgba(34,197,94,0.35) 45%, transparent 70%)"
-          size={420} top="-80px" right="-60px" blurPx={70}
-          floatDuration={8} floatDelay={0} enterDelay={0}
-        />
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(22,163,74,0.80) 0%, rgba(22,163,74,0.35) 45%, transparent 70%)"
-          size={300} bottom="-60px" left="-40px" blurPx={65}
-          floatDuration={9} floatDelay={1.2} enterDelay={0.3}
-        />
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(240,253,244,0.50) 0%, rgba(240,253,244,0.20) 50%, transparent 70%)"
-          size={200} top="40%" left="40%" blurPx={55}
-          floatDuration={11} floatDelay={0.6} enterDelay={0.5}
-        />
+        style={{ background: "#ffffff" }}>
 
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:[grid-auto-rows:170px]">
@@ -185,30 +164,29 @@ export default function HomePage() {
             <div
               className="col-span-2 md:row-span-2 relative overflow-hidden rounded-2xl p-7 flex flex-col justify-between min-h-[200px]"
               style={{
-                background: "linear-gradient(145deg, #132540 0%, #182c48 100%)",
-                border:     "1px solid rgba(22,163,74,0.16)",
+                background: "linear-gradient(145deg, #f0fdf4 0%, #ecfdf5 100%)",
+                border:     "1px solid rgba(22,163,74,0.20)",
+                boxShadow:  "0 4px 24px rgba(22,163,74,0.08)",
               }}
             >
-              {/* Ligne glow top */}
+              {/* Ligne verte top */}
               <div
-                className="absolute top-0 left-0 right-0 h-px"
+                className="absolute top-0 left-0 right-0 h-0.5 rounded-full"
                 style={{ background: "linear-gradient(90deg, transparent, rgba(22,163,74,0.55) 50%, transparent)" }}
               />
-              {/* Aurora */}
-              <div className="absolute inset-0 bg-aurora opacity-70 pointer-events-none" />
 
               <div className="relative z-10">
-                <div className="flex gap-0.5 text-yellow-400 mb-4">
+                <div className="flex gap-0.5 text-yellow-500 mb-4">
                   {[...Array(5)].map((_, i) => <IcoStar key={i} s={15} />)}
                 </div>
                 <div
-                  className="font-bebas leading-none mb-1"
-                  style={{ fontSize: "clamp(52px, 8vw, 76px)", color: "#fff", textShadow: "0 0 30px rgba(34,197,94,0.35), 0 0 60px rgba(34,197,94,0.15)" }}
+                  className="font-bebas leading-none mb-1 gradient-text"
+                  style={{ fontSize: "clamp(52px, 8vw, 76px)" }}
                 >
                   <CountUp value="5" />/5
                 </div>
-                <div className="font-semibold text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>Note Google vérifiée</div>
-                <div className="text-xs mt-1" style={{ color: "rgba(255,255,255,0.35)" }}>100% avis positifs</div>
+                <div className="font-semibold text-sm" style={{ color: "#0f172a" }}>Note Google vérifiée</div>
+                <div className="text-xs mt-1 font-medium" style={{ color: "#6b7280" }}>100% avis positifs</div>
               </div>
 
               <div className="relative z-10 mt-5">
@@ -220,13 +198,13 @@ export default function HomePage() {
             <div className="bento-cell card-border-glow rounded-2xl p-5 flex flex-col justify-between">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
-                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
+                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.18)", color: "#16a34a" }}
               >
                 <IcoShield s={16} />
               </div>
               <div className="mt-4">
-                <div className="font-bold text-white text-sm">Qualiopi</div>
-                <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>Certification d'État</div>
+                <div className="font-bold text-sm" style={{ color: "#0f172a" }}>Qualiopi</div>
+                <div className="text-xs mt-0.5" style={{ color: "#6b7280" }}>Certification d'État</div>
               </div>
             </div>
 
@@ -234,13 +212,13 @@ export default function HomePage() {
             <div className="bento-cell card-border-glow rounded-2xl p-5 flex flex-col justify-between">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
-                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
+                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.18)", color: "#16a34a" }}
               >
                 <IcoCard s={16} />
               </div>
               <div className="mt-4">
-                <div className="font-bold text-white text-sm">CPF & Aide IDF</div>
-                <div className="text-xs mt-0.5 font-semibold" style={{ color: "#4ade80" }}>Jusqu'à 1 000€</div>
+                <div className="font-bold text-sm" style={{ color: "#0f172a" }}>CPF & Aide IDF</div>
+                <div className="text-xs mt-0.5 font-bold" style={{ color: "#16a34a" }}>Jusqu'à 1 000€</div>
               </div>
             </div>
 
@@ -248,13 +226,13 @@ export default function HomePage() {
             <div className="bento-cell card-border-glow rounded-2xl p-5 flex flex-col justify-between">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
-                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
+                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.18)", color: "#16a34a" }}
               >
                 <IcoUsers s={16} />
               </div>
               <div className="mt-4">
-                <div className="font-bold text-white text-sm">Conduite acc.</div>
-                <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>Permis dès 17 ans</div>
+                <div className="font-bold text-sm" style={{ color: "#0f172a" }}>Conduite acc.</div>
+                <div className="text-xs mt-0.5" style={{ color: "#6b7280" }}>Permis dès 17 ans</div>
               </div>
             </div>
 
@@ -262,13 +240,13 @@ export default function HomePage() {
             <div className="bento-cell card-border-glow rounded-2xl p-5 flex flex-col justify-between">
               <div
                 className="w-9 h-9 rounded-xl flex items-center justify-center mb-auto"
-                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.20)", color: "#4ade80" }}
+                style={{ background: "rgba(22,163,74,0.10)", border: "1px solid rgba(22,163,74,0.18)", color: "#16a34a" }}
               >
                 <IcoBolt s={16} />
               </div>
               <div className="mt-4">
-                <div className="font-bold text-white text-sm">Simulateur</div>
-                <div className="text-xs mt-0.5" style={{ color: "rgba(255,255,255,0.38)" }}>Inclus dans la formation</div>
+                <div className="font-bold text-sm" style={{ color: "#0f172a" }}>Simulateur</div>
+                <div className="text-xs mt-0.5" style={{ color: "#6b7280" }}>Inclus dans la formation</div>
               </div>
             </div>
 
@@ -277,22 +255,10 @@ export default function HomePage() {
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  PÉDAGOGIE — split dark                              ║
+          ║  PÉDAGOGIE — split light                             ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section className="relative overflow-hidden"
-        style={{ background: "linear-gradient(145deg, #172d48 0%, #1b3c5a 55%, #162e4c 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}>
-
-        {/* Orbe vert menthe */}
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(52,211,153,0.78) 0%, rgba(52,211,153,0.35) 45%, transparent 70%)"
-          size={380} top="-60px" right="10%" blurPx={72}
-          floatDuration={10} floatDelay={0.4} enterDelay={0.1}
-        />
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(240,253,244,0.55) 0%, rgba(240,253,244,0.22) 50%, transparent 70%)"
-          size={220} bottom="10%" right="30%" blurPx={60}
-          floatDuration={8} floatDelay={1.8} enterDelay={0.5}
-        />
+        style={{ background: "#f8fafc", borderTop: "1px solid #e5e7eb" }}>
 
         <div className="grid md:grid-cols-2 relative z-10">
 
@@ -308,20 +274,21 @@ export default function HomePage() {
             {/* Fondu droit vers la section texte */}
             <div
               className="absolute inset-0"
-              style={{ background: "linear-gradient(to right, transparent 60%, #080f1f)" }}
+              style={{ background: "linear-gradient(to right, transparent 55%, #f8fafc)" }}
             />
             {/* Badge */}
             <div
               className="absolute bottom-6 left-6 hidden md:flex items-center gap-2 rounded-xl px-4 py-2.5"
               style={{
-                background:           "rgba(8,15,31,0.88)",
+                background:           "rgba(255,255,255,0.92)",
                 backdropFilter:       "blur(12px)",
                 WebkitBackdropFilter: "blur(12px)",
-                border:               "1px solid rgba(255,255,255,0.08)",
+                border:               "1px solid rgba(22,163,74,0.18)",
+                boxShadow:            "0 4px 20px rgba(0,0,0,0.08)",
               }}
             >
-              <span style={{ color: "#4ade80" }}><IcoShield s={15} /></span>
-              <span className="text-white font-semibold text-sm">Certifié Qualiopi</span>
+              <span style={{ color: "#16a34a" }}><IcoShield s={15} /></span>
+              <span className="font-semibold text-sm" style={{ color: "#0f172a" }}>Certifié Qualiopi</span>
             </div>
           </Reveal>
 
@@ -330,15 +297,15 @@ export default function HomePage() {
             <div className="max-w-lg">
               <div className="flex items-center gap-3 mb-5">
                 <div className="h-px w-8 bg-green-500" />
-                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Notre pédagogie</span>
+                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#16a34a" }}>Notre pédagogie</span>
               </div>
 
-              <h2 className="font-bebas text-white leading-none mb-5"
-                style={{ fontSize: "clamp(42px, 5vw, 68px)" }}>
+              <h2 className="font-bebas leading-none mb-5"
+                style={{ fontSize: "clamp(42px, 5vw, 68px)", color: "#0f172a" }}>
                 Apprendre à conduire<br />
-                avec les <span className="gradient-text-bright">meilleurs</span>
+                avec les <span className="gradient-text">meilleurs</span>
               </h2>
-              <p className="mb-8 leading-[1.75]" style={{ fontSize: "17px", color: "rgba(255,255,255,0.55)" }}>
+              <p className="mb-8 leading-[1.75]" style={{ fontSize: "17px", color: "#64748b" }}>
                 Chez {SCHOOL_NAME}, chaque élève bénéficie d&apos;un accompagnement sur mesure.
                 Nos formateurs s&apos;adaptent à votre rythme dans un cadre bienveillant et professionnel.
               </p>
@@ -350,10 +317,10 @@ export default function HomePage() {
                   "Simulation de conduite incluse",
                   "Formation post-permis disponible",
                 ].map((item) => (
-                  <li key={item} className="flex items-center gap-3 text-sm" style={{ color: "rgba(255,255,255,0.62)" }}>
+                  <li key={item} className="flex items-center gap-3 text-sm" style={{ color: "#475569" }}>
                     <span
                       className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white"
-                      style={{ background: "#16a34a", boxShadow: "0 0 14px rgba(22,163,74,0.45)" }}
+                      style={{ background: "#16a34a", boxShadow: "0 0 12px rgba(22,163,74,0.30)" }}
                     >
                       <IcoCheck />
                     </span>
@@ -363,17 +330,17 @@ export default function HomePage() {
               </ul>
 
               <div className="flex items-center gap-2 mb-8">
-                <div className="flex gap-0.5 text-yellow-400">
+                <div className="flex gap-0.5 text-yellow-500">
                   {[...Array(5)].map((_, i) => <IcoStar key={i} s={12} />)}
                 </div>
-                <span className="text-sm font-semibold" style={{ color: "rgba(255,255,255,0.65)" }}>5/5</span>
-                <span className="text-sm" style={{ color: "rgba(255,255,255,0.30)" }}>— Meilleure auto-école de {CITY}</span>
+                <span className="text-sm font-bold" style={{ color: "#0f172a" }}>5/5</span>
+                <span className="text-sm" style={{ color: "#94a3b8" }}>— Meilleure auto-école de {CITY}</span>
               </div>
 
               <Link
                 href="/a-propos"
                 className="shine-btn inline-flex items-center gap-2 bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold text-sm hover:bg-green-700 transition-all duration-300"
-                style={{ boxShadow: "0 8px 24px rgba(22,163,74,0.30)" }}
+                style={{ boxShadow: "0 8px 24px rgba(22,163,74,0.28)" }}
               >
                 Découvrir l&apos;équipe <IcoArrow />
               </Link>
@@ -386,43 +353,30 @@ export default function HomePage() {
       <SectionLine className="px-8 md:px-20 py-0" opacity={0.45} />
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  FORMATIONS — spotlight dark                         ║
+          ║  FORMATIONS — spotlight light                        ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
         className="relative py-32 px-4 overflow-hidden"
-        style={{ background: "linear-gradient(145deg, #0c2040 0%, #0f2847 55%, #0d2244 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ background: "#ffffff", borderTop: "1px solid #e5e7eb" }}
       >
-        <div className="absolute inset-0 bg-grid opacity-[0.18] pointer-events-none" />
-
-        <FloatingParticles />
-
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(22,163,74,0.78) 0%, rgba(22,163,74,0.35) 45%, transparent 70%)"
-          size={500} top="20%" left="-100px" blurPx={75}
-          floatDuration={9} floatDelay={0.3} enterDelay={0}
-        />
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(240,253,244,0.52) 0%, rgba(240,253,244,0.22) 50%, transparent 70%)"
-          size={250} bottom="-40px" right="25%" blurPx={60}
-          floatDuration={11} floatDelay={1.6} enterDelay={0.4}
-        />
+        <div className="absolute inset-0 bg-grid-light opacity-[0.6] pointer-events-none" />
 
         <div className="relative max-w-6xl mx-auto">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-px w-8 bg-green-500 line-reveal" />
-                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Nos formations</span>
+                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#16a34a" }}>Nos formations</span>
               </div>
-              <h2 className="font-bebas text-white leading-none"
-                style={{ fontSize: "clamp(42px, 6vw, 72px)" }}>
-                Choisissez votre<br /><span className="gradient-text-bright">formation</span>
+              <h2 className="font-bebas leading-none"
+                style={{ fontSize: "clamp(42px, 6vw, 72px)", color: "#0f172a" }}>
+                Choisissez votre<br /><span className="gradient-text">formation</span>
               </h2>
             </div>
             <Link
               href="/formations"
-              className="link-underline font-semibold text-sm shrink-0 flex items-center gap-2 transition-colors duration-200"
-              style={{ color: "rgba(255,255,255,0.40)" }}
+              className="link-underline font-semibold text-sm shrink-0 flex items-center gap-2 transition-colors duration-200 hover:text-green-600"
+              style={{ color: "#94a3b8" }}
             >
               Toutes les formations <IcoArrow />
             </Link>
@@ -459,14 +413,14 @@ export default function HomePage() {
               >
                 {/* Ligne top glow au hover */}
                 <div
-                  className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: "linear-gradient(90deg, transparent, rgba(22,163,74,0.45) 50%, transparent)" }}
+                  className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-2xl"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(22,163,74,0.55) 50%, transparent)" }}
                 />
 
                 {/* Numéro watermark */}
                 <div
                   className="font-bebas text-[88px] leading-none mb-2 select-none -ml-1 -mt-4 transition-colors duration-300"
-                  style={{ color: "rgba(255,255,255,0.03)" }}
+                  style={{ color: "rgba(22,163,74,0.06)" }}
                 >
                   {f.num}
                 </div>
@@ -475,9 +429,9 @@ export default function HomePage() {
                 <span
                   className="inline-flex w-fit text-xs font-bold px-3 py-1 rounded-full mb-4"
                   style={{
-                    color:      "#4ade80",
-                    background: "rgba(22,163,74,0.10)",
-                    border:     "1px solid rgba(22,163,74,0.20)",
+                    color:      "#16a34a",
+                    background: "rgba(22,163,74,0.08)",
+                    border:     "1px solid rgba(22,163,74,0.18)",
                   }}
                 >
                   {f.tag}
@@ -486,17 +440,17 @@ export default function HomePage() {
                 {/* Icône */}
                 <div
                   className="mb-4 group-hover:scale-110 transition-transform duration-300 w-fit"
-                  style={{ color: "#4ade80" }}
+                  style={{ color: "#16a34a" }}
                 >
                   {f.icon}
                 </div>
 
-                <h3 className="font-bold text-white text-lg mb-2.5">{f.title}</h3>
-                <p className="text-sm leading-relaxed flex-1" style={{ color: "rgba(255,255,255,0.42)" }}>{f.desc}</p>
+                <h3 className="font-bold text-lg mb-2.5" style={{ color: "#0f172a" }}>{f.title}</h3>
+                <p className="text-sm leading-relaxed flex-1" style={{ color: "#64748b" }}>{f.desc}</p>
 
                 <div
-                  className="mt-6 flex items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:translate-x-1"
-                  style={{ color: "rgba(255,255,255,0.18)" }}
+                  className="mt-6 flex items-center gap-2 text-sm font-semibold transition-all duration-300 group-hover:translate-x-1 group-hover:text-green-600"
+                  style={{ color: "#94a3b8" }}
                 >
                   Voir la formation <IcoArrow />
                 </div>
@@ -510,35 +464,22 @@ export default function HomePage() {
       <SectionLine className="px-8 md:px-20 py-0" opacity={0.45} />
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  AVIS — dark cards                                   ║
+          ║  AVIS — light cards                                  ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
         className="relative py-32 px-4 overflow-hidden"
-        style={{ background: "linear-gradient(145deg, #172d48 0%, #1b3c5a 55%, #162e4c 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ background: "#f8fafc", borderTop: "1px solid #e5e7eb" }}
       >
-        <FloatingParticles />
-
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(52,211,153,0.75) 0%, rgba(52,211,153,0.35) 45%, transparent 70%)"
-          size={460} top="-60px" right="-80px" blurPx={72}
-          floatDuration={10} floatDelay={0} enterDelay={0}
-        />
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(74,222,128,0.70) 0%, rgba(74,222,128,0.30) 45%, transparent 70%)"
-          size={280} bottom="0px" left="5%" blurPx={65}
-          floatDuration={8} floatDelay={2} enterDelay={0.3}
-        />
-
         <div className="max-w-6xl mx-auto relative z-10">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
               <div className="flex items-center gap-3 mb-4">
                 <div className="h-px w-8 bg-green-500" />
-                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Témoignages</span>
+                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#16a34a" }}>Témoignages</span>
               </div>
-              <h2 className="font-bebas text-white leading-none"
-                style={{ fontSize: "clamp(42px, 6vw, 72px)" }}>
-                Ils ont eu leur <span className="gradient-text-bright">permis</span>
+              <h2 className="font-bebas leading-none"
+                style={{ fontSize: "clamp(42px, 6vw, 72px)", color: "#0f172a" }}>
+                Ils ont eu leur <span className="gradient-text">permis</span>
               </h2>
             </div>
             <div className="shrink-0">
@@ -556,50 +497,50 @@ export default function HomePage() {
                 key={a.name}
                 className="card-dark card-border-glow relative rounded-2xl p-7 flex flex-col overflow-hidden group"
               >
-                {/* Ligne top glow */}
+                {/* Ligne top glow au hover */}
                 <div
-                  className="absolute top-0 left-0 right-0 h-px opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: "linear-gradient(90deg, transparent, rgba(22,163,74,0.38) 50%, transparent)" }}
+                  className="absolute top-0 left-0 right-0 h-0.5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-t-2xl"
+                  style={{ background: "linear-gradient(90deg, transparent, rgba(22,163,74,0.45) 50%, transparent)" }}
                 />
 
                 {/* Guillemet déco */}
                 <div
-                  className="absolute top-5 right-6 font-bebas text-[64px] leading-none select-none transition-colors duration-300"
-                  style={{ color: "rgba(34,197,94,0.06)" }}
+                  className="absolute top-5 right-6 font-bebas text-[64px] leading-none select-none"
+                  style={{ color: "rgba(22,163,74,0.08)" }}
                 >
                   &ldquo;
                 </div>
 
-                <div className="flex gap-0.5 text-yellow-400 mb-4">
+                <div className="flex gap-0.5 text-yellow-500 mb-4">
                   {[...Array(a.note)].map((_, i) => <IcoStar key={i} s={13} />)}
                 </div>
 
-                <p className="text-sm leading-relaxed italic mb-6 flex-1 relative z-10" style={{ color: "rgba(255,255,255,0.48)" }}>
+                <p className="text-sm leading-relaxed italic mb-6 flex-1 relative z-10" style={{ color: "#64748b" }}>
                   &ldquo;{a.text}&rdquo;
                 </p>
 
                 <div
                   className="flex items-center justify-between pt-4"
-                  style={{ borderTop: "1px solid rgba(255,255,255,0.05)" }}
+                  style={{ borderTop: "1px solid #f1f5f9" }}
                 >
                   <div className="flex items-center gap-3">
                     <div
                       className="w-10 h-10 text-white rounded-xl flex items-center justify-center font-bold text-base shrink-0"
-                      style={{ background: "#16a34a", boxShadow: "0 0 16px rgba(22,163,74,0.32)" }}
+                      style={{ background: "#16a34a", boxShadow: "0 0 14px rgba(22,163,74,0.25)" }}
                     >
                       {a.name[0]}
                     </div>
                     <div>
-                      <span className="font-semibold text-white text-sm block">{a.name}</span>
-                      <span className="text-xs" style={{ color: "rgba(255,255,255,0.32)" }}>Élève vérifié</span>
+                      <span className="font-semibold text-sm block" style={{ color: "#0f172a" }}>{a.name}</span>
+                      <span className="text-xs font-medium" style={{ color: "#9ca3af" }}>Élève vérifié</span>
                     </div>
                   </div>
                   <span
-                    className="text-[11px] font-semibold px-2.5 py-1 rounded-full"
+                    className="text-[11px] font-bold px-2.5 py-1 rounded-full"
                     style={{
-                      color:      "#4ade80",
-                      background: "rgba(22,163,74,0.10)",
-                      border:     "1px solid rgba(22,163,74,0.20)",
+                      color:      "#16a34a",
+                      background: "rgba(22,163,74,0.08)",
+                      border:     "1px solid rgba(22,163,74,0.18)",
                     }}
                   >
                     {a.formation}
@@ -612,10 +553,10 @@ export default function HomePage() {
           <Reveal variant="bottom" className="text-center">
             <Link
               href="/avis"
-              className="shine-btn inline-flex items-center gap-2 rounded-xl px-8 py-3.5 font-semibold text-sm transition-all duration-300"
+              className="inline-flex items-center gap-2 rounded-xl px-8 py-3.5 font-semibold text-sm transition-all duration-200 hover:border-green-300 hover:text-green-600"
               style={{
-                border: "1px solid rgba(255,255,255,0.08)",
-                color:  "rgba(255,255,255,0.55)",
+                border: "1px solid #e2e8f0",
+                color:  "#64748b",
               }}
             >
               Voir tous les avis <IcoArrow />
@@ -628,35 +569,24 @@ export default function HomePage() {
       <SectionLine className="px-8 md:px-20 py-0" opacity={0.45} />
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  FINANCEMENT — dark                                  ║
+          ║  FINANCEMENT — light                                 ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
         className="relative py-32 px-4 overflow-hidden"
-        style={{ background: "linear-gradient(145deg, #0c2040 0%, #0f2847 55%, #0d2244 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ background: "#ffffff", borderTop: "1px solid #e5e7eb" }}
       >
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(74,222,128,0.75) 0%, rgba(74,222,128,0.35) 45%, transparent 70%)"
-          size={400} top="-40px" left="-60px" blurPx={72}
-          floatDuration={9} floatDelay={0.5} enterDelay={0}
-        />
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(22,163,74,0.78) 0%, rgba(22,163,74,0.35) 45%, transparent 70%)"
-          size={300} bottom="-60px" right="-40px" blurPx={65}
-          floatDuration={11} floatDelay={1.4} enterDelay={0.35}
-        />
-
         <div className="max-w-6xl mx-auto relative z-10">
           <div className="grid md:grid-cols-2 gap-16 items-center">
 
             <Reveal variant="left">
               <div className="flex items-center gap-3 mb-5">
                 <div className="h-px w-8 bg-green-500" />
-                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Financement</span>
+                <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#16a34a" }}>Financement</span>
               </div>
-              <h2 className="font-bebas text-[42px] md:text-[56px] text-white leading-none mb-5">
-                On vous aide à<br /><span className="gradient-text-bright">financer votre permis</span>
+              <h2 className="font-bebas text-[42px] md:text-[56px] leading-none mb-5" style={{ color: "#0f172a" }}>
+                On vous aide à<br /><span className="gradient-text">financer votre permis</span>
               </h2>
-              <p className="text-sm leading-relaxed mb-8" style={{ color: "rgba(255,255,255,0.48)" }}>
+              <p className="text-sm leading-relaxed mb-8" style={{ color: "#64748b" }}>
                 Plusieurs dispositifs existent pour financer votre formation à {CITY} :
                 CPF, aide Région Île-de-France (jusqu'à 1 000€), permis à 1€/jour.
                 Nous vous accompagnons dans toutes les démarches.
@@ -670,11 +600,11 @@ export default function HomePage() {
                 ].map((b) => (
                   <span
                     key={b.label}
-                    className="flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-full"
+                    className="flex items-center gap-2 text-sm font-bold px-4 py-2 rounded-full"
                     style={{
-                      color:      "#4ade80",
-                      background: "rgba(22,163,74,0.10)",
-                      border:     "1px solid rgba(22,163,74,0.20)",
+                      color:      "#16a34a",
+                      background: "rgba(22,163,74,0.08)",
+                      border:     "1px solid rgba(22,163,74,0.18)",
                     }}
                   >
                     {b.icon}{b.label}
@@ -686,16 +616,16 @@ export default function HomePage() {
                 <Link
                   href="/financement"
                   className="shine-btn bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold text-sm text-center hover:bg-green-700 transition-all duration-300"
-                  style={{ boxShadow: "0 8px 24px rgba(22,163,74,0.30)" }}
+                  style={{ boxShadow: "0 8px 24px rgba(22,163,74,0.28)" }}
                 >
                   Voir toutes les options →
                 </Link>
                 <a
                   href={`tel:${PHONE}`}
-                  className="rounded-xl px-7 py-3.5 font-semibold text-sm text-center transition-all duration-300 flex items-center justify-center gap-2"
+                  className="rounded-xl px-7 py-3.5 font-semibold text-sm text-center transition-all duration-200 flex items-center justify-center gap-2 hover:border-green-300 hover:text-green-600"
                   style={{
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    color:  "rgba(255,255,255,0.55)",
+                    border: "1px solid #e2e8f0",
+                    color:  "#374151",
                   }}
                 >
                   <IcoPhone /> Nous appeler
@@ -709,29 +639,29 @@ export default function HomePage() {
                 {/* Carte centrale */}
                 <div
                   className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 card-dark rounded-2xl w-36 h-36 flex flex-col items-center justify-center gap-2 animate-float"
-                  style={{ border: "1px solid rgba(22,163,74,0.22)" }}
+                  style={{ boxShadow: "0 8px 32px rgba(22,163,74,0.15)" }}
                 >
-                  <span style={{ color: "#4ade80" }}><IcoCard s={28} /></span>
-                  <span className="text-white font-bold text-sm">CPF</span>
-                  <span className="text-xs font-medium" style={{ color: "rgba(255,255,255,0.35)" }}>Sans avance</span>
+                  <span style={{ color: "#16a34a" }}><IcoCard s={28} /></span>
+                  <span className="font-bold text-sm" style={{ color: "#0f172a" }}>CPF</span>
+                  <span className="text-xs font-medium" style={{ color: "#6b7280" }}>Sans avance</span>
                 </div>
                 {/* Haut gauche */}
                 <div
                   className="absolute top-0 left-0 card-dark rounded-2xl w-28 h-28 flex flex-col items-center justify-center gap-1.5 animate-float"
                   style={{ animationDelay: "0.8s" }}
                 >
-                  <span style={{ color: "#4ade80" }}><IcoBuilding s={22} /></span>
-                  <span className="text-white font-bold text-xs">Aide IDF</span>
-                  <span className="text-xs font-semibold" style={{ color: "#4ade80" }}>1 000€</span>
+                  <span style={{ color: "#16a34a" }}><IcoBuilding s={22} /></span>
+                  <span className="font-bold text-xs" style={{ color: "#0f172a" }}>Aide IDF</span>
+                  <span className="text-xs font-bold" style={{ color: "#16a34a" }}>1 000€</span>
                 </div>
                 {/* Bas droite */}
                 <div
                   className="absolute bottom-0 right-0 card-dark rounded-2xl w-28 h-28 flex flex-col items-center justify-center gap-1.5 animate-float"
                   style={{ animationDelay: "1.4s" }}
                 >
-                  <span style={{ color: "#4ade80" }}><IcoShield s={22} /></span>
-                  <span className="text-white font-bold text-xs">Permis</span>
-                  <span className="text-xs font-semibold" style={{ color: "#4ade80" }}>1€/jour</span>
+                  <span style={{ color: "#16a34a" }}><IcoShield s={22} /></span>
+                  <span className="font-bold text-xs" style={{ color: "#0f172a" }}>Permis</span>
+                  <span className="text-xs font-bold" style={{ color: "#16a34a" }}>1€/jour</span>
                 </div>
               </div>
             </Reveal>
@@ -744,34 +674,23 @@ export default function HomePage() {
       <SectionLine className="px-8 md:px-20 py-0" opacity={0.45} />
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  HORAIRES — dark, table propre                       ║
+          ║  HORAIRES — light, table propre                      ║
           ╚══════════════════════════════════════════════════════╝ */}
       <section
         className="relative py-28 px-4 overflow-hidden"
-        style={{ background: "linear-gradient(145deg, #172d48 0%, #1b3c5a 55%, #162e4c 100%)", borderTop: "1px solid rgba(255,255,255,0.04)" }}
+        style={{ background: "#f0fdf4", borderTop: "1px solid #e5e7eb" }}
       >
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(52,211,153,0.75) 0%, rgba(52,211,153,0.35) 45%, transparent 70%)"
-          size={380} top="-50px" right="10%" blurPx={72}
-          floatDuration={10} floatDelay={0.2} enterDelay={0}
-        />
-        <ScrollOrb
-          color="radial-gradient(circle, rgba(240,253,244,0.52) 0%, rgba(240,253,244,0.22) 50%, transparent 70%)"
-          size={200} bottom="5%" left="15%" blurPx={55}
-          floatDuration={8} floatDelay={1.5} enterDelay={0.4}
-        />
-
         <div className="max-w-4xl mx-auto relative z-10">
           <Reveal variant="bottom" className="text-center mb-12">
             <div className="flex items-center justify-center gap-3 mb-4">
               <div className="h-px w-8 bg-green-500" />
-              <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#4ade80" }}>Horaires</span>
+              <span className="text-xs font-bold tracking-[0.15em] uppercase" style={{ color: "#16a34a" }}>Horaires</span>
               <div className="h-px w-8 bg-green-500" />
             </div>
-            <h2 className="font-bebas text-[40px] md:text-[56px] text-white leading-none mb-3">
-              Quand nous <span className="gradient-text-bright">trouver ?</span>
+            <h2 className="font-bebas text-[40px] md:text-[56px] leading-none mb-3" style={{ color: "#0f172a" }}>
+              Quand nous <span className="gradient-text">trouver ?</span>
             </h2>
-            <p className="text-sm flex items-center justify-center gap-1.5" style={{ color: "rgba(255,255,255,0.35)" }}>
+            <p className="text-sm flex items-center justify-center gap-1.5 font-medium" style={{ color: "#6b7280" }}>
               <IcoClock /> {SCHOOL_NAME} — {ADDRESS}
             </p>
           </Reveal>
@@ -782,30 +701,29 @@ export default function HomePage() {
             <div className="card-dark card-border-glow rounded-2xl p-7">
               <div
                 className="flex items-center gap-3 mb-5 pb-4"
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+                style={{ borderBottom: "1px solid #f1f5f9" }}
               >
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center"
-                  style={{ background: "#16a34a", boxShadow: "0 0 16px rgba(22,163,74,0.38)" }}
+                  style={{ background: "#16a34a", boxShadow: "0 0 14px rgba(22,163,74,0.28)" }}
                 >
                   <span className="text-white text-[10px] font-bold tracking-wide">CODE</span>
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-sm">Cours de Code</h3>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.32)" }}>Apprentissage du code de la route</p>
+                  <h3 className="font-bold text-sm" style={{ color: "#0f172a" }}>Cours de Code</h3>
+                  <p className="text-xs" style={{ color: "#6b7280" }}>Apprentissage du code de la route</p>
                 </div>
               </div>
               {HORAIRES_CODE.map(({ jour, heures }) => (
                 <div
                   key={jour}
                   className="flex justify-between items-center text-sm py-2.5 last:pb-0"
-                  style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+                  style={{ borderBottom: "1px solid #f1f5f9" }}
                 >
-                  <span className="font-medium" style={{ color: "rgba(255,255,255,0.48)" }}>{jour}</span>
-                  <span className={`font-bold text-right whitespace-pre-line text-xs leading-relaxed ${
-                    heures === "Fermé" ? "" : ""
-                  }`}
-                    style={{ color: heures === "Fermé" ? "rgba(248,113,113,0.65)" : "#4ade80" }}
+                  <span className="font-medium" style={{ color: "#64748b" }}>{jour}</span>
+                  <span
+                    className="font-bold text-right whitespace-pre-line text-xs leading-relaxed"
+                    style={{ color: heures === "Fermé" ? "rgba(220,38,38,0.75)" : "#16a34a" }}
                   >
                     {heures}
                   </span>
@@ -817,33 +735,33 @@ export default function HomePage() {
             <div className="card-dark card-border-glow rounded-2xl p-7">
               <div
                 className="flex items-center gap-3 mb-5 pb-4"
-                style={{ borderBottom: "1px solid rgba(255,255,255,0.05)" }}
+                style={{ borderBottom: "1px solid #f1f5f9" }}
               >
                 <div
                   className="w-9 h-9 rounded-xl flex items-center justify-center"
                   style={{
-                    background: "rgba(255,255,255,0.05)",
-                    border:     "1px solid rgba(255,255,255,0.08)",
-                    color:      "rgba(255,255,255,0.65)",
+                    background: "#f8fafc",
+                    border:     "1px solid #e5e7eb",
+                    color:      "#374151",
                   }}
                 >
                   <IcoCar s={18} />
                 </div>
                 <div>
-                  <h3 className="font-bold text-white text-sm">Conduite</h3>
-                  <p className="text-xs" style={{ color: "rgba(255,255,255,0.32)" }}>Leçons de conduite sur route</p>
+                  <h3 className="font-bold text-sm" style={{ color: "#0f172a" }}>Conduite</h3>
+                  <p className="text-xs" style={{ color: "#6b7280" }}>Leçons de conduite sur route</p>
                 </div>
               </div>
               {HORAIRES_CONDUITE.map(({ jour, heures }) => (
                 <div
                   key={jour}
                   className="flex justify-between items-center text-sm py-2.5 last:pb-0"
-                  style={{ borderBottom: "1px solid rgba(255,255,255,0.04)" }}
+                  style={{ borderBottom: "1px solid #f1f5f9" }}
                 >
-                  <span className="font-medium" style={{ color: "rgba(255,255,255,0.48)" }}>{jour}</span>
+                  <span className="font-medium" style={{ color: "#64748b" }}>{jour}</span>
                   <span
                     className="font-bold text-right whitespace-pre-line text-xs leading-relaxed"
-                    style={{ color: heures === "Fermé" ? "rgba(248,113,113,0.65)" : "#4ade80" }}
+                    style={{ color: heures === "Fermé" ? "rgba(220,38,38,0.75)" : "#16a34a" }}
                   >
                     {heures}
                   </span>
@@ -856,11 +774,8 @@ export default function HomePage() {
           <Reveal variant="bottom" className="text-center">
             <a
               href={`tel:${PHONE}`}
-              className="shine-btn inline-flex items-center gap-2.5 rounded-xl px-8 py-4 font-bold text-sm text-white transition-all duration-300 hover:bg-green-600 hover:border-green-600"
-              style={{
-                background: "rgba(255,255,255,0.05)",
-                border:     "1px solid rgba(255,255,255,0.08)",
-              }}
+              className="shine-btn inline-flex items-center gap-2.5 rounded-xl px-8 py-4 font-bold text-sm text-white transition-all duration-300 bg-green-600 hover:bg-green-700"
+              style={{ boxShadow: "0 8px 24px rgba(22,163,74,0.28)" }}
             >
               <IcoPhone s={16} /> {PHONE} — Prendre rendez-vous
             </a>
@@ -869,10 +784,10 @@ export default function HomePage() {
       </section>
 
       {/* ╔══════════════════════════════════════════════════════╗
-          ║  CTA FINAL — mesh gradient dramatique                ║
+          ║  CTA FINAL — light gradient premium                  ║
           ╚══════════════════════════════════════════════════════╝ */}
-      <section className="relative py-36 px-4 overflow-hidden bg-mesh-cta">
-        <div className="absolute inset-0 bg-grid opacity-[0.14] pointer-events-none" />
+      <section className="relative py-36 px-4 overflow-hidden bg-mesh-cta" style={{ borderTop: "1px solid rgba(22,163,74,0.15)" }}>
+        <div className="absolute inset-0 bg-grid-light opacity-[0.8] pointer-events-none" />
 
         <Reveal variant="scale" className="relative z-10 max-w-4xl mx-auto text-center">
 
@@ -880,22 +795,22 @@ export default function HomePage() {
           <div
             className="inline-flex items-center gap-2 mb-8 px-4 py-2 rounded-full"
             style={{
-              border:     "1px solid rgba(22,163,74,0.22)",
-              background: "rgba(22,163,74,0.10)",
+              border:     "1px solid rgba(22,163,74,0.25)",
+              background: "rgba(22,163,74,0.08)",
             }}
           >
             <span className="dot-live" />
-            <span className="text-xs font-bold tracking-[0.12em] uppercase" style={{ color: "#4ade80" }}>
+            <span className="text-xs font-bold tracking-[0.12em] uppercase" style={{ color: "#16a34a" }}>
               Disponible maintenant
             </span>
           </div>
 
-          <h2 className="font-bebas text-white leading-none mb-4"
-            style={{ fontSize: "clamp(52px, 9vw, 100px)" }}>
+          <h2 className="font-bebas leading-none mb-4"
+            style={{ fontSize: "clamp(52px, 9vw, 100px)", color: "#0f172a" }}>
             Prêt à passer<br />
-            <span className="gradient-text-bright">votre permis ?</span>
+            <span className="gradient-text">votre permis ?</span>
           </h2>
-          <p className="text-lg mb-10 leading-[1.7]" style={{ color: "rgba(255,255,255,0.45)" }}>
+          <p className="text-lg mb-10 leading-[1.7] font-medium" style={{ color: "#64748b" }}>
             Devis gratuit · CPF · Aide IDF · Permis 1€/jour
           </p>
 
@@ -903,16 +818,17 @@ export default function HomePage() {
             <a
               href={`tel:${PHONE}`}
               className="shine-btn bg-green-600 text-white rounded-xl px-8 py-4 font-bold text-base text-center hover:bg-green-700 transition-all duration-300 flex items-center justify-center gap-2"
-              style={{ boxShadow: "0 8px 32px rgba(22,163,74,0.42)" }}
+              style={{ boxShadow: "0 8px 32px rgba(22,163,74,0.35)" }}
             >
               <IcoPhone /> {PHONE}
             </a>
             <Link
               href="/contact"
-              className="rounded-xl px-8 py-4 font-semibold text-base text-center transition-all duration-300"
+              className="rounded-xl px-8 py-4 font-semibold text-base text-center transition-all duration-200 hover:border-green-400 hover:text-green-700"
               style={{
-                border: "1px solid rgba(255,255,255,0.12)",
-                color:  "rgba(255,255,255,0.65)",
+                border: "1px solid rgba(22,163,74,0.25)",
+                color:  "#374151",
+                background: "rgba(255,255,255,0.7)",
               }}
             >
               Nous contacter →

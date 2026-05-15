@@ -455,7 +455,7 @@ export default function HeroSection() {
        * la StickyCallBar (fixed ~74px en bas)
        */}
       <motion.div
-        className="absolute bottom-24 sm:bottom-7 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 text-white/30"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-1 text-white/30"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1.2, duration: 0.6 }}

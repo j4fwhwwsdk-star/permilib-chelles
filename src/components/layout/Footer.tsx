@@ -40,9 +40,9 @@ const IcoStar = () => (
 
 export default function Footer() {
   return (
-    <footer className="text-white relative overflow-hidden" style={{ background: "#060e1a" }}>
+    <footer className="relative overflow-hidden" style={{ background: "#0f172a", color: "#f8fafc" }}>
       {/* Ligne verte top */}
-      <div className="h-px bg-gradient-to-r from-transparent via-green-500/70 to-transparent" />
+      <div className="h-px bg-gradient-to-r from-transparent via-green-500/60 to-transparent" />
 
       {/* Orb décoratif */}
       <div
