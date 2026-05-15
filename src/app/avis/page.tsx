@@ -22,85 +22,92 @@ const avis = [
 
 export default function AvisPage() {
   return (
-    <div>
-      {/* ── En-tête ── */}
-      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+    <div style={{ background: "linear-gradient(180deg, #081428 0%, #0b1d38 100%)", minHeight: "100vh" }}>
+
+      {/* ── Hero ── */}
+      <section className="relative pt-24 pb-20 px-4 overflow-hidden">
+        <div className="absolute -top-10 right-0 w-80 h-80 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(234,179,8,0.08) 0%, transparent 70%)" }} />
+        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-8 bg-green-500" />
-            <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">Témoignages</span>
+            <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Témoignages</span>
           </div>
-          <h1 className="font-bebas text-[52px] md:text-[72px] text-white leading-none mb-4">
-            Ils ont eu leur permis
+          <h1 className="font-bebas text-[58px] md:text-[84px] text-white leading-none mb-5">
+            Ils ont eu<br />
+            <span className="gradient-text">leur permis</span>
           </h1>
-          <p className="text-white/50 text-base max-w-xl leading-relaxed">
+          <p className="text-white/65 text-lg max-w-xl leading-relaxed">
             Ce que pensent nos élèves de {SCHOOL_NAME} à {CITY}.
           </p>
         </div>
       </section>
 
       {/* ── Stat bar ── */}
-      <section className="py-6 px-4 border-b" style={{ background: "#122e4c", borderColor: "rgba(255,255,255,0.07)" }}>
-        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div className="flex items-center gap-6">
+      <section className="px-4 py-8" style={{ borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.03)" }}>
+        <div className="max-w-6xl mx-auto flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div className="flex items-center gap-8">
             <div>
-              <div className="flex items-center gap-1 text-yellow-400 mb-0.5">
-                {[...Array(5)].map((_, i) => <IcoStar key={i} size={15} />)}
+              <div className="flex items-center gap-1 text-yellow-400 mb-1">
+                {[...Array(5)].map((_, i) => <IcoStar key={i} size={18} />)}
               </div>
-              <p className="text-xs text-white/40 font-medium">5/5 sur Google</p>
+              <p className="text-white font-bold text-lg leading-none">5 / 5</p>
+              <p className="text-white/40 text-xs mt-0.5">sur Google</p>
             </div>
-            <div className="w-px h-10" style={{ background: "rgba(255,255,255,0.10)" }} />
+            <div className="w-px h-12" style={{ background: "rgba(255,255,255,0.10)" }} />
             <div>
-              <p className="font-bebas text-[28px] text-green-400 leading-none">100%</p>
-              <p className="text-xs text-white/40 font-medium">Indice de confiance</p>
+              <p className="font-bebas text-[36px] text-green-400 leading-none">100%</p>
+              <p className="text-white/40 text-xs">Indice de confiance</p>
+            </div>
+            <div className="w-px h-12 hidden sm:block" style={{ background: "rgba(255,255,255,0.10)" }} />
+            <div className="hidden sm:block">
+              <p className="font-bebas text-[36px] text-white leading-none">{avis.length}</p>
+              <p className="text-white/40 text-xs">Avis récents</p>
             </div>
           </div>
           <GoogleBadge />
         </div>
       </section>
 
-      {/* ── Avis ── */}
-      <section className="py-28 px-4" style={{ background: "#0e2644" }}>
+      {/* ── Avis grid ── */}
+      <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <Reveal stagger className="grid md:grid-cols-2 gap-5">
+          <Reveal stagger className="grid md:grid-cols-2 gap-6">
             {avis.map((a) => (
               <div
                 key={`${a.name}-${a.date}`}
-                className="group rounded-2xl hover:border-green-500/25 transition-all duration-400 p-7 relative overflow-hidden"
-                style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
+                className="group relative rounded-2xl p-7 overflow-hidden transition-all duration-400 hover:-translate-y-1"
+                style={{
+                  background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
+                  border: "1px solid rgba(255,255,255,0.09)",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.25)",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(0,0,0,0.40), 0 0 0 1px rgba(34,197,94,0.15)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.25)"; }}
               >
-                {/* Barre verte basse au hover */}
-                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-green-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+                <div className="absolute bottom-0 left-0 right-0 h-[2px] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" style={{ background: "linear-gradient(90deg, #16a34a, #22c55e)" }} />
 
-                {/* Guillemet décoratif */}
-                <div
-                  className="absolute top-5 right-6 font-bebas text-[72px] leading-none select-none"
-                  style={{ color: "rgba(255,255,255,0.04)" }}
-                >
-                  &ldquo;
-                </div>
+                {/* Guillemet */}
+                <div className="absolute top-4 right-6 font-bebas text-[80px] leading-none select-none pointer-events-none" style={{ color: "rgba(255,255,255,0.04)" }}>&ldquo;</div>
 
                 {/* Étoiles */}
-                <div className="flex items-center gap-0.5 text-yellow-400 mb-3 relative z-10">
-                  {[...Array(a.note)].map((_, i) => <IcoStar key={i} size={13} />)}
+                <div className="flex items-center gap-0.5 text-yellow-400 mb-4">
+                  {[...Array(a.note)].map((_, i) => <IcoStar key={i} size={14} />)}
                   {a.note < 5 && [...Array(5 - a.note)].map((_, i) => (
-                    <svg key={i} width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" style={{ color: "rgba(255,255,255,0.15)" }}>
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-                    </svg>
+                    <IcoStar key={`e${i}`} size={14} />
                   ))}
                 </div>
 
-                <p className="text-white/50 text-sm leading-relaxed italic mb-5 relative z-10">
+                <p className="text-white/70 text-sm leading-relaxed italic mb-6">
                   &ldquo;{a.text}&rdquo;
                 </p>
 
-                <div
-                  className="flex items-center justify-between relative z-10 pt-4 border-t"
-                  style={{ borderColor: "rgba(255,255,255,0.07)" }}
-                >
+                <div className="flex items-center justify-between pt-4" style={{ borderTop: "1px solid rgba(255,255,255,0.08)" }}>
                   <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 bg-green-600 text-white rounded-xl flex items-center justify-center font-bold text-sm shrink-0">
+                    <div
+                      className="w-10 h-10 text-white rounded-xl flex items-center justify-center font-bold text-sm shrink-0"
+                      style={{ background: "linear-gradient(135deg, #16a34a, #22c55e)", boxShadow: "0 0 12px rgba(22,163,74,0.35)" }}
+                    >
                       {a.name[0]}
                     </div>
                     <div>
@@ -109,8 +116,8 @@ export default function AvisPage() {
                     </div>
                   </div>
                   <span
-                    className="text-[11px] text-green-400 px-2.5 py-1 rounded-full font-semibold"
-                    style={{ background: "rgba(34,197,94,0.10)", border: "1px solid rgba(34,197,94,0.20)" }}
+                    className="text-[11px] text-green-400 px-3 py-1 rounded-full font-semibold"
+                    style={{ background: "rgba(34,197,94,0.10)", border: "1px solid rgba(34,197,94,0.22)" }}
                   >
                     {a.formation}
                   </span>
@@ -121,29 +128,41 @@ export default function AvisPage() {
         </div>
       </section>
 
-      {/* ── CTA laisser un avis ── */}
-      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
-        <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
-        <div className="relative max-w-3xl mx-auto text-center">
-          <h2 className="font-bebas text-[38px] md:text-[52px] text-white leading-none mb-3">
-            Vous êtes un de nos élèves ?
-          </h2>
-          <p className="text-white/45 text-sm mb-8">
-            Laissez-nous un avis Google, ça nous aide beaucoup et ça aide les futurs élèves !
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <a
-              href={`tel:${PHONE}`}
-              className="shine-btn inline-flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold hover:bg-green-700 transition-colors shadow-md shadow-green-900/30"
-            >
-              <IcoPhone /> Nous contacter
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center border border-white/15 text-white/80 rounded-xl px-7 py-3.5 font-semibold hover:bg-white/8 hover:text-white transition-colors"
-            >
-              Envoyer un message →
-            </Link>
+      {/* ── CTA ── */}
+      <section className="py-20 px-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <div
+          className="max-w-3xl mx-auto rounded-2xl p-12 relative overflow-hidden text-center"
+          style={{
+            background: "linear-gradient(135deg, #0f3320 0%, #0a2016 50%, #112a1a 100%)",
+            border: "1px solid rgba(34,197,94,0.20)",
+            boxShadow: "0 0 60px rgba(22,163,74,0.12)",
+          }}
+        >
+          <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, transparent, #22c55e 50%, transparent)" }} />
+          <div className="absolute inset-0 bg-dots opacity-20 pointer-events-none" />
+          <div className="relative">
+            <h2 className="font-bebas text-[40px] md:text-[52px] text-white leading-none mb-3">
+              Vous êtes un de nos élèves ?
+            </h2>
+            <p className="text-white/55 text-base mb-8">
+              Laissez-nous un avis Google — ça aide beaucoup les futurs élèves !
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={`tel:${PHONE}`}
+                className="inline-flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-8 py-4 font-bold hover:bg-green-500 transition-colors"
+                style={{ boxShadow: "0 4px 20px rgba(22,163,74,0.40)" }}
+              >
+                <IcoPhone /> Nous contacter
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center text-white/80 rounded-xl px-8 py-4 font-semibold hover:text-white transition-colors"
+                style={{ border: "1px solid rgba(255,255,255,0.18)" }}
+              >
+                Envoyer un message →
+              </Link>
+            </div>
           </div>
         </div>
       </section>

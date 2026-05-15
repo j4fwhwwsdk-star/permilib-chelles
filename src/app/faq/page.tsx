@@ -12,101 +12,85 @@ export const metadata = buildMetadata({
 });
 
 const faqs = [
-  {
-    question: "Comment s'inscrire à l'auto-école ?",
-    answer: "Vous pouvez vous inscrire en nous appelant, en nous envoyant un message WhatsApp ou en remplissant notre formulaire de contact. Un membre de notre équipe vous recontactera rapidement pour organiser un rendez-vous.",
-  },
-  {
-    question: "Quel est l'âge minimum pour commencer la conduite ?",
-    answer: "Pour le permis B classique, l'âge minimum est 17 ans (examen possible à 17 ans, conduire seul à 18 ans). Pour la conduite accompagnée (AAC), vous pouvez commencer dès 15 ans.",
-  },
-  {
-    question: "Combien de temps faut-il pour obtenir le permis ?",
-    answer: "La durée varie selon les élèves. En moyenne, comptez 4 à 6 mois pour un permis B classique avec 20 à 25h de conduite. La conduite accompagnée peut durer jusqu'à 2 ans mais vous rend beaucoup plus à l'aise.",
-  },
-  {
-    question: "Puis-je utiliser mon CPF pour financer le permis ?",
-    answer: "Oui, le permis B est éligible au CPF (Compte Personnel de Formation). Contactez-nous pour vérifier votre éligibilité et vous accompagner dans les démarches.",
-  },
-  {
-    question: "Qu'est-ce que le permis à 1€/jour ?",
-    answer: "C'est un dispositif de prêt à taux zéro destiné aux jeunes de 15 à 25 ans. Vous empruntez le montant de la formation et le remboursez sur 3 ans à raison d'environ 1€ par jour. Renseignez-vous auprès de notre équipe.",
-  },
-  {
-    question: "Que comprend le forfait permis ?",
-    answer: "Nos forfaits incluent le code de la route, les heures de conduite, les frais d'inscription à l'examen et le suivi pédagogique. Les détails varient selon le forfait choisi — consultez notre page Tarifs.",
-  },
-  {
-    question: "Que se passe-t-il si j'échoue à l'examen ?",
-    answer: "En cas d'échec, nous analysons ensemble les points à améliorer et vous proposons des heures de conduite supplémentaires avant de représenter l'examen. Les frais de repassage sont à prévoir.",
-  },
-  {
-    question: "Quels documents faut-il fournir pour s'inscrire ?",
-    answer: "Vous aurez besoin d'une pièce d'identité valide, d'une photo d'identité, d'un justificatif de domicile de moins de 6 mois et d'un avis ASSR (pour les moins de 18 ans). Nous vous indiquerons précisément les documents lors de votre inscription.",
-  },
+  { question: "Comment s'inscrire à l'auto-école ?",         answer: "Vous pouvez vous inscrire en nous appelant, en nous envoyant un message WhatsApp ou en remplissant notre formulaire de contact. Un membre de notre équipe vous recontactera rapidement." },
+  { question: "Quel est l'âge minimum pour commencer ?",     answer: "Pour le permis B classique, l'âge minimum est 17 ans (conduire seul à 18 ans). Pour la conduite accompagnée (AAC), vous pouvez commencer dès 15 ans." },
+  { question: "Combien de temps pour obtenir le permis ?",   answer: "En moyenne, comptez 4 à 6 mois pour un permis B classique avec 20 à 25h de conduite. La conduite accompagnée peut durer jusqu'à 2 ans mais vous rend beaucoup plus à l'aise." },
+  { question: "Puis-je utiliser mon CPF pour le permis ?",   answer: "Oui, le permis B est éligible au CPF. Contactez-nous pour vérifier votre éligibilité et vous accompagner dans les démarches sur Mon Compte Formation." },
+  { question: "Qu'est-ce que le permis à 1€/jour ?",         answer: "C'est un prêt à taux zéro destiné aux jeunes de 15 à 25 ans. Vous empruntez le montant de la formation et le remboursez sur 3 ans (~1€/jour). Renseignez-vous auprès de nous." },
+  { question: "Que comprend le forfait permis ?",             answer: "Nos forfaits incluent le code de la route, les heures de conduite, les frais d'inscription à l'examen et le suivi pédagogique. Consultez notre page Tarifs pour les détails." },
+  { question: "Que se passe-t-il si j'échoue à l'examen ?", answer: "En cas d'échec, nous analysons les points à améliorer et proposons des heures supplémentaires avant de représenter l'examen. Les frais de repassage sont à prévoir." },
+  { question: "Quels documents pour s'inscrire ?",           answer: "Pièce d'identité, photo d'identité, justificatif de domicile (moins de 6 mois) et avis ASSR pour les moins de 18 ans. Nous vous indiquons précisément les documents lors de l'inscription." },
 ];
 
 export default function FaqPage() {
   return (
-    <div>
-      {/* ── En-tête ── */}
-      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
+    <div style={{ background: "linear-gradient(180deg, #081428 0%, #0b1d38 100%)", minHeight: "100vh" }}>
+
+      {/* ── Hero ── */}
+      <section className="relative pt-24 pb-20 px-4 overflow-hidden">
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-96 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(ellipse, rgba(22,163,74,0.10) 0%, transparent 70%)" }} />
+        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
         <div className="relative max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-8 bg-green-500" />
-            <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">FAQ</span>
+            <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">FAQ</span>
           </div>
-          <h1 className="font-bebas text-[52px] md:text-[72px] text-white leading-none mb-4">
-            Questions fréquentes
+          <h1 className="font-bebas text-[58px] md:text-[84px] text-white leading-none mb-5">
+            Questions<br />
+            <span className="gradient-text">fréquentes</span>
           </h1>
-          <p className="text-white/50 text-base max-w-xl leading-relaxed">
+          <p className="text-white/65 text-lg max-w-xl leading-relaxed">
             Trouvez rapidement les réponses à vos questions sur nos formations, tarifs et financement.
           </p>
         </div>
       </section>
 
       {/* ── FAQ ── */}
-      <section className="py-28 px-4" style={{ background: "#0e2644" }}>
+      <section className="py-20 px-4">
         <div className="max-w-3xl mx-auto">
           <Reveal variant="bottom">
-            <div className="space-y-2 mb-16">
+            <div className="space-y-3 mb-16">
               {faqs.map((faq) => (
                 <FaqItem key={faq.question} question={faq.question} answer={faq.answer} />
               ))}
             </div>
           </Reveal>
 
-          {/* CTA */}
           <Reveal variant="scale">
             <div
               className="rounded-2xl p-10 text-center relative overflow-hidden"
-              style={{ background: "#1a3a58", border: "1px solid rgba(255,255,255,0.08)" }}
+              style={{
+                background: "linear-gradient(135deg, #0f3320 0%, #0a2016 50%, #112a1a 100%)",
+                border: "1px solid rgba(34,197,94,0.20)",
+                boxShadow: "0 0 60px rgba(22,163,74,0.12)",
+              }}
             >
-              <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-green-500 to-transparent" />
+              <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, transparent, #22c55e 50%, transparent)" }} />
+              <div className="absolute inset-0 bg-dots opacity-20 pointer-events-none" />
               <div className="relative">
                 <div className="flex items-center justify-center gap-3 mb-4">
                   <div className="h-px w-8 bg-green-500" />
-                  <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">On est là</span>
+                  <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">On est là</span>
                   <div className="h-px w-8 bg-green-500" />
                 </div>
-                <h2 className="font-bebas text-[34px] md:text-[42px] text-white leading-none mb-3">
+                <h2 className="font-bebas text-[36px] md:text-[46px] text-white leading-none mb-3">
                   Vous n&apos;avez pas trouvé votre réponse ?
                 </h2>
-                <p className="text-white/45 text-sm mb-8 max-w-md mx-auto leading-relaxed">
-                  Notre équipe est disponible pour répondre à toutes vos questions sur les formations, tarifs et financement.
+                <p className="text-white/55 text-base mb-8 max-w-md mx-auto leading-relaxed">
+                  Notre équipe répond à toutes vos questions sur les formations, tarifs et financement.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-3 justify-center">
                   <a
                     href={`tel:${PHONE}`}
-                    className="shine-btn inline-flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold hover:bg-green-700 transition-colors shadow-md shadow-green-900/30"
+                    className="inline-flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-8 py-4 font-bold hover:bg-green-500 transition-colors"
+                    style={{ boxShadow: "0 4px 20px rgba(22,163,74,0.40)" }}
                   >
                     <IcoPhone /> Appeler
                   </a>
                   <Link
                     href="/contact"
-                    className="inline-flex items-center justify-center border border-white/15 text-white/80 rounded-xl px-7 py-3.5 font-semibold hover:bg-white/8 hover:text-white transition-colors"
+                    className="inline-flex items-center justify-center text-white/80 rounded-xl px-8 py-4 font-semibold hover:text-white transition-colors"
+                    style={{ border: "1px solid rgba(255,255,255,0.18)" }}
                   >
                     Envoyer un message →
                   </Link>

@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { PHONE, SCHOOL_NAME } from "@/lib/site";
 
 const navLinks = [
@@ -26,36 +27,42 @@ const IcoCheck = () => (
 );
 
 export default function Header() {
-  const [open, setOpen]       = useState(false);
+  const [open, setOpen]         = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname                = usePathname();
 
-  /* Glassmorphism plus opaque après 24px de scroll */
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 24);
+    const onScroll = () => setScrolled(window.scrollY > 10);
+    onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  /* Ferme le menu burger si on agrandit la fenêtre */
   useEffect(() => {
     const onResize = () => { if (window.innerWidth >= 768) setOpen(false); };
     window.addEventListener("resize", onResize);
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
+  /* Ferme le menu sur changement de page */
+  useEffect(() => { setOpen(false); }, [pathname]);
+
+  const isActive = (href: string) =>
+    href === "/" ? pathname === "/" : pathname.startsWith(href);
+
   return (
     <header
-      className="sticky top-0 z-40 transition-all duration-300"
+      className="sticky top-0 z-50 transition-all duration-500"
       style={{
         background: scrolled
-          ? "rgba(14,38,68,0.97)"
-          : "rgba(14,38,68,0.90)",
-        backdropFilter:       "blur(24px) saturate(160%)",
-        WebkitBackdropFilter: "blur(24px) saturate(160%)",
-        borderBottom: scrolled
-          ? "1px solid rgba(255,255,255,0.07)"
-          : "1px solid rgba(255,255,255,0.04)",
-        boxShadow: scrolled ? "0 1px 0 rgba(22,163,74,0.08)" : "none",
+          ? "rgba(8,20,42,0.97)"
+          : "rgba(8,20,42,0.88)",
+        backdropFilter:       "blur(32px) saturate(180%)",
+        WebkitBackdropFilter: "blur(32px) saturate(180%)",
+        borderBottom:         "1px solid rgba(34,197,94,0.12)",
+        boxShadow:            scrolled
+          ? "0 4px 32px rgba(0,0,0,0.4), 0 1px 0 rgba(34,197,94,0.10)"
+          : "0 1px 0 rgba(34,197,94,0.07)",
       }}
     >
       <div className="max-w-6xl mx-auto px-4 h-16 flex items-center justify-between gap-6">
@@ -63,25 +70,28 @@ export default function Header() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0 group">
           <div
-            className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:border-green-500/30 group-hover:bg-green-500/10"
-            style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.09)" }}
+            className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-300"
+            style={{
+              background: "linear-gradient(135deg, rgba(22,163,74,0.25) 0%, rgba(22,163,74,0.10) 100%)",
+              border: "1px solid rgba(22,163,74,0.30)",
+              boxShadow: "0 0 12px rgba(22,163,74,0.15)",
+            }}
           >
-            <span className="font-bebas text-white text-[13px] leading-none tracking-wider">PL</span>
+            <span className="font-bebas text-green-400 text-[13px] leading-none tracking-wider">PL</span>
           </div>
           <div className="hidden sm:block">
             <span className="block font-bebas text-[17px] text-white tracking-wide leading-none group-hover:text-green-400 transition-colors duration-300">
               {SCHOOL_NAME}
             </span>
-            <span className="block text-[9px] font-bold tracking-[0.18em] uppercase leading-none mt-0.5" style={{ color: "rgba(34,197,94,0.65)" }}>
+            <span className="block text-[9px] font-bold tracking-[0.18em] uppercase leading-none mt-0.5 text-green-400/60">
               Auto-École · Chelles
             </span>
           </div>
-          {/* Pill Qualiopi */}
           <span
             className="hidden lg:flex items-center gap-1.5 ml-1 px-2.5 py-1 rounded-full text-[9px] font-bold tracking-[0.10em] uppercase"
             style={{
-              background: "rgba(22,163,74,0.10)",
-              border:     "1px solid rgba(22,163,74,0.22)",
+              background: "rgba(22,163,74,0.12)",
+              border:     "1px solid rgba(22,163,74,0.28)",
               color:      "#4ade80",
             }}
           >
@@ -91,47 +101,49 @@ export default function Header() {
 
         {/* Nav desktop */}
         <nav className="hidden md:flex items-center gap-0.5 flex-1 justify-center">
-          {navLinks.map((l) => (
-            <Link
-              key={l.href}
-              href={l.href}
-              className="relative px-3 py-2 text-sm font-medium rounded-lg transition-colors duration-200 group"
-              style={{ color: "rgba(255,255,255,0.50)" }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.92)")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.50)")}
-            >
-              {l.label}
-              <span
-                className="absolute bottom-1.5 left-3 right-3 h-[1.5px] rounded-full scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left"
-                style={{ background: "linear-gradient(90deg, #16a34a, #22c55e)" }}
-              />
-            </Link>
-          ))}
+          {navLinks.map((l) => {
+            const active = isActive(l.href);
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className="relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200"
+                style={{
+                  color: active ? "#ffffff" : "rgba(255,255,255,0.52)",
+                  background: active ? "rgba(255,255,255,0.07)" : "transparent",
+                }}
+                onMouseEnter={(e) => {
+                  if (!active) e.currentTarget.style.color = "rgba(255,255,255,0.92)";
+                }}
+                onMouseLeave={(e) => {
+                  if (!active) e.currentTarget.style.color = "rgba(255,255,255,0.52)";
+                }}
+              >
+                {l.label}
+                {active && (
+                  <span
+                    className="absolute bottom-1 left-3 right-3 h-[2px] rounded-full"
+                    style={{ background: "linear-gradient(90deg, #16a34a, #22c55e)" }}
+                  />
+                )}
+              </Link>
+            );
+          })}
         </nav>
 
         {/* CTA desktop */}
         <div className="hidden md:flex items-center gap-3 shrink-0">
           <Link
             href="/contact"
-            className="text-sm font-medium transition-colors duration-200"
-            style={{ color: "rgba(255,255,255,0.40)" }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.80)")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "rgba(255,255,255,0.40)")}
+            className="text-sm font-medium transition-colors duration-200 text-white/40 hover:text-white/80"
           >
             Contact
           </Link>
           <a
             href={`tel:${PHONE}`}
-            className="relative overflow-hidden bg-green-600 text-white rounded-xl px-5 py-2.5 font-bold text-sm flex items-center gap-2 transition-all duration-200 group hover:-translate-y-0.5"
-            style={{ boxShadow: "0 4px 14px rgba(22,163,74,0.34)" }}
-            onMouseEnter={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = "0 6px 22px rgba(22,163,74,0.50)")}
-            onMouseLeave={(e) => ((e.currentTarget as HTMLElement).style.boxShadow = "0 4px 14px rgba(22,163,74,0.34)")}
+            className="relative overflow-hidden bg-green-600 text-white rounded-xl px-5 py-2.5 font-bold text-sm flex items-center gap-2 transition-all duration-200 hover:-translate-y-0.5 hover:bg-green-500"
+            style={{ boxShadow: "0 4px 20px rgba(22,163,74,0.40)" }}
           >
-            <span
-              aria-hidden
-              className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-[600ms] skew-x-[-20deg]"
-              style={{ background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent)" }}
-            />
             <IcoPhone />
             {PHONE}
           </a>
@@ -139,8 +151,7 @@ export default function Header() {
 
         {/* Burger mobile */}
         <button
-          className="md:hidden p-2 rounded-lg transition-colors duration-200"
-          style={{ color: "rgba(255,255,255,0.60)" }}
+          className="md:hidden p-2 rounded-lg transition-colors duration-200 text-white/70 hover:text-white"
           onClick={() => setOpen(!open)}
           aria-label={open ? "Fermer le menu" : "Ouvrir le menu"}
           aria-expanded={open}
@@ -153,43 +164,41 @@ export default function Header() {
         </button>
       </div>
 
-      {/* Menu mobile déroulant */}
+      {/* Menu mobile */}
       <div
         className={`md:hidden overflow-hidden transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
-          open ? "max-h-[480px] opacity-100" : "max-h-0 opacity-0"
+          open ? "max-h-[520px] opacity-100" : "max-h-0 opacity-0"
         }`}
       >
         <div
           className="px-4 py-5"
           style={{
-            background: "rgba(14,38,68,0.99)",
-            borderTop:  "1px solid rgba(255,255,255,0.06)",
+            background: "rgba(8,20,42,0.99)",
+            borderTop:  "1px solid rgba(34,197,94,0.10)",
           }}
         >
           <nav className="grid grid-cols-2 gap-1 mb-5">
-            {[...navLinks, { href: "/contact", label: "Contact" }].map((l) => (
-              <Link
-                key={l.href}
-                href={l.href}
-                className="px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200"
-                style={{ color: "rgba(255,255,255,0.52)" }}
-                onClick={() => setOpen(false)}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color      = "rgba(255,255,255,0.92)";
-                  e.currentTarget.style.background = "rgba(255,255,255,0.05)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color      = "rgba(255,255,255,0.52)";
-                  e.currentTarget.style.background = "transparent";
-                }}
-              >
-                {l.label}
-              </Link>
-            ))}
+            {[...navLinks, { href: "/contact", label: "Contact" }].map((l) => {
+              const active = isActive(l.href);
+              return (
+                <Link
+                  key={l.href}
+                  href={l.href}
+                  className="px-3 py-2.5 text-sm font-medium rounded-lg transition-all duration-200"
+                  style={{
+                    color: active ? "#4ade80" : "rgba(255,255,255,0.55)",
+                    background: active ? "rgba(34,197,94,0.10)" : "transparent",
+                  }}
+                  onClick={() => setOpen(false)}
+                >
+                  {l.label}
+                </Link>
+              );
+            })}
           </nav>
           <a
             href={`tel:${PHONE}`}
-            className="flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-4 py-3.5 font-bold text-center text-sm"
+            className="flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-4 py-3.5 font-bold text-center text-sm hover:bg-green-500 transition-colors"
             style={{ boxShadow: "0 6px 20px rgba(22,163,74,0.38)" }}
           >
             <IcoPhone />

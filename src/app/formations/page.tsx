@@ -19,7 +19,7 @@ const main = [
     type: "Boîte manuelle",
     title: "Permis B Manuel",
     popular: false,
-    description: "La formation classique avec nos moniteurs certifiés. Véhicules modernes, suivi personnalisé et accompagnement bienveillant.",
+    description: "La formation classique avec nos moniteurs certifiés. Véhicules modernes, suivi personnalisé.",
     details: ["Formation complète personnalisée", "Code de la route inclus", "Frais d'examen inclus", "Suivi pédagogique"],
   },
   {
@@ -27,66 +27,60 @@ const main = [
     type: "Boîte automatique",
     title: "Permis B Auto",
     popular: true,
-    description: "Formation plus courte et accessible, idéale pour la ville. Véhicule automatique mis à disposition dès le 1er cours.",
-    details: ["Formation en boîte automatique", "Code de la route inclus", "Frais d'examen inclus", "Idéal pour conduire en ville"],
+    description: "Formation plus courte et accessible, idéale pour la ville. Véhicule automatique dès le 1er cours.",
+    details: ["Formation en boîte automatique", "Code de la route inclus", "Frais d'examen inclus", "Idéal pour la ville"],
   },
   {
     Icon: IcoUsers,
     type: "Dès 15 ans",
-    title: "Conduite Accompagnée (AAC)",
+    title: "Conduite Accompagnée",
     popular: false,
-    description: "Commencez dès 15 ans, accumulez de l'expérience avec un proche. Moins de stress à l'examen.",
+    description: "Commencez dès 15 ans, accumulez de l'expérience. Moins de stress à l'examen.",
     details: ["Formation initiale complète", "Examen possible à 17 ans", "Accompagnateur formé", "Prime d'assurance réduite"],
   },
 ];
 
 const secondary = [
-  {
-    Icon: IcoEye,
-    title: "Conduite Supervisée",
-    subtitle: "Pour les + de 18 ans",
-    description: "Déjà titulaire du permis ? Accumulez de l'expérience sous supervision d'un proche, sans repasser d'examen.",
-  },
-  {
-    Icon: IcoBolt,
-    title: "Formation Post-Permis",
-    subtitle: "Perfectionnement",
-    description: "Améliorez votre conduite après l'obtention du permis. Éco-conduite, conduite défensive et prise en main autoroutière.",
-  },
-  {
-    Icon: IcoGlobe,
-    title: "Code de la route",
-    subtitle: "Plateforme en ligne",
-    description: "Préparez l'examen du code avec notre plateforme numérique et nos séances en salle. Accès illimité jusqu'à l'examen.",
-  },
+  { Icon: IcoEye,   title: "Conduite Supervisée",   subtitle: "Pour les + de 18 ans", description: "Accumulez de l'expérience sous supervision d'un proche, sans repasser d'examen." },
+  { Icon: IcoBolt,  title: "Formation Post-Permis",  subtitle: "Perfectionnement",     description: "Améliorez votre conduite après le permis. Éco-conduite et conduite défensive." },
+  { Icon: IcoGlobe, title: "Code de la route",       subtitle: "Plateforme en ligne",  description: "Préparez l'examen avec notre plateforme numérique. Accès illimité jusqu'à l'examen." },
 ];
 
 export default function FormationsPage() {
   return (
-    <div>
-      {/* ── En-tête ── */}
-      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
-        <div className="absolute inset-0 bg-grid opacity-30 pointer-events-none" />
-        <div className="absolute -bottom-20 -right-20 w-80 h-80 rounded-full bg-green-600/5 blur-3xl pointer-events-none" />
+    <div style={{ background: "linear-gradient(180deg, #081428 0%, #0b1d38 100%)", minHeight: "100vh" }}>
+
+      {/* ── Hero ── */}
+      <section className="relative pt-24 pb-20 px-4 overflow-hidden">
+        {/* Ambient orbs */}
+        <div className="absolute -top-20 -right-20 w-96 h-96 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(22,163,74,0.12) 0%, transparent 70%)" }} />
+        <div className="absolute bottom-0 -left-20 w-64 h-64 rounded-full pointer-events-none" style={{ background: "radial-gradient(circle, rgba(59,130,246,0.08) 0%, transparent 70%)" }} />
+        <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
+
         <div className="relative max-w-6xl mx-auto">
-          <div className="flex items-center gap-3 mb-4">
+          <div className="flex items-center gap-3 mb-6">
             <div className="h-px w-8 bg-green-500" />
-            <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">Nos formations</span>
+            <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Nos formations</span>
           </div>
-          <h1 className="font-bebas text-[52px] md:text-[72px] text-white leading-none mb-4">
-            Choisissez votre permis
+          <h1 className="font-bebas text-[58px] md:text-[84px] text-white leading-none mb-5">
+            Choisissez<br />
+            <span className="gradient-text">votre permis</span>
           </h1>
-          <p className="text-white/50 text-base max-w-xl leading-relaxed">
+          <p className="text-white/65 text-lg max-w-xl leading-relaxed mb-8">
             {SCHOOL_NAME} propose plusieurs formations à {CITY}. Certification Qualiopi,
             financement CPF et aide Région IDF disponibles.
           </p>
-          <div className="flex flex-wrap gap-3 mt-6">
+          <div className="flex flex-wrap gap-3">
             {[
-              { Icon: IcoShield,   label: "Qualiopi" },
+              { Icon: IcoShield,   label: "Certifié Qualiopi" },
               { Icon: IcoCard,     label: "Financement CPF" },
-              { Icon: IcoBuilding, label: "Aide IDF 1 000€" },
+              { Icon: IcoBuilding, label: "Aide IDF jusqu'à 1 000€" },
             ].map(({ Icon, label }) => (
-              <span key={label} className="inline-flex items-center gap-1.5 border border-white/15 text-white/55 text-xs font-semibold px-3 py-1.5 rounded-full">
+              <span
+                key={label}
+                className="inline-flex items-center gap-2 text-white/70 text-xs font-semibold px-4 py-2 rounded-full"
+                style={{ background: "rgba(255,255,255,0.07)", border: "1px solid rgba(255,255,255,0.12)" }}
+              >
                 <span className="text-green-400"><Icon size={13} /></span> {label}
               </span>
             ))}
@@ -95,14 +89,14 @@ export default function FormationsPage() {
       </section>
 
       {/* ── Formations principales ── */}
-      <section className="py-28 px-4" style={{ background: "#0e2644" }}>
+      <section className="py-20 px-4">
         <div className="max-w-6xl mx-auto">
-          <Reveal variant="bottom" className="mb-12">
+          <Reveal variant="bottom" className="mb-14">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-green-500" />
-              <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">Offres principales</span>
+              <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Offres principales</span>
             </div>
-            <h2 className="font-bebas text-[38px] md:text-[52px] text-white leading-none">
+            <h2 className="font-bebas text-[44px] md:text-[58px] text-white leading-none">
               Les formations les plus <span className="gradient-text">demandées</span>
             </h2>
           </Reveal>
@@ -111,38 +105,51 @@ export default function FormationsPage() {
             {main.map((f) => (
               <div
                 key={f.title}
-                className="group relative rounded-2xl overflow-hidden border hover:border-green-500/30 transition-all duration-500 flex flex-col"
-                style={{ background: "#1a3a58", borderColor: "rgba(255,255,255,0.08)" }}
+                className="group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-500 hover:-translate-y-1"
+                style={{
+                  background: "linear-gradient(145deg, #112540 0%, #0e2038 100%)",
+                  border: "1px solid rgba(255,255,255,0.09)",
+                  boxShadow: "0 4px 24px rgba(0,0,0,0.30)",
+                }}
+                onMouseEnter={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 12px 40px rgba(0,0,0,0.40), 0 0 0 1px rgba(34,197,94,0.20)"; }}
+                onMouseLeave={(e) => { (e.currentTarget as HTMLElement).style.boxShadow = "0 4px 24px rgba(0,0,0,0.30)"; }}
               >
-                {/* Bandeau populaire */}
                 {f.popular && (
-                  <div className="bg-green-600 text-white text-[10px] font-bold tracking-widest uppercase text-center py-2">
-                    Le plus choisi
+                  <div
+                    className="text-white text-[10px] font-bold tracking-widest uppercase text-center py-2"
+                    style={{ background: "linear-gradient(90deg, #16a34a, #22c55e)" }}
+                  >
+                    ★ Le plus choisi
                   </div>
                 )}
 
-                {/* Top sombre */}
-                <div
-                  className={`relative px-7 pt-8 pb-8 ${f.popular ? "pt-6" : ""}`}
-                  style={{ background: "#122e4c" }}
-                >
-                  <div className="absolute top-0 left-0 right-0 h-0.5 bg-green-500" />
-
-                  <div className="w-10 h-10 rounded-xl bg-green-600/20 border border-green-500/25 flex items-center justify-center text-green-400 mb-5 group-hover:bg-green-600/30 transition-colors duration-300">
+                {/* En-tête carte */}
+                <div className="relative px-7 pt-7 pb-6" style={{ background: "rgba(0,0,0,0.20)" }}>
+                  <div
+                    className="absolute top-0 left-0 right-0 h-[2px]"
+                    style={{ background: "linear-gradient(90deg, transparent, #22c55e 50%, transparent)" }}
+                  />
+                  <div
+                    className="w-11 h-11 rounded-xl flex items-center justify-center text-green-400 mb-5 transition-all duration-300 group-hover:scale-110"
+                    style={{ background: "rgba(34,197,94,0.12)", border: "1px solid rgba(34,197,94,0.25)", boxShadow: "0 0 16px rgba(34,197,94,0.12)" }}
+                  >
                     <f.Icon size={20} />
                   </div>
                   <p className="text-white/35 text-[10px] font-bold tracking-widest uppercase mb-1">{f.type}</p>
-                  <h3 className="font-bebas text-[28px] text-white leading-tight mb-4">{f.title}</h3>
-                  <span className="font-bebas text-[26px] text-white/40 leading-none">Sur devis</span>
+                  <h3 className="font-bebas text-[30px] text-white leading-tight mb-3">{f.title}</h3>
+                  <span className="font-bebas text-[22px] text-white/35 leading-none">Sur devis</span>
                 </div>
 
-                {/* Bas sombre */}
+                {/* Corps carte */}
                 <div className="flex flex-col flex-1 px-7 py-6">
-                  <p className="text-white/50 text-sm leading-relaxed mb-5">{f.description}</p>
-                  <ul className="space-y-2.5 mb-6 flex-1">
+                  <p className="text-white/60 text-sm leading-relaxed mb-5">{f.description}</p>
+                  <ul className="space-y-3 mb-6 flex-1">
                     {f.details.map((d) => (
-                      <li key={d} className="flex items-center gap-2.5 text-sm text-white/60">
-                        <span className="w-4 h-4 rounded-full bg-green-600 flex items-center justify-center shrink-0 text-white">
+                      <li key={d} className="flex items-center gap-3 text-sm text-white/70">
+                        <span
+                          className="w-5 h-5 rounded-full flex items-center justify-center shrink-0 text-white"
+                          style={{ background: "#16a34a", boxShadow: "0 0 8px rgba(22,163,74,0.40)" }}
+                        >
                           <IcoCheck size={9} />
                         </span>
                         {d}
@@ -153,10 +160,13 @@ export default function FormationsPage() {
                     href="/contact"
                     className={`block text-center rounded-xl px-5 py-3 font-bold text-sm transition-all duration-300 ${
                       f.popular
-                        ? "bg-green-600 text-white hover:bg-green-700 shadow-md shadow-green-900/30"
-                        : "border text-white/70 hover:border-green-500/40 hover:text-green-400"
+                        ? "bg-green-600 text-white hover:bg-green-500"
+                        : "text-white/70 hover:text-white hover:border-green-500/40"
                     }`}
-                    style={!f.popular ? { borderColor: "rgba(255,255,255,0.15)" } : {}}
+                    style={f.popular
+                      ? { boxShadow: "0 4px 16px rgba(22,163,74,0.35)" }
+                      : { border: "1px solid rgba(255,255,255,0.14)" }
+                    }
                   >
                     Demander un devis →
                   </Link>
@@ -168,33 +178,39 @@ export default function FormationsPage() {
       </section>
 
       {/* ── Formations secondaires ── */}
-      <section className="py-24 px-4 border-t" style={{ background: "#122e4c", borderColor: "rgba(255,255,255,0.07)" }}>
+      <section
+        className="py-20 px-4"
+        style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.00) 100%)", borderTop: "1px solid rgba(255,255,255,0.06)" }}
+      >
         <div className="max-w-6xl mx-auto">
-          <Reveal variant="bottom" className="mb-8">
+          <Reveal variant="bottom" className="mb-10">
             <div className="flex items-center gap-3 mb-4">
               <div className="h-px w-8 bg-green-500" />
-              <span className="text-green-400 text-xs font-bold tracking-[0.15em] uppercase">Autres formations</span>
+              <span className="text-green-400 text-xs font-bold tracking-[0.18em] uppercase">Autres formations</span>
             </div>
-            <h2 className="font-bebas text-[36px] md:text-[46px] text-white leading-none">
+            <h2 className="font-bebas text-[40px] md:text-[52px] text-white leading-none">
               Besoins <span className="gradient-text">spécifiques</span>
             </h2>
           </Reveal>
 
-          <Reveal variant="bottom" className="rounded-2xl overflow-hidden shadow-sm divide-y" style={{ border: "1px solid rgba(255,255,255,0.08)", background: "#1a3a58", borderColor: "rgba(255,255,255,0.08)" }}>
-            {secondary.map((f) => (
+          <Reveal variant="bottom" className="rounded-2xl overflow-hidden" style={{ border: "1px solid rgba(255,255,255,0.08)" }}>
+            {secondary.map((f, i) => (
               <div
                 key={f.title}
-                className="group flex flex-col sm:flex-row sm:items-center gap-4 px-6 py-5 transition-colors duration-200"
-                style={{ borderColor: "rgba(255,255,255,0.06)" }}
+                className="group flex flex-col sm:flex-row sm:items-center gap-4 px-6 py-5 transition-all duration-200"
+                style={{
+                  background: i % 2 === 0 ? "rgba(255,255,255,0.03)" : "rgba(255,255,255,0.01)",
+                  borderTop: i > 0 ? "1px solid rgba(255,255,255,0.06)" : "none",
+                }}
               >
                 <div
-                  className="w-10 h-10 rounded-xl flex items-center justify-center text-green-400 shrink-0 transition-colors duration-200 group-hover:bg-green-500/15"
-                  style={{ background: "rgba(34,197,94,0.10)", border: "1px solid rgba(34,197,94,0.20)" }}
+                  className="w-11 h-11 rounded-xl flex items-center justify-center text-green-400 shrink-0 transition-all duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(34,197,94,0.10)", border: "1px solid rgba(34,197,94,0.20)", boxShadow: "0 0 12px rgba(34,197,94,0.08)" }}
                 >
                   <f.Icon size={18} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center gap-2 flex-wrap">
+                  <div className="flex items-center gap-2 flex-wrap mb-1">
                     <h3 className="font-bold text-white text-sm">{f.title}</h3>
                     <span
                       className="text-[11px] text-green-400 px-2 py-0.5 rounded-full font-semibold"
@@ -203,11 +219,11 @@ export default function FormationsPage() {
                       {f.subtitle}
                     </span>
                   </div>
-                  <p className="text-white/45 text-xs mt-0.5 leading-snug line-clamp-1">{f.description}</p>
+                  <p className="text-white/50 text-xs leading-snug">{f.description}</p>
                 </div>
                 <Link
                   href="/contact"
-                  className="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-white/55 rounded-xl px-4 py-2 hover:text-green-400 transition-all duration-200"
+                  className="shrink-0 inline-flex items-center gap-1 text-sm font-semibold text-white/55 rounded-xl px-4 py-2.5 hover:text-green-400 hover:border-green-500/30 transition-all duration-200"
                   style={{ border: "1px solid rgba(255,255,255,0.12)" }}
                 >
                   Nous contacter →
@@ -219,28 +235,38 @@ export default function FormationsPage() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="py-28 px-4 relative overflow-hidden" style={{ background: "#0e2644" }}>
-        <div className="absolute inset-0 bg-dots opacity-25 pointer-events-none" />
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="font-bebas text-[38px] md:text-[52px] text-white leading-none mb-2">
+      <section className="py-20 px-4" style={{ borderTop: "1px solid rgba(255,255,255,0.06)" }}>
+        <div
+          className="max-w-4xl mx-auto rounded-2xl p-12 relative overflow-hidden text-center"
+          style={{
+            background: "linear-gradient(135deg, #0f3320 0%, #0a2016 50%, #112a1a 100%)",
+            border: "1px solid rgba(34,197,94,0.20)",
+            boxShadow: "0 0 60px rgba(22,163,74,0.12)",
+          }}
+        >
+          <div className="absolute top-0 left-0 right-0 h-[2px]" style={{ background: "linear-gradient(90deg, transparent, #22c55e 50%, transparent)" }} />
+          <div className="absolute inset-0 bg-dots opacity-20 pointer-events-none" />
+          <div className="relative">
+            <h2 className="font-bebas text-[42px] md:text-[56px] text-white leading-none mb-3">
               Une question sur nos formations ?
             </h2>
-            <p className="text-white/45 text-sm">Notre équipe est disponible du mardi au samedi pour vous conseiller.</p>
-          </div>
-          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-            <a
-              href={`tel:${PHONE}`}
-              className="shine-btn inline-flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-7 py-3.5 font-bold hover:bg-green-700 transition-colors shadow-md shadow-green-900/30"
-            >
-              <IcoPhone /> Appeler
-            </a>
-            <Link
-              href="/contact"
-              className="inline-flex items-center justify-center border border-white/15 text-white/80 rounded-xl px-7 py-3.5 font-semibold hover:bg-white/8 hover:text-white transition-colors"
-            >
-              Envoyer un message →
-            </Link>
+            <p className="text-white/55 text-base mb-8">Notre équipe est disponible du mardi au samedi pour vous conseiller.</p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <a
+                href={`tel:${PHONE}`}
+                className="inline-flex items-center justify-center gap-2 bg-green-600 text-white rounded-xl px-8 py-4 font-bold hover:bg-green-500 transition-colors"
+                style={{ boxShadow: "0 4px 20px rgba(22,163,74,0.40)" }}
+              >
+                <IcoPhone /> Appeler maintenant
+              </a>
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center text-white/80 rounded-xl px-8 py-4 font-semibold hover:text-white transition-colors"
+                style={{ border: "1px solid rgba(255,255,255,0.18)" }}
+              >
+                Envoyer un message →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
