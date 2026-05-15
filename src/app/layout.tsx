@@ -6,6 +6,9 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import StickyCallBar from "@/components/layout/StickyCallBar";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
+import ScrollToTop from "@/components/layout/ScrollToTop";
+import PageTransitionOverlay from "@/components/layout/PageTransitionOverlay";
+import CustomCursor from "@/components/layout/CustomCursor";
 import { CITY, SCHOOL_NAME, PHONE } from "@/lib/site";
 
 const bebasNeue = Bebas_Neue({
@@ -58,8 +61,12 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: `if(typeof globalThis==='undefined'){window.globalThis=window;}` }} />
+        <Suspense><ScrollToTop /></Suspense>
+        <Suspense><PageTransitionOverlay /></Suspense>
+        <CustomCursor />
         <Header />
-        <main className="flex-1">{children}</main>
+        {/* pb-20 sur mobile pour dégager la StickyCallBar fixe (~80px) */}
+        <main className="flex-1 pb-20 md:pb-0">{children}</main>
         <Footer />
         <StickyCallBar />
         <Suspense><GoogleAnalytics /></Suspense>

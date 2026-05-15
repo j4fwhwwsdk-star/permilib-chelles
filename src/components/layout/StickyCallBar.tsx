@@ -10,16 +10,16 @@ export default function StickyCallBar() {
         <a
           href={`tel:${PHONE}`}
           onClick={() => trackEvent("call_click", { location: "sticky_bar" })}
-          className="flex-1 bg-blue-600 text-white rounded-lg py-3 font-bold text-center text-sm hover:bg-blue-700 active:bg-blue-800 transition-colors"
+          className="flex-1 bg-[#16a34a] text-white rounded-xl py-3.5 font-bold text-center text-sm active:bg-[#15803d] transition-colors shadow-[0_4px_14px_rgba(22,163,74,0.35)]"
         >
           Appeler
         </a>
         <a
-          href={`https://wa.me/${WHATSAPP.replace("+", "")}`}
+          href={`https://wa.me/${WHATSAPP}`}
           target="_blank"
           rel="noopener noreferrer"
           onClick={() => trackEvent("whatsapp_click", { location: "sticky_bar" })}
-          className="flex-1 bg-green-600 text-white rounded-lg py-3 font-bold text-center text-sm hover:bg-green-700 active:bg-green-800 transition-colors"
+          className="flex-1 bg-[#050d18] text-white rounded-xl py-3.5 font-bold text-center text-sm active:bg-[#0c1628] transition-colors"
         >
           WhatsApp
         </a>
