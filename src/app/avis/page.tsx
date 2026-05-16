@@ -109,7 +109,7 @@ export default function AvisPage() {
             {avis.map((a) => (
               <div
                 key={`${a.name}-${a.date}`}
-                className="group relative rounded-2xl p-7 overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                className="group relative rounded-2xl p-7 overflow-hidden card-3d"
                 style={{
                   background: "#ffffff",
                   border: "1px solid #e5e7eb",

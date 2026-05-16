@@ -9,6 +9,7 @@ import ScrollToTop from "@/components/layout/ScrollToTop";
 import PageTransitionOverlay from "@/components/layout/PageTransitionOverlay";
 import CustomCursor from "@/components/layout/CustomCursor";
 import DecorLayer from "@/components/layout/DecorLayer";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import { CITY, SCHOOL_NAME, PHONE } from "@/lib/site";
 
 const bebasNeue = Bebas_Neue({
@@ -61,6 +62,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col" suppressHydrationWarning>
         <script dangerouslySetInnerHTML={{ __html: `if(typeof globalThis==='undefined'){window.globalThis=window;}` }} />
+        <ScrollProgress />
         <DecorLayer />
         <Suspense><ScrollToTop /></Suspense>
         <Suspense><PageTransitionOverlay /></Suspense>

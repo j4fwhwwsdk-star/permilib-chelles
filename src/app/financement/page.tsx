@@ -133,7 +133,7 @@ export default function FinancementPage() {
             {options.map((opt) => (
               <div
                 key={opt.title}
-                className="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                className="group rounded-2xl overflow-hidden card-3d"
                 style={{
                   background: "#ffffff",
                   border: "1px solid #e5e7eb",

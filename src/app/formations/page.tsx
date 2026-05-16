@@ -131,7 +131,7 @@ export default function FormationsPage() {
             {main.map((f) => (
               <div
                 key={f.title}
-                className="group relative rounded-2xl overflow-hidden flex flex-col transition-all duration-300 hover:-translate-y-1"
+                className="group relative rounded-2xl overflow-hidden flex flex-col card-3d"
                 style={{
                   background: "#ffffff",
                   border: f.popular ? "1px solid rgba(22,163,74,0.30)" : "1px solid #e5e7eb",

@@ -5,6 +5,8 @@ import CountUp from "@/components/ui/CountUp";
 import GoogleBadge from "@/components/ui/GoogleBadge";
 import HeroSection from "@/components/sections/HeroSection";
 import { SectionLine } from "@/components/ui/SectionLine";
+import TiltCard from "@/components/ui/TiltCard";
+import { FloatingParticles } from "@/components/ui/FloatingParticles";
 import { buildMetadata } from "@/lib/metadata";
 import {
   CITY, SCHOOL_NAME, PHONE,
@@ -360,6 +362,7 @@ export default function HomePage() {
         style={{ background: "#ffffff", borderTop: "1px solid #e5e7eb" }}
       >
         <div className="absolute inset-0 bg-grid-light opacity-[0.6] pointer-events-none" />
+        <FloatingParticles />
 
         <div className="relative max-w-6xl mx-auto">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
@@ -409,7 +412,7 @@ export default function HomePage() {
               <Link
                 key={f.title}
                 href="/formations"
-                className="group card-dark card-border-glow relative rounded-2xl p-8 flex flex-col overflow-hidden"
+                className="group card-dark card-border-glow card-3d relative rounded-2xl p-8 flex flex-col overflow-hidden"
               >
                 {/* Ligne top glow au hover */}
                 <div
@@ -470,6 +473,7 @@ export default function HomePage() {
         className="relative py-32 px-4 overflow-hidden"
         style={{ background: "#f8fafc", borderTop: "1px solid #e5e7eb" }}
       >
+        <FloatingParticles />
         <div className="max-w-6xl mx-auto relative z-10">
           <Reveal variant="bottom" className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
             <div>
@@ -495,7 +499,7 @@ export default function HomePage() {
             ].map((a) => (
               <div
                 key={a.name}
-                className="card-dark card-border-glow relative rounded-2xl p-7 flex flex-col overflow-hidden group"
+                className="card-dark card-border-glow card-3d relative rounded-2xl p-7 flex flex-col overflow-hidden group"
               >
                 {/* Ligne top glow au hover */}
                 <div

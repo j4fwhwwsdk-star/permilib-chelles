@@ -109,7 +109,7 @@ export default function AProposPage() {
               ].map((s) => (
                 <div
                   key={s.label}
-                  className="group rounded-2xl p-6 text-center transition-all duration-300 hover:-translate-y-1"
+                  className="group rounded-2xl p-6 text-center card-3d"
                   style={{
                     background: "#ffffff",
                     border: "1px solid #e5e7eb",
@@ -142,7 +142,7 @@ export default function AProposPage() {
             {valeurs.map((v) => (
               <div
                 key={v.title}
-                className="group relative rounded-2xl p-6 overflow-hidden transition-all duration-300 hover:-translate-y-1"
+                className="group relative rounded-2xl p-6 overflow-hidden card-3d"
                 style={{
                   background: "#ffffff",
                   border: "1px solid #e5e7eb",

@@ -1044,3 +1044,199 @@
   85%  { opacity: 0.35; }
   100% { opacity: 0;    transform: translateY(-110px) scale(0.4); }
 }
+
+
+/* ═══════════════════════════════════════════════════════════════
+   ANIMATIONS PREMIUM V3 — Effets avancés & interactions
+   ═══════════════════════════════════════════════════════════════ */
+
+@keyframes floatX {
+  0%, 100% { transform: translateX(0px); }
+  50%       { transform: translateX(10px); }
+}
+@keyframes scalePulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.09); }
+}
+@keyframes glowPulseGreen {
+  0%, 100% { box-shadow: 0 0 14px rgba(22,163,74,0.18), 0 0 28px rgba(22,163,74,0.05); }
+  50%       { box-shadow: 0 0 32px rgba(22,163,74,0.45), 0 0 64px rgba(22,163,74,0.18); }
+}
+@keyframes gradientShift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@keyframes bounceIn {
+  0%   { transform: scale(0.3) translateY(30px); opacity: 0; }
+  55%  { transform: scale(1.14) translateY(-8px); opacity: 1; }
+  80%  { transform: scale(0.95) translateY(3px); }
+  100% { transform: scale(1) translateY(0); opacity: 1; }
+}
+@keyframes slideUpBlur {
+  from { opacity: 0; transform: translateY(28px); filter: blur(6px); }
+  to   { opacity: 1; transform: translateY(0);    filter: blur(0);   }
+}
+@keyframes morphBg {
+  0%, 100% { border-radius: 42% 58% 66% 34% / 40% 52% 48% 60%; }
+  33%       { border-radius: 66% 34% 44% 56% / 32% 28% 72% 68%; }
+  67%       { border-radius: 60% 40% 70% 30% / 60% 66% 34% 40%; }
+}
+@keyframes counterIn {
+  from { transform: translateY(14px) scale(0.85); opacity: 0; }
+  to   { transform: translateY(0)    scale(1);    opacity: 1; }
+}
+@keyframes lightBeam {
+  0%   { opacity: 0; transform: translateX(-120%) skewX(-18deg); }
+  20%  { opacity: 0.65; }
+  100% { opacity: 0; transform: translateX(420%) skewX(-18deg); }
+}
+@keyframes sparkle {
+  0%, 100% { transform: scale(0) rotate(0deg);   opacity: 0; }
+  50%       { transform: scale(1) rotate(180deg); opacity: 1; }
+}
+@keyframes typeReveal {
+  from { clip-path: inset(0 100% 0 0); }
+  to   { clip-path: inset(0 0% 0 0); }
+}
+@keyframes scanLine {
+  0%   { transform: translateY(-100%); opacity: 0.6; }
+  100% { transform: translateY(1400%); opacity: 0; }
+}
+@keyframes rotateOrb {
+  from { transform: rotate(0deg) translateX(60px) rotate(0deg); }
+  to   { transform: rotate(360deg) translateX(60px) rotate(-360deg); }
+}
+@keyframes numberFlip {
+  from { transform: rotateX(-90deg); opacity: 0; }
+  to   { transform: rotateX(0deg);   opacity: 1; }
+}
+
+/* ── Classes utilitaires V3 ── */
+
+@layer utilities {
+
+  /* Animations utilitaires */
+  .animate-float-x      { animation: floatX        6s ease-in-out infinite; }
+  .animate-scale-pulse  { animation: scalePulse     3.5s ease-in-out infinite; }
+  .animate-glow-pulse   { animation: glowPulseGreen 2.8s ease-in-out infinite; }
+  .animate-gradient-bg  { animation: gradientShift  6s ease infinite; background-size: 200% 200%; }
+  .animate-bounce-in    { animation: bounceIn       0.75s var(--ease-bounce) forwards; }
+  .animate-slide-blur   { animation: slideUpBlur    0.9s var(--ease-spring) forwards; }
+  .animate-morph        { animation: morphBg        9s ease-in-out infinite; }
+  .animate-counter-in   { animation: counterIn      0.5s var(--ease-spring) both; }
+  .animate-light-beam   { animation: lightBeam      3.5s ease-in-out infinite; }
+  .animate-sparkle      { animation: sparkle        2s ease-in-out infinite; }
+
+  /* Gradient text animé plein */
+  .gradient-text-anim {
+    background: linear-gradient(270deg, #16a34a, #22c55e, #4ade80, #22c55e, #16a34a);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmerText 5s linear infinite;
+  }
+
+  /* 3D card hover — CSS only */
+  .card-3d {
+    transition:
+      transform  0.45s var(--ease-spring),
+      box-shadow 0.45s ease;
+  }
+  .card-3d:hover {
+    transform:  perspective(900px) rotateX(-2.5deg) rotateY(2.5deg) translateY(-8px);
+    box-shadow: 0 24px 56px rgba(0,0,0,0.11), 0 0 0 1px rgba(22,163,74,0.09);
+  }
+
+  /* Blob morphant */
+  .blob {
+    border-radius: 42% 58% 66% 34% / 40% 52% 48% 60%;
+    animation: morphBg 9s ease-in-out infinite;
+  }
+
+  /* Light beam continu sur bouton */
+  .btn-beam {
+    position: relative;
+    overflow: hidden;
+  }
+  .btn-beam::before {
+    content: "";
+    position: absolute;
+    top: 0; left: -100%;
+    width: 40%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.28), transparent);
+    transform: skewX(-18deg);
+    animation: lightBeam 3.5s ease-in-out 1.2s infinite;
+  }
+
+  /* Icon glow au survol */
+  .icon-glow {
+    transition: filter 0.3s ease, transform 0.3s var(--ease-bounce);
+  }
+  .icon-glow:hover {
+    filter: drop-shadow(0 0 10px rgba(22,163,74,0.65));
+    transform: scale(1.2);
+  }
+
+  /* Pulsing green border */
+  .border-pulse {
+    animation: glowPulseGreen 2.5s ease-in-out infinite;
+  }
+
+  /* Hover line verte sous un élément */
+  .hover-line {
+    position: relative;
+  }
+  .hover-line::after {
+    content: "";
+    position: absolute;
+    bottom: -3px; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #16a34a, #22c55e);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.4s var(--ease-spring);
+    border-radius: 2px;
+  }
+  .hover-line:hover::after { transform: scaleX(1); }
+
+  /* Scan line effet matrix premium */
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+  .scan-line::after {
+    content: "";
+    position: absolute;
+    left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(22,163,74,0.55) 50%, transparent);
+    animation: scanLine 4s linear infinite;
+    pointer-events: none;
+  }
+
+  /* Stagger étendu jusqu'à 12 enfants */
+  .reveal-stagger.in-view > *:nth-child(7)  { transition-delay: 660ms; }
+  .reveal-stagger.in-view > *:nth-child(8)  { transition-delay: 770ms; }
+  .reveal-stagger.in-view > *:nth-child(9)  { transition-delay: 880ms; }
+  .reveal-stagger.in-view > *:nth-child(10) { transition-delay: 990ms; }
+  .reveal-stagger.in-view > *:nth-child(11) { transition-delay: 1100ms; }
+  .reveal-stagger.in-view > *:nth-child(12) { transition-delay: 1210ms; }
+
+  /* Entrée de section — blur + slide combiné */
+  .reveal-blur {
+    opacity: 0;
+    transform: translateY(40px);
+    filter: blur(8px);
+    transition:
+      opacity   0.9s var(--ease-spring),
+      transform 0.9s var(--ease-spring),
+      filter    0.9s ease;
+  }
+  .reveal-blur.in-view {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
