@@ -10,6 +10,7 @@ import PageTransitionOverlay from "@/components/layout/PageTransitionOverlay";
 import CustomCursor from "@/components/layout/CustomCursor";
 import DecorLayer from "@/components/layout/DecorLayer";
 import ScrollProgress from "@/components/ui/ScrollProgress";
+import CookieBanner from "@/components/ui/CookieBanner";
 import { CITY, SCHOOL_NAME, PHONE } from "@/lib/site";
 
 const bebasNeue = Bebas_Neue({
@@ -71,6 +72,7 @@ export default function RootLayout({
         <main className="flex-1 pt-16">{children}</main>
         <Footer />
         <Suspense><GoogleAnalytics /></Suspense>
+        <CookieBanner />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: schemaOrg }}
